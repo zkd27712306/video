@@ -15,7 +15,9 @@
 <link rel="stylesheet" href="./视频解析-_files/bootstrap.css">
 
 <script type="text/javascript" src="./视频解析-_files/jquery.js.下载"></script>
+
 <script type="text/javascript" src="./视频解析-_files/base64.min.js.下载"></script>
+
 <script type="text/javascript" src="./视频解析-_files/bootstrap.js.下载"></script>
 
 <link rel="stylesheet" href="./视频解析-_files/style.css">
@@ -230,6 +232,17 @@
 
 
 									默认
+
+
+								</option>
+
+
+
+								<option value="https://www.yemu.xyz/?url=">
+
+
+
+									通用接口
 
 
 								</option>
@@ -1045,14 +1058,6 @@
 			</div>		
 			<p><br></p>
 			
-			<!-- 添加隐私政策链接 -->
-			<div style="text-align: center; margin: 20px 0;">
-				<a href="https://github.com/zkd27712306/video/blob/main/readme.txt" 
-				   target="_blank" 
-				   style="color: #FEED8A; text-decoration: none; font-weight: bold;">
-					隐私政策
-				</a>
-			</div>
 			
 			
 			<p class="toot-tto">
@@ -1080,303 +1085,5 @@
 
 
 
-<script>
-// ============================================
-// 广告拦截脚本 - 专门针对iframe内嵌广告
-// ============================================
-
-(function() {
-    console.log('广告拦截脚本已加载');
-    
-    // 主要广告拦截函数
-    function blockAdsInIframe() {
-        var iframe = document.getElementById('palybox');
-        if (!iframe) {
-            console.log('未找到palybox iframe');
-            return;
-        }
-        
-        console.log('开始拦截iframe广告...');
-        
-        // 方法1: 尝试修改iframe属性来阻止广告
-        try {
-            // 添加sandbox属性限制部分功能（可能影响正常功能）
-            // iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
-            
-            // 设置referrer策略
-            iframe.setAttribute('referrerpolicy', 'no-referrer');
-            
-            console.log('已修改iframe属性');
-        } catch(e) {
-            console.log('修改iframe属性失败:', e.message);
-        }
-        
-        // 方法2: 监听iframe的load事件
-        iframe.addEventListener('load', function() {
-            console.log('iframe内容已加载，开始广告拦截...');
-            
-            // 延迟执行，等待广告加载
-            setTimeout(function() {
-                try {
-                    // 尝试访问iframe文档
-                    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                    
-                    if (iframeDoc) {
-                        console.log('成功访问iframe文档');
-                        
-                        // 1. 移除特定ID的广告
-                        var specificAd = iframeDoc.getElementById('img-random-hm');
-                        if (specificAd) {
-                            console.log('找到特定广告元素: img-random-hm');
-                            specificAd.style.display = 'none';
-                            specificAd.remove();
-                        }
-                        
-                        // 2. 移除所有来自sogowan.com的广告
-                        var sogowanAds = iframeDoc.querySelectorAll('[src*="sogowan.com"], img[src*="sogowan.com"]');
-                        if (sogowanAds.length > 0) {
-                            console.log('找到' + sogowanAds.length + '个sogowan.com广告');
-                            sogowanAds.forEach(function(ad, index) {
-                                ad.style.display = 'none';
-                                ad.remove();
-                            });
-                        }
-                        
-                        // 3. 移除所有gif广告
-                        var gifAds = iframeDoc.querySelectorAll('img[src*=".gif"]');
-                        if (gifAds.length > 0) {
-                            console.log('找到' + gifAds.length + '个gif广告');
-                            gifAds.forEach(function(ad) {
-                                // 检查是否是广告
-                                if (ad.src.includes('sogowan.com') || 
-                                    ad.id.includes('ad') || 
-                                    ad.className.includes('ad') ||
-                                    (ad.alt && ad.alt.includes('ad'))) {
-                                    ad.style.display = 'none';
-                                    ad.remove();
-                                }
-                            });
-                        }
-                        
-                        // 4. 移除广告容器元素
-                        var adContainers = iframeDoc.querySelectorAll('[class*="ad"], [id*="ad"], [class*="Ad"], [id*="Ad"]');
-                        if (adContainers.length > 0) {
-                            console.log('找到' + adContainers.length + '个广告容器');
-                            adContainers.forEach(function(container) {
-                                // 如果是大尺寸的广告容器
-                                var rect = container.getBoundingClientRect();
-                                if (rect.width > 200 && rect.height > 100) {
-                                    container.style.display = 'none';
-                                    container.remove();
-                                }
-                            });
-                        }
-                        
-                        console.log('广告拦截完成');
-                    }
-                } catch(e) {
-                    console.log('跨域限制，无法直接访问iframe内容，使用CSS方法');
-                    
-                    // 跨域限制，使用CSS注入方法
-                    injectAdBlockingCSS();
-                }
-            }, 2500); // 等待2.5秒，让广告加载
-        });
-        
-        // 如果iframe已有内容，立即开始拦截
-        if (iframe.src && iframe.src !== 'about:blank') {
-            console.log('iframe已有内容，立即开始拦截');
-            setTimeout(function() {
-                iframe.dispatchEvent(new Event('load'));
-            }, 1000);
-        }
-    }
-    
-    // 注入CSS样式来隐藏广告
-    function injectAdBlockingCSS() {
-        console.log('注入CSS广告拦截规则');
-        
-        var style = document.createElement('style');
-        style.id = 'ad-blocking-styles';
-        style.textContent = `
-            /* 通用广告隐藏规则 */
-            [class*="ad"],
-            [id*="ad"],
-            [class*="Ad"],
-            [id*="Ad"],
-            iframe[src*="ad"],
-            img[src*="ad"],
-            div[style*="advertisement"],
-            div[style*="广告"],
-            .ad-container,
-            .ad-wrapper,
-            .ad-area,
-            .adsbygoogle,
-            .ad-slot,
-            .ad-banner,
-            .ad-popup,
-            .ad-overlay,
-            .ad-wallpaper,
-            .ad-interstitial {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-                width: 0 !important;
-                height: 0 !important;
-                position: absolute !important;
-                left: -9999px !important;
-                top: -9999px !important;
-                z-index: -9999 !important;
-            }
-            
-            /* 针对您提到的特定广告 */
-            img[src*="sogowan.com"],
-            img[id="img-random-hm"],
-            img[src*="FzbOpacGOFS1AFnq.gif"],
-            img[alt*="广告"],
-            img[title*="广告"] {
-                display: none !important;
-                visibility: hidden !important;
-            }
-            
-            /* 视频播放器广告 */
-            .vjs-ad-playing,
-            .video-ad,
-            .player-ads,
-            .ad-marker,
-            .ad-notice {
-                display: none !important;
-            }
-            
-            /* 暂停广告 */
-            .pause-ad,
-            .pause-overlay,
-            .pause-screen-ad,
-            .video-paused-ad {
-                display: none !important;
-                background: transparent !important;
-            }
-            
-            /* 覆盖层广告 */
-            .overlay-ad,
-            .modal-ad,
-            .popup-ad,
-            .floating-ad {
-                display: none !important;
-            }
-        `;
-        
-        // 添加到head
-        if (document.head) {
-            document.head.appendChild(style);
-            console.log('CSS广告拦截规则已注入');
-        }
-    }
-    
-    // 定期检查并移除新出现的广告
-    function startAdMonitoring() {
-        console.log('启动广告监控');
-        
-        setInterval(function() {
-            var iframe = document.getElementById('palybox');
-            if (!iframe) return;
-            
-            try {
-                var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                if (iframeDoc) {
-                    // 查找新出现的广告元素
-                    var newAds = iframeDoc.querySelectorAll('[src*="sogowan.com"], [id*="img-random-hm"], [class*="ad"]:not([data-ad-blocked])');
-                    
-                    if (newAds.length > 0) {
-                        console.log('发现' + newAds.length + '个新广告');
-                        
-                        newAds.forEach(function(ad) {
-                            ad.style.display = 'none';
-                            ad.remove();
-                            ad.setAttribute('data-ad-blocked', 'true');
-                        });
-                    }
-                }
-            } catch(e) {
-                // 跨域错误，忽略
-            }
-        }, 3000); // 每3秒检查一次
-    }
-    
-    // 保存原始play函数
-    var originalPlay = window.play;
-    
-    // 增强play函数
-    window.play = function() {
-        console.log('play函数被调用');
-        
-        // 调用原始play函数
-        if (typeof originalPlay === 'function') {
-            originalPlay();
-        } else {
-            // 如果原始play函数不存在，执行默认播放逻辑
-            var url = document.getElementById('url') ? document.getElementById('url').value : '';
-            var jk = document.getElementById('jk') ? document.getElementById('jk').value : '';
-            
-            if (url && jk) {
-                var playUrl = jk + encodeURIComponent(url);
-                var iframe = document.getElementById('palybox');
-                if (iframe) {
-                    iframe.src = playUrl;
-                    console.log('设置iframe源:', playUrl);
-                }
-            } else {
-                alert('请输入视频网址');
-            }
-        }
-        
-        // 延迟启动广告拦截
-        setTimeout(function() {
-            blockAdsInIframe();
-            startAdMonitoring();
-        }, 1000);
-    };
-    
-    // 页面加载完成后启动广告拦截
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('页面加载完成，初始化广告拦截');
-        
-        // 立即开始监控
-        blockAdsInIframe();
-        startAdMonitoring();
-        
-        // 注入CSS规则
-        injectAdBlockingCSS();
-        
-        // 监听URL输入框变化
-        var urlInput = document.getElementById('url');
-        if (urlInput) {
-            urlInput.addEventListener('change', function() {
-                console.log('URL已更改，准备重新拦截广告');
-            });
-        }
-        
-        // 监听线路选择变化
-        var jkSelect = document.getElementById('jk');
-        if (jkSelect) {
-            jkSelect.addEventListener('change', function() {
-                console.log('线路已更改为:', this.value);
-            });
-        }
-    });
-    
-    // 添加键盘快捷键支持
-    document.addEventListener('keydown', function(e) {
-        // Ctrl+Shift+A 重新加载广告拦截
-        if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-            e.preventDefault();
-            console.log('手动重新加载广告拦截');
-            blockAdsInIframe();
-            alert('广告拦截已重新加载');
-        }
-    });
-    
-})();
-</script>
 
 </div></div></html>
