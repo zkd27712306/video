@@ -1,0 +1,97 @@
+/*!
+ * ==========================================================
+ *  RANGE SLIDER 2.0.1
+ * ==========================================================
+ * Author: Taufik Nurrohman <https://github.com/tovic>
+ * License: MIT
+ * ----------------------------------------------------------
+ */
+function RS(e, t, n) {
+	function E(e) {
+		return "undefined" != typeof e
+	}
+
+	function L(e) {
+		return "function" == typeof e
+	}
+
+	function y(e) {
+		for (var t = e[h]; e = e.offsetParent;) t += e[h];
+		return t
+	}
+
+	function w(e, t, n) {
+		t.addEventListener ? t.addEventListener(e, n, !1) : t.attachEvent ? t.attachEvent("on" + e, n) : t["on" + e] = n
+	}
+
+	function x(e, t, n) {
+		t.removeEventListener ? t.removeEventListener(e, n) : t.detachEvent ? t.detachEvent("on" + e, n) : t["on" + e] = null
+	}
+
+	function z(e, t) {
+		t.classList ? t.classList.add(e) : t.className += " " + e
+	}
+
+	function C(e, t, n) {
+		return t > e ? t : e > n ? n : e
+	}
+
+	function D(e) {
+	    if(navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)){
+            return;
+        }else{
+            return e.preventDefault && e.preventDefault(), !1
+        }
+	}
+
+	function T() {
+		s = f[d], c = y(f), u = i[d]
+	}
+
+	function X() {
+		l = C(E(t.value) ? t.value : 0, 0, 100), i.style[v] = l / 100 * s - u / 2 + "px", L(t.create) && t.create(l, e), L(t.drag) && t.drag(l, e)
+	}
+
+	function Y(n) {
+		return T(), a = !0, H(n), w("touchmove", o, b), w("mousemove", o, b), L(t.start) && t.start(l, e, n), D(n)
+	}
+
+	function b(e) {
+		return H(e), D(e)
+	}
+
+	function k(n) {
+		return a = !1, x("touchmove", o, b), x("mousemove", o, b), L(t.stop) && t.stop(l, e, n), D(n)
+	}
+
+	function H(n) {
+		n = n || r.event;
+		var f = n.touches ? n.touches[0][p] : n[p],
+			d = C(f - c, 0, s),
+			h = C((f - c) / s * 100, 0, 100);
+		f || (f = n[m] + o.body[g] + o.documentElement[g]), a && (i.style[v] = d - u / 2 + "px", l = Math.round(h), L(t.drag) && t.drag(l, e, n))
+	}
+	t = t || {};
+	var r = window,
+		o = document,
+		f = o.createElement("div"),
+		bar = o.createElement("span"),
+		i = o.createElement("span"),
+		a = !1,
+		s = 0,
+		u = 0,
+		c = 0,
+		l = 0,
+		n = n || t.vertical || !1,
+		d = n ? "offsetHeight" : "offsetWidth",
+		v = n ? "top" : "left",
+		p = n ? "pageY" : "pageX",
+		h = n ? "offsetTop" : "offsetLeft",
+		m = n ? "clientY" : "clientX",
+		g = n ? "scrollTop" : "scrollLeft";
+	return z("range-slider", e), z("range-slider-" + (n ? "vertical" : "horizontal"), e), z("range-slider-track", f), z("range-slider-track-actived", bar), z("dragger", i), L(t) && (t = {
+		drag: t
+	}), w("touchstart", f, Y), w("mousedown", f, Y), w("touchend", o, k), w("mouseup", o, k), w("resize", r, function(e) {
+		T(), a = !1, i.style[v] = l / 100 * s - u / 2 + "px"
+	}),f.appendChild(bar), f.appendChild(i), e.appendChild(f), T(), X(), e
+}
